@@ -14,7 +14,7 @@ def main():
         st.title("Bienvenue sur mon Portfolio")
         st.write("Je suis Vincent PLATEAU, un professionnel passionné en analyse de donnée.")
         # Vous pouvez ajouter une image de profil ici
-        image = Image.open(r"C:\Users\vyuof\OneDrive\Images\Pellicule\WIN_20240312_10_42_20_Pro.jpg")
+        image = Image.open(r"WIN_20240312_10_42_20_Pro.jpg")
         st.image(image, caption="Vincent", width=300)
 
     elif page == "Expérience":
