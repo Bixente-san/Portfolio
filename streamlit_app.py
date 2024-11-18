@@ -4,6 +4,26 @@ from PIL import Image
 def main():
     st.set_page_config(page_title="Mon Portfolio", layout="wide")
 
+
+
+    # Créer le HTML avec le script
+    html_code = """
+    <div id="chatling-container">
+        <script>
+            window.chtlConfig = { chatbotId: "5942914583" }
+        </script>
+        <script async
+            data-id="5942914583"
+            id="chatling-embed-script"
+            type="text/javascript"
+            src="https://chatling.ai/js/embed.js">
+        </script>
+    </div>
+    """
+    
+    # Injecter le HTML dans Streamlit
+    st.components.v1.html(html_code, height=600)  # Ajustez la hauteur selon vos besoins
+
     # Sidebar
     with st.sidebar:
         st.title("Navigation")
