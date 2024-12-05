@@ -1,0 +1,8 @@
+# Cache files
+corpus_cache.json
+__pycache__/
+*.pyc
+
+# Environment
+.env
+venv/
