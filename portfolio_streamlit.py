@@ -16,7 +16,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 # Configuration de la page
 st.set_page_config(
     page_title="Vincent PLATEAU - Portfolio",
-    page_icon=r"Données/Photo portfolio.ico",
+    page_icon="Données/Photo portfolio.ico",
     layout="wide",
     initial_sidebar_state="expanded"
 )
