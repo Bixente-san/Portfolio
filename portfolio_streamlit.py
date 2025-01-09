@@ -301,7 +301,7 @@ def experience_page():
     with st.container(border=True):
         image_column, text_column = st.columns((1,5))
         with image_column:
-            st.image("Données\logo_equadra.png")
+            st.image("Données/logo_equadra.png")
         with text_column:
             st.subheader("Chargé de recrutement IT (stage de césure) | [E-Quadra](https://www.e-quadra.com/)")
             st.write("*Janvier 2022 - Juin 2022 (6 mois)*")
