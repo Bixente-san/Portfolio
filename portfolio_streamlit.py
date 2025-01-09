@@ -564,7 +564,7 @@ def projects_page():
         col1, col2 = st.columns(2)
         with col2:
             st.markdown("#### 🚶 Analyse des Déplacements")
-            st.image("Données\streamlit EMG analyse déplacements.png", use_container_width=True, caption="Feuille contenant des analyses par déplacements")
+            st.image("Données/streamlit EMG analyse déplacements.png", use_container_width=True, caption="Feuille contenant des analyses par déplacements")
             st.markdown("""
             - Analyse détaillée des flux de déplacement
             - Patterns de mobilité et tendances
@@ -573,7 +573,7 @@ def projects_page():
         
         with col1:
             st.markdown("#### 👥 Analyse des Individus")
-            st.image("Données\streamlit EMG analyse individus.png", use_container_width=True, caption="Première page")
+            st.image("Données/streamlit EMG analyse individus.png", use_container_width=True, caption="Première page")
             st.markdown("""
             - Profilage des comportements utilisateurs
             - Segmentation des déplacements
@@ -584,7 +584,7 @@ def projects_page():
         col3, col4 = st.columns(2)
         with col3:
             st.markdown("#### 🚲 Focus Vélo")
-            st.image("Données\streamlit EMG focus vélo.png", use_container_width=True)
+            st.image("Données/streamlit EMG focus vélo.png", use_container_width=True)
             st.markdown("""
             - Cartographie des itinéraires cyclables
             - Analyse des vitesses moyennes
@@ -593,7 +593,7 @@ def projects_page():
         
         with col4:
             st.markdown("#### 📈 Analyses Avancées")
-            st.image("Données\streamlit EMG analyse avancées.png", use_container_width=True, caption="")
+            st.image("Données/streamlit EMG analyse avancées.png", use_container_width=True, caption="")
             st.markdown("""
             - Modélisation statistique avancée
             - Analyses multivariées
@@ -604,7 +604,7 @@ def projects_page():
         col5, col6 = st.columns(2)
         with col5:
             st.markdown("#### Dernière page")
-            st.image("Données\streamlit EMG autres.png", caption=" Dernière page avec le rapport des premiers résultats publié par l'Institut Paris Région et les données brutes")
+            st.image("Données/streamlit EMG autres.png", caption=" Dernière page avec le rapport des premiers résultats publié par l'Institut Paris Région et les données brutes")
 
 
     elif project == "Carte Interactive des Transporteurs (Bus & Tram) en IDF":
