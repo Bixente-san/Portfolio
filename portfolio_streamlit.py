@@ -395,34 +395,17 @@ def projects_page():
         # st.write("### Contenu de l'application")
         st.subheader("Contenu de l'application", divider='grey')
 
-        
-        # Configuration des liens OneDrive
-        onedrive_paths = {
-            "menu": "https://1drv.ms/b/s!AopFOffxai5HrgMw-g0PKWcnmBTh?embed=1&em=2", #"https://1drv.ms/b/s!AopFOffxai5HrgN9eVT_5ia89xtW?e=uvGful",
-            "semaine": "https://1drv.ms/b/s!AopFOffxai5HrgEaPBX30UeUKVKP?e=ogB49z",
-            "mois_annees": "https://1drv.ms/b/s!AopFOffxai5HrgCWSuiGVKY1KsZ0?e=Z3ICKf",
-            "titres": "https://1drv.ms/b/s!AopFOffxai5HrgSMhB1yRT0NYRv8?e=JQrtZw",
-            "profil": "https://1drv.ms/b/s!AopFOffxai5HrgLmacC-PLrNsiUd?e=6i5BNM"
+            
+        # Configuration des PDF paths
+        pdf_paths = {
+            "menu": "Données/Qlik Sense - Menu - 19 novembre 2024.pdf",
+            "semaine": "Données/Qlik Sense - Semaine - 19 novembre 2024.pdf",
+            "mois_annees": "Données/Qlik Sense - Mois_Années - 19 novembre 2024.pdf",
+            "titres": "Données/Qlik Sense - Analyse des titres - 19 novembre 2024.pdf",
+            "profil": "Données/Qlik Sense - Profil Horaire - 19 novembre 2024.pdf"
         }
-
-        # Fonction pour afficher les PDFs OneDrive
-        def show_onedrive_pdf(onedrive_url):
-            embed_url = f"{onedrive_url}&embed=true"
-            pdf_display = f"""
-                <div style="display: flex; justify-content: center; width: 100%; margin: 20px 0;">
-                    <iframe 
-                        src="{embed_url}"
-                        width="100%"
-                        height="600px"
-                        frameborder="0"
-                        style="max-width: 1000px; margin: auto;"
-                    >
-                    </iframe>
-                </div>
-            """
-            st.components.v1.html(pdf_display, height=650)
-
-        # Création des onglets
+        
+        # Création d'onglets pour organiser le contenu
         tabs = st.tabs([
             "Menu Principal",
             "Profil Horaire",
@@ -431,169 +414,71 @@ def projects_page():
             "Analyse des Titres"
         ])
         
-        # Contenu des onglets
+        # Contenu de chaque onglet
         with tabs[0]:
-            st.markdown("### 📱 Menu Principal")
+            st.markdown("### 📱 Menu Principale")
             try:
-                show_onedrive_pdf(onedrive_paths["menu"])
+                show_pdf(pdf_paths["menu"])
             except Exception as e:
-                st.error("Erreur lors du chargement du PDF. Veuillez réessayer plus tard.")
+                st.error(f"Erreur lors du chargement du PDF: {str(e)}")
             st.markdown("""
-            **Caractéristiques de l'interface :**
+            <br>**Caractéristiques de l'interface :**
             - Navigation intuitive
             - Accès rapide aux différentes analyses
             - Filtres dynamiques intégrés
-            """)
-            # TEST I FRAMEEEEEEEEEEEEEEEEEEEE
-            iframe_pdf = """
-            <div style="display: flex; justify-content: center; width: 100%; margin: 20px 0;">
-                <iframe 
-                    src="https://1drv.ms/b/s!AopFOffxai5HrgMw-g0PKWcnmBTh?embed=1&em=2" 
-                    width="100%" 
-                    height="600px" 
-                    frameborder="0" 
-                    style="max-width: 1000px; margin: auto;"
-                >
-                </iframe>
-            </div>
-            """
-            st.components.v1.html(iframe_pdf, height=650)
+            """, unsafe_allow_html=True)
 
         with tabs[1]:
             st.markdown("### ⏰ Profil Horaire")
             try:
-                show_onedrive_pdf(onedrive_paths["profil"])
+                show_pdf(pdf_paths["profil"])
             except Exception as e:
-                st.error("Erreur lors du chargement du PDF. Veuillez réessayer plus tard.")
+                st.error(f"Erreur lors du chargement du PDF: {str(e)}")
             st.markdown("""
-            **Fonctionnalités :**
+            <br>**Fonctionnalités :**
             - Visualisation des pics horaires
             - Analyse des comportements par tranche horaire
             - Identification des périodes critiques
-            """)
+            """, unsafe_allow_html=True)
 
         with tabs[2]:
             st.markdown("### 📊 Vue Hebdomadaire")
             try:
-                show_onedrive_pdf(onedrive_paths["semaine"])
+                show_pdf(pdf_paths["semaine"])
             except Exception as e:
-                st.error("Erreur lors du chargement du PDF. Veuillez réessayer plus tard.")
+                st.error(f"Erreur lors du chargement du PDF: {str(e)}")
             st.markdown("""
-            **Fonctionnalités clés :**
-            - Analyse des tendances hebdomadaires
-            - Comparaison entre périodes
+            <br>**Fonctionnalités clés :**
+            - Analyse des tendances hebdomadaires de fréquentation
+            - Comparaison entre différentes périodes
             - Identification des pics d'affluence
-            """)
+            """, unsafe_allow_html=True)
             
         with tabs[3]:
             st.markdown("### 📅 Vue Mensuelle et Annuelle")
             try:
-                show_onedrive_pdf(onedrive_paths["mois_annees"])
+                show_pdf(pdf_paths["mois_annees"])
             except Exception as e:
-                st.error("Erreur lors du chargement du PDF. Veuillez réessayer plus tard.")
+                st.error(f"Erreur lors du chargement du PDF: {str(e)}")
             st.markdown("""
-            **Points clés :**
-            - Évolution des tendances long terme
+            <br>**Points clés :**
+            - Évolution des tendances sur le long terme
             - Identification des saisonnalités
             - Comparaison inter-annuelle
-            """)
+            """, unsafe_allow_html=True)
             
         with tabs[4]:
             st.markdown("### 🎫 Analyse des Titres de Transport")
             try:
-                show_onedrive_pdf(onedrive_paths["titres"])
+                show_pdf(pdf_paths["titres"])
             except Exception as e:
-                st.error("Erreur lors du chargement du PDF. Veuillez réessayer plus tard.")
+                st.error(f"Erreur lors du chargement du PDF: {str(e)}")
             st.markdown("""
-            **Caractéristiques :**
+            <br>**Caractéristiques :**
             - Distribution des types de titres
             - Analyse des préférences usagers
-            - Suivi des tendances par catégorie
-            """)
-            
-        # # Configuration des PDF paths
-        # pdf_paths = {
-        #     "menu": "Données/Qlik Sense - Menu - 19 novembre 2024.pdf",
-        #     "semaine": "Données/Qlik Sense - Semaine - 19 novembre 2024.pdf",
-        #     "mois_annees": "Données/Qlik Sense - Mois_Années - 19 novembre 2024.pdf",
-        #     "titres": "Données/Qlik Sense - Analyse des titres - 19 novembre 2024.pdf",
-        #     "profil": "Données/Qlik Sense - Profil Horaire - 19 novembre 2024.pdf"
-        # }
-        
-        # # Création d'onglets pour organiser le contenu
-        # tabs = st.tabs([
-        #     "Menu Principal",
-        #     "Profil Horaire",
-        #     "Vue Hebdomadaire", 
-        #     "Vue Mensuelle & Annuelle", 
-        #     "Analyse des Titres"
-        # ])
-        
-        # # Contenu de chaque onglet
-        # with tabs[0]:
-        #     st.markdown("### 📱 Menu Principale")
-        #     try:
-        #         show_pdf(pdf_paths["menu"])
-        #     except Exception as e:
-        #         st.error(f"Erreur lors du chargement du PDF: {str(e)}")
-        #     st.markdown("""
-        #     <br>**Caractéristiques de l'interface :**
-        #     - Navigation intuitive
-        #     - Accès rapide aux différentes analyses
-        #     - Filtres dynamiques intégrés
-        #     """, unsafe_allow_html=True)
-
-        # with tabs[1]:
-        #     st.markdown("### ⏰ Profil Horaire")
-        #     try:
-        #         show_pdf(pdf_paths["profil"])
-        #     except Exception as e:
-        #         st.error(f"Erreur lors du chargement du PDF: {str(e)}")
-        #     st.markdown("""
-        #     <br>**Fonctionnalités :**
-        #     - Visualisation des pics horaires
-        #     - Analyse des comportements par tranche horaire
-        #     - Identification des périodes critiques
-        #     """, unsafe_allow_html=True)
-
-        # with tabs[2]:
-        #     st.markdown("### 📊 Vue Hebdomadaire")
-        #     try:
-        #         show_pdf(pdf_paths["semaine"])
-        #     except Exception as e:
-        #         st.error(f"Erreur lors du chargement du PDF: {str(e)}")
-        #     st.markdown("""
-        #     <br>**Fonctionnalités clés :**
-        #     - Analyse des tendances hebdomadaires de fréquentation
-        #     - Comparaison entre différentes périodes
-        #     - Identification des pics d'affluence
-        #     """, unsafe_allow_html=True)
-            
-        # with tabs[3]:
-        #     st.markdown("### 📅 Vue Mensuelle et Annuelle")
-        #     try:
-        #         show_pdf(pdf_paths["mois_annees"])
-        #     except Exception as e:
-        #         st.error(f"Erreur lors du chargement du PDF: {str(e)}")
-        #     st.markdown("""
-        #     <br>**Points clés :**
-        #     - Évolution des tendances sur le long terme
-        #     - Identification des saisonnalités
-        #     - Comparaison inter-annuelle
-        #     """, unsafe_allow_html=True)
-            
-        # with tabs[4]:
-        #     st.markdown("### 🎫 Analyse des Titres de Transport")
-        #     try:
-        #         show_pdf(pdf_paths["titres"])
-        #     except Exception as e:
-        #         st.error(f"Erreur lors du chargement du PDF: {str(e)}")
-        #     st.markdown("""
-        #     <br>**Caractéristiques :**
-        #     - Distribution des types de titres
-        #     - Analyse des préférences usagers
-        #     - Suivi des tendances par catégorie de titre
-        #     """, unsafe_allow_html=True)
+            - Suivi des tendances par catégorie de titre
+            """, unsafe_allow_html=True)
             
         
         
