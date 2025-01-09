@@ -11,3 +11,7 @@ secondaryBackgroundColor = "#586e75"
 # Color used for almost all text.
 textColor = "#fff"
 
+# TEST AFFICHAGE DES PDFs
+[server]
+enableStaticServing = true
+
