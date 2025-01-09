@@ -843,7 +843,7 @@ def vincent_ai_page():
             st.title("VincentGPT")
             st.caption("🚀 Chatbot propulsé par Phi-3.5-mini-instruct")
         with col1:
-            video_file = open("Données\\idle_1733935615409.mp4", "rb").read()
+            video_file = open("Données/idle_1733935615409.mp4", "rb").read()
             st.markdown(
                 f"""
                 <div style="display: flex; align-items: center; justify-content: center; 
