@@ -12,6 +12,9 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import os
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 
 # Configuration de la page
@@ -1026,19 +1029,53 @@ def additional_sidebar_functions():
 
 
 
+
+def send_email(name, email, message):
+    # informations SMTP
+    smtp_server = "smtp.gmail.com"
+    smtp_port = 587
+    smtp_username = "vi.plateau@gmail.com"
+    smtp_password = os.getenv('SMTP_PASSWORD')
+
+    # Créer le message e-mail
+    subject = f"Nouveau message de {name}"
+    body = f"Nom: {name}\nEmail: {email}\nMessage: {message}"
+
+    msg = MIMEMultipart()
+    msg['From'] = smtp_username
+    msg['To'] = "vi.plateau@gmail.com"  # adresse e-mail de réception
+    msg['Subject'] = subject
+    msg.attach(MIMEText(body, 'plain'))
+
+    # Envoyer l'e-mail
+    try:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        server.starttls()  # Sécuriser la connexion
+        server.login(smtp_username, smtp_password)
+        server.sendmail(smtp_username, msg['To'], msg.as_string())
+        server.quit()
+        return True
+    except Exception as e:
+        st.error(f"Erreur lors de l'envoi de l'e-mail: {e}")
+        return False
+
 def contact_page():
     st.title("📫 Contact")
     st.write("Email: vi.plateau@gmail.com")
     st.write("LinkedIn: [Vincent PLATEAU](https://linkedin.com/in/vincent-plateau/)")
     
+    st.caption("Vous pouvez également m'envoyer un message directement depuis cette page si vous le souhaitez.")
     with st.form("contact_form"):
         name = st.text_input("Nom")
-        email = st.text_input("Email")
+        email = st.text_input("Votre e-mail (pour que je puisse vous recontacter !)")
         message = st.text_area("Message")
         submit = st.form_submit_button("Envoyer")
         if submit:
-            st.success("Message envoyé! Je vous recontacterai bientôt.")
-    
+            if send_email(name, email, message):
+                st.success("Message envoyé! Merci, je vous recontacterai bientôt 🙂.")
+            else:
+                st.error("Une erreur s'est produite lors de l'envoi du message.")
+
 
 
 def main():
