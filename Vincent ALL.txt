@@ -1,0 +1,310 @@
+PROFIL COMPLET DE VINCENT (mis à jour actuellement : Janvier 2025)
+ 
+- Prénom : Vincent
+- Statut : En recherche active d'emploi dans le domaine de la data, pour un poste de junior
+- Disponibilité : À partir de janvier 2025
+- Profil : Data Analyst passionné par la transformation et l'analyse des données
+- Adresse e-mail pour me contacter : vi.plateau@gmail.com
+- Lien vers le profil GitHub de Vincent : https://github.com/Bixente-san
+- Expertise principale : Création d'outils de visualisation, traitement de données massives, et gestion de projets data
+- Vision personnelle : L'analyse des données est un outil stratégique clé pour améliorer les processus et augmenter la valeur des produits et services
+
+
+Cette partie est le CV de Vincent Plateau :
+
+En stage de fin d’études chez RATP CAP, je suis à la recherche de mon premier emploi dans le domaine de la data. Je suis disponible à partir de Janvier 2025. 
+Je suis convaincu que l’analyse des données est un outil stratégique clé pour améliorer les processus et augmenter la valeur des produits et services. Je suis enthousiaste à l’idée de donner vie à vos données pour maximiser leur potentiel et soutenir votre performance.
+
+Expériences professionnelles de la plus récente à la plus ancienne :
+
+- Data Analyst | RATP CAP IDF | de Juin 2024 à Novembre 2024 (stage de 6 mois)
+Développement d’une application QlikSense de visualisation de données télébillettiques à destination des designers d’offres bus. Transformation en Python, intégration dans l’app. via le script déchargement, création d’un modèle de donnée fonctionnel et de tableaux de bords personnalisés, tests utilisateurs et formation àl’outil.  Analyse des données de l’enquête de mobilité par GPS (EMG) de l’Institut Paris Région et création d’une application locale Streamlit pour la visualisation des données et résultats. 
+Projets.Projets annexes : calcul de l’ élasticité de l’offre, création de cartes, requêtage data lake.
+
+- Chargé de missions RH | RATP CAP IDF | de Septembre 2022 à Janvier2023 ( stage de 5 mois)
+Développement d'un outil Excel d'Audit RH interne avec une interface utilisateur améliorée par des Macros VBA. Organisation/préparation PAP et élection CSE d'une filiale. Recrutement : rédaction d'annonces , préqualification conducteurs bus et tramway, suivi POE (formations conducteurs), participation à des évènements de recrutement en IdF. 
+
+- Chargé de recrutement IT | E-Quadra | de Janvier 2022 à Juin 2022 (stage de 6 mois)
+
+- Chargé de projet marketing | Croix-Rouge Française - Filière formation | Mai 2021 - Juin 2021 (stage de 2 mois)
+
+- Assistant comptable | Centrale des opticiens | contrat  court de 1 à 2 semaines en juillet/août de 2016 à 2023
+
+Formations :
+Je suis doublement diplômé de NEOMA:
+Master of Science Business Analytics et Master in Management à NEOMA Business School - Rouen | 4 années de 2020 à 2024. Exemple de quelques matières enseignées : Enterprise Data Management, Decision Models, Digital Business Strategy, Data Preparation, Machine Learning & AI for business, Programming for business analytics, Data visualization, Statistical Learning and Data Mining,...
+Mémoire de fin d’étude: “Enhancing Public Transportation Services through Data Analytics and Artificial Intelligence” (17,5/20)
+
+Classes préparatoires aux grandes écoles (CPGE), ECT Lycée Le Rebours - Paris | de 2018 à 2020 (2 ans juste après le baccalauréat)
+
+Competences  :
+Pack MS Office
+Python, SQL, R, VBA
+Qlik, Power BI, Tableau, Streamlit
+KNIME, process ETL
+Cognos, Snowflake
+
+Rigoureux, curieux & autodidacte.
+Résolution de problèmes.
+Team player, polyvalent et flexible.
+Présentation et reporting.
+
+Langues :
+Français : langue maternelle
+Anglais : niveau B2/C1 (IELTS : 6,5/9)
+Espagnol : niveau A2/B1
+Allemand : notions
+
+Sports pratiqués :
+J'ai pratiqué 10 ans de karaté et je suis détenteur de la ceinture marron et  de l'Attestation Fédéral d'Assistant décernée par la Fédération Française de Karaté.
+Je pratique la course à pied très régulièrement. 
+
+Projets personnel :
+- Portfolio interactif sous la forme d'une application Streamlit développée en Python :
+Ce portfolio développé en python  me permet d'exposer mes accomplissements professionnels et personnels au grand public(lien vers la page "projets" : http://localhost:8501/#projets). J'y détaille mes expériences et mes compétences. J'ai également créer un agent conversationnel alimenté par un petit modèle de langage pour que les visiteurs puissent lui poser des questions sur moi (C'est VincentGPT).
+- Carte des réseaux de transports en commun : 
+J'ai développé une petite carte de la région parisienne représentant les différents transporteurs exploitant des lignes de bus et de tramway en Île-de-France, basée sur les données des validations télébillettiques en 2024. On y voit toutes les communes et le transporteurs faisant le plus grand nombre de validations dans la communes.
+Lien pour accéder à  la carte : https://bixente-san.github.io/Cartes-transporteurs-bus-IDF-2024/
+- Création d'un chatbot comme POC (Proof of concept) en utilisant le modèle de langage qwen2 1.5b instruct.
+Lien pour accéder au chatbot : https://bixente-san-vincentgpt-poc.hf.space
+
+
+
+Cette partie est la présentation du stage de fin d’étude de Vincent Plateau à RATP CAP Île-de-France :
+
+Mon équipe
+Au sein de la Direction des Systèmes d'Information, composant de la DAF, l'équipe
+Data & digital apporte son soutien à divers acteurs en produisant
+des livrables répondant à des besoins exprimés en interne.
+
+J'ai eu la chance de rejoindre cette équipe en tant que Data Analyst et de travailler avec Marine Astruc, Chargée d'études Prévisions de Trafic, qui m'a détaillé les projets sur lesquels j'allais travailler, m'a aide et encadre tout au long du stage. Tous les membres de l'équipe on également su m'aider à un moment ou a un autre.
+À l'échelle de l'entreprise, tous les projets ont un objectif premier : répondre a un appel d'offre ou participer a la bonne exploitation des réseaux gagnés. Les prévisionnistes passent la majorité de leur temps sur les RAO. Des sujets de fond émergent, tels que le suivi des validations télé-billettiques et la compréhension des tendances de mobilité en Île-de-France.
+
+Mes missions
+
+Deux projets ont été au centre de ce stage.
+
+. Le premier, le plus important, consista en la création d'une application Qlik de visualisation, nommée "DatAOdesign" des données de validations télé-billettiques remontées par les bus dans toute la region par le SIDV. Ces dashboards sont à destination des designers d'offres et ont été conçu pour répondre a leurs besoins. La version finale de ce projet a été livrée au bout de 4 mois, en septembre.
+. Le deuxième projet entamé fin septembre a pour but d'exploiter et de valoriser les données de l'enquête de mobilité par GPS (EMG) réalisée par l'Institut Paris Région et achetées par l'équipe data au debut de l'année 2024. Le but est de comprendre les prochaines grandes tendances qui façonneront la mobilité des Franciliens dans les années a venir. Le support, encore en développement, est une application Streamlit développée en Python.
+. Enfin, j'ai également apporté mon prévisionnistes de manière ponctuelle sur des sujets
+transversaux a l'équipe tels que le calcul de l'élasticité de l'offre, le requêtage du data lake ou d'autres contributions mineurs.
+
+Focus sur DatAOdesign
+
+Contexte:
+Remplacement d'un ancien outil Power BI pour la visualisation des données de validations télébillettiques.
+Besoin critique des designers d'offre d'accéder aux données de validation de bus pour optimiser l'offre de transport en vue des RAO.
+Objectif : offrir un accès à des données déjà transformées et rapidement exploitables.
+Projet stratégique dans le contexte d'ouverture à la concurrence, avec une vocation d'amélioration.
+
+Résultats clés :
+10 utilisateurs formés.
+19 Go de données traitées.
+500 heures de travail.
+
+Architecture du projet:
+Extraction des données depuis le SIDV.
+Pré-traitement des données en Python (plus de 400 lignes de code !).
+Construction de l’application sur QlikSense.
+Ajustements.
+Présentation et déploiement aux utilisateurs.
+
+À l’intérieur du modèle de données:
+Les données sont intégrées dans Qlik via un script de chargement.
+Un modèle de données organise et relie les différentes sources pour permettre une visualisation cohérente et exploitable.
+Exemple :
+Table : CALENDAR.
+Données de validation traitées : CODE_LIGNE, CODE_JOUR, LOT.
+Structure et jointures :
+Flag rémunérations par jour (Flag Remuneration Par Jour).
+Catégorie rémunération (Catégorie Remuneration).
+Type design (Type Design).
+Processus global :
+Les données sont nettoyées et prêtes avant d’être intégrées pour une visualisation sur QlikSense.
+
+Fonctionnalités :
+
+Analyse temporelle :
+Profils horaires.
+Évolution hebdomadaire et mensuelle.
+Segmentation par type de titre et catégorie d’usagers.
+Comparaison multi périodes :
+Avant/après Covid.
+Périodes scolaires/vacances.
+Export de données personnalisé.
+
+Résultats & Impact : 
+
+Adoption de l’application par les designers d’offre.
+Retours positifs après formations et utilisation.
+Base solide pour une migration vers QlikCloud.
+Contribution directe à l’optimisation de l’offre bus RATP CAP IDF.
+Interface utilisateur
+La capture d'écran présente plusieurs exemples de visualisations interactives :
+
+Quelques exemples de graphiques : 
+
+Graphiques de tendance temporelle :
+Évolution des validations par titre sur des périodes spécifiques.
+Comparaison de différentes périodes (ex. jours ouvrés vs vacances).
+
+Barres et diagrammes circulaires :
+Analyse des titres validés par semaine, mois ou année.
+Moyennes de validations et données brutes visualisées sous forme de graphiques simples à interpréter.
+
+Graphiques radar :
+Profils horaires ou usages spécifiques représentés en polygones pour comparer des catégories d'usagers.
+L’ensemble de ces éléments facilite l’analyse approfondie et la prise de décision rapide pour les optimisations de l’offre.
+
+
+Ce que j'ai appris :
+
+Compétences Techniques approfondies
+
+Découverte de QlikSense :
+Développement de dashboards complexes, avec une interface utilisateur avancée.
+Scripts de chargement et modélisation de données. Utilisation du langage SQL pour automatiser la lecture des données, créer les jointures et boutons.
+
+Renforcement des compétences Python :
+Traitement et transformation de données massives
+Automatisation des tâches répétitives
+Creation d'une app Streamlit
+
+Meilleur connaissance du secteur des transports publics :
+Analyse des comportements de mobilité grâce aux données de validation
+Manipulation de données spatio-temporelles
+Compréhension de l'écosystème transport en IDF et des enjeux de l'ouverture à la concurrence
+
+Soft Skills Développés
+
+Gestion de projet autonome :
+Planification et priorisation
+Gestion des délais
+Adaptabilité face aux imprévus, aux demandes de dernières minutes
+
+Communication transverse :
+Formation des utilisateurs
+Collaboration avec différents profils (Prévisionniste, Data Analyst ... )
+Documentation technique et fonctionnelle
+
+
+Challenges surmontés 
+
+Gestion de la complexité :
+Prise en main de nouvelles technologies.
+Adaptation aux contraintes et résolution de problèmes techniques (ex. mémoire, serveur).
+
+Défis métier :
+Maîtrise du jargon technique.
+Compréhension des subtilités des données du SIDV : codes lignes, catégories de titres (Design/Rémunération), périodes, etc.
+
+Points d’amélioration identifiés 
+Importance d’une conception robuste dès le début du projet.
+Anticiper le devenir du projet (migration, mais aussi maintenance sur le long terme).
+Valeur d’une documentation claire et complète.
+Communiquer.
+
+Découvertes sur moi-même
+
+J’ai tendance à complexifier certaines choses au lieu d’aller au plus simple.
+J’aime travailler en autonomie, mais je peux m’égarer par perfectionnisme ou obstination.
+Je suis capable de monter rapidement en compétences et de me remettre en question pour progresser.
+Plutôt à l’aise dans la communication technique.
+Goût pour les projets data à fort impact business 
+
+Lien avec mes études : 
+Mémoire réalisé sur l'amélioration des services de transport public via l'analyse de données et l'IA, alliant théorie et pratique terrain.
+Note obtenue : 17,5/20
+
+Compétences apprises à l'école que j'ai mis en pratique pendant ce stage  :
+
+Data Visualization & Dashboarding : création de tableaux de bord, UX design
+Data Preparation avec Python et Qlik : modélisation, transformation et analyse exploratoire des données
+Statistical Learning : patterns de validation, dimensionnalité, statistiques descriptives
+
+
+Conclusion et suite après le stage :
+Confirmation de ma passion pour la data
+
+Gérer des projets data de bout en bout
+Transformer des données complexes en insights actionnables tout en travaillant sur des outils que j'aime.
+Former et accompagner les utilisateurs métier
+Travailler en équipe, à plusieurs sur un même projet
+
+Compétences clefs acquises, un tremplin pour la suite !
+Objectif court terme :
+Poste de Data/Business Analyst (dans un secteur que j'aime)
+Continuer de développer mes compétences en Business Intelligence, data
+visualization ...
+Focus sur les projets utiles et qui ont du sens
+Vision moyen/long terme :
+Évolution vers des postes à responsabilité : être en charge d'un projet ?
+Contribution a la transformation digitale (dans le secteur des transport et de la mobilité de préférence).
+
+
+
+
+
+Cette partie représente des informations en tout genre sur Vincent Plateau sous la forme d'un questions réponses: 
+
+# Compétences professionnelles :
+# Quels sont tes domaines de spécialisation ou tes compétences techniques ?
+Je suis spécialisé dans la data. J'ai fait un master spécialisé dans le traitement des données pour les entreprises. Ce master appelé MSC Business Analytics, je l'ai fait à Neoma Business School, une école de commerce.
+# Peux-tu donner des exemples d'initiatives réussies que tu as menées dans ton rôle actuel ?
+Dans ma dernière expérience en tant que data analyste à RATP Cap Ile-de-France, j'ai contribué avec succès à la création d'une application sur QlikSense. C'est une application utilisée par les designers d'offre de bus qui sont chargés de répondre aux appels d'offres de la région Ile-de-France dans le cadre de l'ouverture à la concurrence des lignes de bus en grande couronne. Cette application sert donc à concevoir une offre de transport public plus adapté, c'est ce dont je suis fier.
+# Comment tes compétences ont-elles évolué au cours de ta carrière ?
+Mes compétences ont évolué au cours de ma formation et de mes différents stages. J'ai d'abord commencé à faire des stages dans le domaine du marketing puis des ressources humaines. Lors de mon premier stage à RATP Cap Ile-de-France, j'avais un poste de chargé RH. Je n'ai pas accroché plus que ça au métier de RH. Mais j'ai toujours été technophile, j'aime le côté technique dans un job. Je m'intéresse aux nouvelles technologies, et c’est un peu grâce à ce côté "geek" que j'ai choisi de faire le MSc Business Analytics pour développer des compétences techniques approfondies en analyse de données. 
+
+
+# Expérience professionnelle :
+# Comment as-tu abordé les défis ou les problèmes dans des expériences précédentes ?
+Chez RATP cap Ile-de-France j'ai rencontré de nombreux défis. Par exemple le volume de données que je devais traiter pour l'application de visualisation ma posé problème. Ces défis mon permis de continuer d'apprendre, et j’aime trouver des solutions à des problèmes. En effet les défis techniques sont une opportunité pour améliorer ses compétences par exemple en langage python (dans les étapes de transformations des données). Ou lors de la création du modèle de données sur QlikSense.
+Les défis peuvent être aussi relationnels ou fonctionnels : il faut savoir traiter les demandes des utilisateurs. L'aspect relationnel et l'aspect humain est important pour comprendre les besoins et pour présenter les résultats
+# Peux-tu partager une expérience de collaboration avec d'autres départements ou partenaires ?
+Lors de mon dernier stage, j'ai eu la chance de collaborer avec une prévisionniste de trafic et un data analyst. J'ai vraiment apprécié ces moments de collaboration avec mes collègues, j'ai vraiment beaucoup appris. Par exemple le data analyste m'a vraiment bien orienté et conseillé dans la création du modèle de données sur Qlik. Marine, la prévisionniste, a su me guider tout le long du processus de création de l'application de visualisation. Elle m'a par exemple aidé sur la partie transformation des données à l'aide de python et ensuite c'est elle qui me communiquait les besoins des utilisateurs.
+
+# Projets et réalisations :
+# As-tu participé à des projets significatifs ou des initiatives dans un cadre professionnel ou personnel ? Peux-tu en décrire l'impact ?
+
+Comme je l'ai déjà mentionné j'ai participé à de nombreux projets lors de mes précédents stages. Mais j'ai aussi beaucoup appris et pratiqué en autonomie et en autodidacte chez moi. La création de ce portfolio en est une preuve. 
+La rédaction de mon mémoire de fin d'étude est aussi un accomplissement dont je suis fier, il est l'aboutissement de beaucoup de travail. J’ai fait ce mémoire de fin d'étude sur le secteur des transports publics car je voulais faire le lien avec le stage à la RATP. Dans le mémoire de fin d'étude j'ai réfléchi à la façon dont l'intelligence artificielle et l'analyse de données pouvait améliorer les services de transport en Ile-de-France et notamment à la RATP ce fut l'occasion pour moi d'explorer et de mettre en pratique de nombreuses compétences.
+Dans les projets personnels j'ai aussi eu l'occasion de développer des petits programmes ou des cartes. Certains de mes projets sont disponibles sur github.
+
+
+# Éducation et formation :
+# Comment tes études ou formations ont-elles influencé ta carrière ?
+La classe préparatoire fut une période très formatrice pour moi mais aussi très intense. Je ne regrette pas du tout ces 2 années en classe préparatoire. C'est une expérience qui est inoubliable, elle nous forme à gérer le stress et les grosses charges de travail. J'y ai fait des rencontres exceptionnelles que je n'oublierai jamais.
+Mes années passées à NEOMA Business School furent aussi très formatrices, j'y ai acquis un bagage solide en management en finance en marketing et RH. Ma dernière année en particulier fut très intéressante puisque j'y ai développé les compétences que j'utilise aujourd'hui dans la data. Les professeurs étaient vraiment de qualité et les cours aussi. J’y ai appris la programmation en R, SQL. La visualisation de données sur Tableau. La manipulation de données sur Excel. J’ai eu des cours en statistiques et en Machine Learning.  J’ai développé mes compétences en programmation sur Python en parallèle de mes études car on utilisait un peu plus R à l’école. Cette année de master fut un peu un tremplin dans mon apprentissage et non une fin en soit puisque je continuerai d’apprendre toute ma vie. Je suis constamment en veille technologique en train de regarder les dernières techniques et outils d’analyse de données. 
+# As-tu des recommandations ou des cours particuliers que tu recommande à d'autres professionnels ?
+Je recommande la plateforme DataCamp que j’utilise pour me former en continu et passer des certifications.
+
+
+# Vision professionnelle :
+# Quelles sont tes objectifs professionnels à court et à long terme ?
+J'aimerais devenir un data analyst compétent et mettre ces compétences au service d'une organisation qui me plaît. J'aimerais si possible trouver une opportunité dans le secteur des transports mais ca ne me dérange pas d'explorer d'autres secteurs et d'autres industries. Je veux donc continuer sur des postes d'analyste de données et pourquoi pas monter en compétence et en responsabilité à l'avenir. Mais ma principale ambition pour ma carrière est de servir une organisation utile et de continuer à monter en compétence tout en travaillant dans un cadre agréable.
+# Quelles compétences ou connaissances considères essentielles pour réussir dans ton domaine ?
+Un data analyste doit être logique il doit aimer la résolution de problèmes hé il a dans ses bagages tout un tas de compétences techniques qui lui servent à résoudre ces problèmes. Il doit aussi pouvoir être à l'écoute des utilisateurs et client pour lesquels il travaille. Il ne faut pas avoir peur de se remettre en question et il faut être très curieux car l’environnement technologique change constamment. 
+
+# Adaptabilité et résilience :
+# Comment gères tu les changements ou les défis inattendus dans ton travail ?
+Je m'adapte bien au changement et aux périodes de « rush ». Un défi inattendu est une opportunité pour apprendre. 
+# Quelles leçons as-tu tirées des situations difficiles que tu as rencontrées ?
+Une situation difficile sur le plan technique ou humain est toujours l'occasion d'apprendre et de s'améliorer. J'ai appris qu'il fallait toujours se remettre en question et accepter les remarques pour progresser.
+# Comment as-tu su développer ton esprit d'adaptabilité et sa résilience professionnelle ?
+J'ai développé mon esprit d'adaptabilité et ma résilience professionnelle à travers mes stages et mes projets pro et perso.
+
+# Équilibre vie professionnelle-vie personnelle :
+# Comment gères-tu l'équilibre travail-vie privée ?
+Pour rester productif tout le long de la semaine il faut aussi avoir du temps pour soit. J’aime me ressourcer en faisant du sport  ou allant voir ma famille ou mes amis.
+Mais je suis prêt à me donner à 1000% dans mon travail quand les conditions y obligent ! Le travail est aussi une valeur importante pour moi.
+# Quelles stratégies utilises-tu pour éviter l'épuisement professionnel ?
+Je pense qu'il faut une bonne hygiène de vie pour éviter l'épuisement professionnel. Il faut aussi savoir discriminer les tâches et les classés par importance.
+# Comment as-tu tiré profit de tes loisirs ou de ses intérêts personnels pour t'enrichir professionnellement ?
+J'ai pratique le karaté pendant longtemps. J'y ai appris la discipline, la rigueur, et le goût de l'effort. J'ai encadré des jeunes karatéka et j'ai passé mon attestation d'assistant fédéral dans le domaine. J'aime apprendre mais j'aime aussi transmettre. En dehors des activités sportifs, je crois que mon intérêts pour la science et les avancées technologiques en tout  genre ont été déterminant dans mon choix de parcours scolaire et ma spécialisation dans le domaine de la data. J'aime la rigueur scientifique et la résolution de problèmes.
+
+
+Autres informations sur Vincent Plateau :
+Je suis d'un naturel plutôt introverti ce qui ne m'empêche pas d'aimer la collaboration et le travail d'équipe. Je suis très curieux et j'aime apprendre. Monter incompétence ne me dérange pas, au contraire !
+Je suis quelqu'un de très cool j'adore parler avec des inconnus. J'ai plein de centres d'intérêt comme l'astronomie, la géographie, la géopolitique (j'adore les cartes) ou les nouvelles technologies (je suis technophile, je m'intéresse tout particulièrement aux dernières avancées dans le monde de l'IA. Je pense que l'utilisation des chatbots intelligent comme ChatGPT, Claude, ou Llama révolutionne déjà la façon dont on peut interagir avec les données et il faut savoir tirer profit de ces technologies). 
+J'adore aussi le cinéma, plutôt les films américains. J'aime aussi les documentaires, les animés japonais et la lecture. 
+À propos de ma famille, j'ai un frère qui s'appelle Sylvain, et deux parents géniaux. Mon chat s'appelle Hermine. 
