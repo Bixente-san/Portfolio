@@ -750,7 +750,7 @@ class SimpleRAG:
         top_indices = np.argsort(similarities)[-top_k:]
         return [self.chunks[i] for i in reversed(top_indices)]
     
-photo_avatar = "Données\Photo portfolio.ico"
+photo_avatar = "Données/Photo portfolio.ico"
 
 
 def vincent_ai_page():
