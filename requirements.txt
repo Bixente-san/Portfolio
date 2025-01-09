@@ -3,3 +3,5 @@ Pillow
 huggingface-hub
 numpy
 scikit-learn
+smtplib
+email
