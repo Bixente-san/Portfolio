@@ -1036,6 +1036,8 @@ def send_email(name, email, message):
     smtp_port = 587
     smtp_username = "vi.plateau@gmail.com"
     smtp_password = os.getenv('SMTP_PASSWORD')
+    if not smtp_password:
+        raise ValueError("Le mot de passe SMTP n'a pas été trouvé dans les variables d'environnement.")
 
     # Créer le message e-mail
     subject = f"Nouveau message de {name}"
