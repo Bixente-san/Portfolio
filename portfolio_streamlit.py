@@ -444,6 +444,20 @@ def projects_page():
             - Accès rapide aux différentes analyses
             - Filtres dynamiques intégrés
             """)
+            # TEST I FRAMEEEEEEEEEEEEEEEEEEEE
+            iframe_pdf = """
+            <div style="display: flex; justify-content: center; width: 100%; margin: 20px 0;">
+                <iframe 
+                    src="https://1drv.ms/b/s!AopFOffxai5HrgMw-g0PKWcnmBTh?embed=1&em=2" 
+                    width="100%" 
+                    height="600px" 
+                    frameborder="0" 
+                    style="max-width: 1000px; margin: auto;"
+                >
+                </iframe>
+            </div>
+            """
+            st.components.v1.html(iframe_pdf, height=650)
 
         with tabs[1]:
             st.markdown("### ⏰ Profil Horaire")
