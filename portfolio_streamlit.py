@@ -11,6 +11,7 @@ import time
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import os
 
 
 # Configuration de la page
@@ -934,7 +935,7 @@ def vincent_ai_page():
 
     # Initialisation du tracker d'API et du RAG
     api_tracker = APIUsageTracker()
-    client = InferenceClient(api_key="HUGGINGFACE_API_KEY")
+    client = InferenceClient(api_key=os.getenv('HUGGINGFACE_API_KEY'))
     
     if "rag" not in st.session_state:
         with open("Vincent ALL.txt", "r", encoding='utf-8') as f:
