@@ -1,109 +1,4 @@
-# import streamlit as st
-# from PIL import Image
 
-# def main():
-#     st.set_page_config(page_title="Mon Portfolio", layout="wide")
-
-
-#     # Projet d'intégration d'un chatbot Assistant via le service ChatlingAI 
-#     # # Créer le HTML avec le script
-#     # html_code = """
-#     # <div id="chatling-container">
-#     #     <script>
-#     #         window.chtlConfig = { chatbotId: "5942914583" }
-#     #     </script>
-#     #     <script async
-#     #         data-id="5942914583"
-#     #         id="chatling-embed-script"
-#     #         type="text/javascript"
-#     #         src="https://chatling.ai/js/embed.js">
-#     #     </script>
-#     # </div>
-#     # """
-#     #
-#     # # Injecter le HTML dans Streamlit
-#     # st.components.v1.html(html_code, height=600)  # Ajustez la hauteur selon vos besoins
-
-#     # Sidebar
-#     with st.sidebar:
-#         st.title("Navigation")
-#         page = st.radio("Aller à", ["Accueil", "Expérience", "Compétences", "Projets", "Contact"])
-
-#     # Contenu principal
-#     if page == "Accueil":
-#         st.title("Bienvenue sur mon Portfolio")
-#         st.write("Je suis Vincent PLATEAU, un professionnel passionné en analyse de donnée .")
-#         # Vous pouvez ajouter une image de profil ici
-#         image = Image.open(r"WIN_20240312_10_42_20_Pro.jpg")
-#         st.image(image, caption="Vincent", width=300)
-
-#     elif page == "Expérience":
-#         st.title("Expérience Professionnelle")
-#         st.write("### Entreprise A")
-#         st.write("Poste: Développeur Full Stack")
-#         st.write("Période: 2018 - Présent")
-#         st.write("Responsabilités:")
-#         st.write("- Développement d'applications web")
-#         st.write("- Gestion de projets agiles")
-
-#         st.write("### Entreprise B")
-#         st.write("Poste: Développeur Front-end Junior")
-#         st.write("Période: 2016 - 2018")
-#         st.write("Responsabilités:")
-#         st.write("- Création d'interfaces utilisateur réactives")
-#         st.write("- Collaboration avec l'équipe de design")
-
-#     elif page == "Compétences":
-#         st.title("Compétences Techniques")
-#         col1, col2 = st.columns(2)
-#         with col1:
-#             st.write("- Python")
-#             st.write("- JavaScript")
-#             st.write("- React")
-#         with col2:
-#             st.write("- SQL")
-#             st.write("- Git")
-#             st.write("- Docker")
-
-#     elif page == "Projets":
-#         st.title("Projets Personnels")
-#         st.write("### Projet 1: Application de Gestion de Tâches")
-#         st.write("Technologies utilisées: React, Node.js, MongoDB")
-#         st.write("Description: Une application web permettant aux utilisateurs de gérer leurs tâches quotidiennes.")
-
-#         st.write("### Projet 2: Bot Discord pour la Modération")
-#         st.write("Technologies utilisées: Python, Discord API")
-#         st.write("Description: Un bot Discord automatisant la modération des serveurs.")
-
-#     elif page == "Contact":
-#         st.title("Contactez-moi")
-#         st.write("Email: vi.plateau@gmail.com")
-#         st.write("LinkedIn: [Votre profil LinkedIn]")
-#         st.write("GitHub: [Votre profil GitHub]")
-
-#         # Formulaire de contact simple
-#         with st.form("contact_form"):
-#             name = st.text_input("Nom")
-#             email = st.text_input("Email")
-#             message = st.text_area("Message")
-#             submit = st.form_submit_button("Envoyer")
-#             if submit:
-#                 st.success("Message envoyé! Je vous recontacterai bientôt.")
-
-# if __name__ == "__main__":
-#     main()
-
-# # Mon mémoire de fin d'étude
-# # <iframe src="https://1drv.ms/w/s!AopFOffxai5HqUleD8H5-hVk63KB?embed=1&amp;em=2&amp;wdStartOn=4" width="470px" height="288px" frameborder="0">Ceci est un document <a target="_blank" href="https://office.com">Microsoft Office</a> incorporé, avec <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
-
-
-#================================================================================================
-#================================================================================================
-#================================================================================================
-
-# Run l'appli :"C:/Users/vyuof/AppData/Local/Programs/Python/Python311/python.exe" streamlit run c:/Users/vyuof/OneDrive/Bureau/Portfolio Streamlit/portfolio_streamlit.py
-# ou simplement :  streamlit run portfolio_streamlit.py car déjà dans le bon directory
-# chemin pip python de streamlit : C:\Users\vyuof\AppData\Local\Programs\Python\Python311\python.exe -m pip install
 import streamlit as st
 from PIL import Image
 import streamlit.components.v1 as components
@@ -276,39 +171,6 @@ def home_page():
 
 
 
-    
-
-    
-    # # Compétences clés
-    # st.markdown("<br><br>", unsafe_allow_html=True)
-    # st.markdown("## 🛠 Compétences Clés")
-    # col1, col2, col3 = st.columns(3)
-    
-    # with col1:
-    #     st.markdown("### 📊 Data Analysis")
-    #     st.write("- Python, SQL, R")
-    #     st.write("- ETL & Data Processing")
-    #     st.write("- Excel et Macros VBA")
-    #     st.write("- Statistical Analysis")
-
-    # with col2:
-    #     st.markdown("### 📈 Visualisation")
-    #     st.write("- Qlik (Sense, Cloud)")
-    #     st.write("- Streamlit")
-    #     st.write("- Power BI")
-    #     st.write("- Tableau")
-
-    # with col3:
-    #     st.markdown("### Soft skills 🗣️")
-    #     st.write("- Empathie")
-    #     st.write("- Curiosité")
-    #     st.write("- Présentation oral")
-    #     st.write("- Team player")
-
-
-
-
-
     def create_skill_item(skill):
         """Créer un élément de compétence simple"""
         st.markdown(f"""
@@ -401,16 +263,6 @@ def home_page():
 def experience_page():
     st.header("💼 Expériences", divider='red')
 
-    
-    # st.markdown("### Data Analyst | RATP CAP IDF")
-    # st.markdown("*Juin 2024 - Novembre 2024 (6 mois)*")
-    # st.write("""
-    # - Développement d'une application QlikSense de visualisation des données télébillettiques
-    # - Exploration des données de l'enquête de mobilité par GPS
-    # - Création d'une application Streamlit pour l'exploitation et la visualisation des donnés d'une enquête de mobilité
-    # - Projets annexes: calcul d'élasticité de l'offre, création de cartes, requêtage data lake
-    # """) # - ►
-
     st.html("<br>")
     with st.container(border=True):
         image_column, text_column = st.columns((1,5))
@@ -457,8 +309,6 @@ def experience_page():
             """)
     
     
-
-
 #============ Quelques fonctions utiles pour lire les pdfs et images ===============================
 def show_pdf(file_path):
     """Fonction pour afficher un PDF depuis un chemin local"""
@@ -636,7 +486,7 @@ def projects_page():
         
         
     elif project == "Application Streamlit : exploitation des données de l'Enquête Mobilité par GPS (EMG)":
-        # st.markdown("## 📊 Application Streamlit : Enquête Mobilité par GPS (EMG)")
+
         st.header("Application Streamlit : Enquête Mobilité par GPS (EMG)", divider='green')
         
         st.write("""
@@ -829,93 +679,7 @@ def projects_page():
         #st.header("Projet en cours...", divider='green')
         st.write("D'autres projets arrivent bientôt ! 🙂🚧")
 
-
-  
-
-
-
-# Chatbot sans info ====================================================================
-# def vincent_ai_page():
-#     # ico = st.image(r"C:\Users\vyuof\OneDrive\Bureau\Portfolio Streamlit\Données\Photo portfolio.ico")
-#     # st.markdown(f"{ico} VincentGPT")
-
-#     st.title("📎VincentGPT")
-    
-#     with st.chat_message("assistant", avatar=r"C:\Users\vyuof\OneDrive\Bureau\Portfolio Streamlit\Données\Photo portfolio.ico"):
-#            st.write("Bonjour ! Je suis VincentGPT, la version virtuelle de Vincent Plateau. \n Posez-moi toutes vos questions sur Vincent, et je ferai de mon mieux pour y répondre !")
-
-#     # Initialisation du tracker d'API
-#     api_tracker = APIUsageTracker()
-    
-#     # Initialisation du client Hugging Face
-#     client = InferenceClient(api_key="HUGGINGFACE_API_KEY")
-    
-#     # Initialisation des messages dans session_state
-#     if "messages" not in st.session_state:
-#         st.session_state.messages = [
-#             {"role": "system", "content": """Tu es la version virtuelle de Vincent PLATEAU. 
-#              Tu réponds de manière concise et pertinente, toujours en français (sauf si ton interlocuteur te parle une autre langue), uniquement au sujet de Vincent Plateau. Tu ne dois pas répondre 
-#              à une question si elle ne concerne pas Vincent Plateau ou si la réponse à la question n'est pas explicitement contenu dans le corpus 
-#              de connaissance que tu as à ta disposition sur Vincent Plateau.  
-#              Base tes réponses sur son CV, ses expériences et ses projets.
-#              """}
-#         ]
-    
-
-#     # Affichage des messages précédents
-#     for message in st.session_state.messages[1:]:
-#         with st.chat_message(message["role"]):
-#             st.markdown(message["content"])
-    
-
-#     # Zone de saisie
-#     if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
-#         # Vérification de la limite d'API en arrière-plan
-#         stats = api_tracker.get_usage_stats()
-#         if stats['remaining'] <= 0:
-#             st.error("Service temporairement indisponible. Veuillez réessayer plus tard.")
-#             return
-        
-#         # Affichage du message utilisateur
-#         st.session_state.messages.append({"role": "user", "content": prompt})
-#         with st.chat_message("user"):
-#             st.markdown(prompt)
-        
-#         # Traitement et affichage de la réponse
-#         with st.chat_message("assistant", avatar=r"C:\Users\vyuof\OneDrive\Bureau\Portfolio Streamlit\Données\Photo portfolio.ico"):
-           
-
-#             message_placeholder = st.empty()
-#             full_response = ""
-            
-#             try:
-#                 stream = client.chat.completions.create(
-#                     model="microsoft/Phi-3.5-mini-instruct",
-#                     messages=[
-#                         {"role": m["role"], "content": m["content"]}
-#                         for m in st.session_state.messages
-#                     ],
-#                     temperature=0.7,
-#                     max_tokens=2048,
-#                     stream=True
-#                 )
-                
-#                 api_tracker.increment_usage()
-                
-#                 for chunk in stream:
-#                     if chunk.choices[0].delta.content:
-#                         full_response += chunk.choices[0].delta.content
-#                         message_placeholder.markdown(full_response + "▌")
-                
-#                 message_placeholder.markdown(full_response)
-                
-#             except Exception as e:
-#                 st.error("Une erreur est survenue. Veuillez réessayer.")
-#                 return
-            
-#             st.session_state.messages.append({"role": "assistant", "content": full_response})
-
-
+#================================================================ VincentGPT =====================================================================================================
 
 class APIUsageTracker:
     def __init__(self):
@@ -986,7 +750,7 @@ class SimpleRAG:
         top_indices = np.argsort(similarities)[-top_k:]
         return [self.chunks[i] for i in reversed(top_indices)]
     
-photo_avatar = r"C:\Users\vyuof\OneDrive\Bureau\Portfolio Streamlit\Données\Photo portfolio.ico"
+photo_avatar = "Données\Photo portfolio.ico"
 
 
 def vincent_ai_page():
@@ -1003,62 +767,6 @@ def vincent_ai_page():
             help="Plus la température est élevée, plus les réponses seront créatives (et moins prévisibles)."
         )
 ############################################code HTML pour design de la barre d'input#####################################################################
-    # st.html("""
-    # <style>
-    #     /* Conteneur principal de l'input */
-    #     [data-testid="stChatInput"] {
-    #         position: fixed !important;
-    #         bottom: 0 !important;
-    #         left: 240px !important;
-    #         right: 0 !important;
-    #         z-index: 10 !important;
-    #         background-color: transparent !important;
-    #         padding: 0 !important;
-    #         margin: 0 !important;
-    #         width: calc(100% - 240px) !important;
-    #         transition: all 0.3s ease !important;
-    #     }
-
-    #     /* Ajustement quand la sidebar est repliée */
-    #     section[data-testid="stSidebar"][aria-expanded="false"] ~ section.main [data-testid="stChatInput"] {
-    #         left: 50% !important;
-    #         transform: translateX(-50%) !important;
-    #         width: 80% !important;
-    #         max-width: 1200px !important;
-    #     }
-
-    #     /* Le wrapper du textarea lui-même */
-    #     .st-emotion-cache-s1k4sy {
-    #         background-color: rgba(17, 27, 39, 0.95) !important;
-    #         padding: 10px 20px !important;
-    #         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2) !important;
-    #         border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
-    #         width: 100% !important;
-    #         margin: 0 !important;
-    #     }
-
-    #     /* Le textarea et son conteneur */
-    #     [data-baseweb="textarea"], 
-    #     [data-baseweb="base-input"] {
-    #         background-color: transparent !important;
-    #         border: none !important;
-    #         width: 100% !important;
-    #     }
-
-    #     /* Le textarea lui-même */
-    #     [data-testid="stChatInputTextArea"] {
-    #         color: white !important;
-    #         background-color: transparent !important;
-    #         max-width: calc(100% - 40px) !important;
-    #     }
-
-    #     /* Espace en bas */
-    #     .block-container {
-    #         padding-bottom: 100px !important;
-    #     }
-    # </style>
-    # """)
-    
     st.html("""
 <style>
     /* Conteneur principal de l'input */
@@ -1229,7 +937,7 @@ def vincent_ai_page():
     client = InferenceClient(api_key="HUGGINGFACE_API_KEY")
     
     if "rag" not in st.session_state:
-        with open(r"C:\Users\vyuof\OneDrive\Bureau\Portfolio Streamlit\Corpus Vincent\Vincent ALL.txt", "r", encoding='utf-8') as f:
+        with open("Vincent ALL.txt", "r", encoding='utf-8') as f:
             content = f.read()
         st.session_state.rag = SimpleRAG(content)
     
@@ -1317,94 +1025,6 @@ def additional_sidebar_functions():
 
 
 
-
-# def vincent_ai_page():
-
-#     # CSS pour positionner l'input en bas
-#     st.markdown(
-#         """
-#         <style>
-#         .stChatInput {
-#             position: fixed;
-#             bottom: 0;
-#             padding: 1rem;
-#             left: 0;
-#             right: 0;
-#             background-color: white;
-#             z-index: 1000;
-#         }
-        
-#         # Ajoute un espace en bas pour éviter que le contenu ne soit caché derrière l'input
-#         .main {
-#             margin-bottom: 80px;
-#         }
-#         </style>
-#         """,
-#         unsafe_allow_html=True
-#     )
-
-
-#     st.title("AI Chat Interface")
-
-#     # Initialize the Hugging Face client
-#     client = InferenceClient(api_key="HUGGINGFACE_API_KEY")
-
-#     # Initialize session state variables
-#     if "messages" not in st.session_state:
-#         st.session_state.messages = []
-#         # Add the system message at initialization
-#         st.session_state.messages.append({
-#             "role": "system", 
-#             "content": "You are an AI assistant. You are direct, insightful and aim to be helpful while being truthful and honest."
-#         })
-
-#     # Display chat messages
-#     for message in st.session_state.messages:
-#         if message["role"] != "system":  # Don't display system messages
-#             with st.chat_message(message["role"]):
-#                 st.markdown(message["content"])
-
-#     # Chat input
-#     if prompt := st.chat_input("What is up?"):
-#         # Add user message to state and display it
-#         st.session_state.messages.append({"role": "user", "content": prompt})
-#         with st.chat_message("user"):
-#             st.markdown(prompt)
-
-#         # Generate and display assistant response
-#         with st.chat_message("assistant"):
-#             message_placeholder = st.empty()
-#             full_response = ""
-            
-#             try:
-#                 stream = client.chat.completions.create(
-#                     model="microsoft/Phi-3.5-mini-instruct",
-#                     messages=[
-#                         {"role": m["role"], "content": m["content"]}
-#                         for m in st.session_state.messages
-#                     ],
-#                     temperature=0.7,
-#                     max_tokens=2048,
-#                     stream=True
-#                 )
-
-#                 # Process the stream
-#                 for chunk in stream:
-#                     if chunk.choices[0].delta.content:
-#                         full_response += chunk.choices[0].delta.content
-#                         message_placeholder.markdown(full_response + "▌")
-                
-#                 # Final update to placeholder
-#                 message_placeholder.markdown(full_response)
-                
-#                 # Add assistant response to message history
-#                 st.session_state.messages.append({"role": "assistant", "content": full_response})
-                
-#             except Exception as e:
-#                 st.error(f"An error occurred: {str(e)}")
-
-
-
 def contact_page():
     st.title("📫 Contact")
     st.write("Email: vi.plateau@gmail.com")
@@ -1446,11 +1066,8 @@ def main():
         
         # Ajout d'un peu d'espace après les boutons
         st.sidebar.markdown("---")
-        
-        # if st.session_state.page == "VincentGPT":
-        #     add_reset_button()
-        
 
+        
         # Rendu des pages
         if st.session_state.page == "Accueil":
             home_page()
@@ -1468,24 +1085,4 @@ if __name__ == "__main__":
     main()
 
 
-# def main():
-#     st.sidebar.title("Navigation")
-#     page = st.sidebar.radio(
-#         "Aller à",
-#         ["Accueil", "Expériences", "Projets Data", "VincentGPT", "Contact"]
-#     )
-    
-#     if page == "Accueil":
-#         home_page()
-#     elif page == "Expériences":
-#         experience_page()
-#     elif page == "Projets Data":
-#         projects_page()
-#     elif page == "VincentGPT":
-#         vincent_ai_page()
-#     elif page == "Contact":
-#         contact_page()
-
-# if __name__ == "__main__":
-#     main()
 
