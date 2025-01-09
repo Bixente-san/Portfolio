@@ -398,7 +398,7 @@ def projects_page():
         
         # Configuration des liens OneDrive
         onedrive_paths = {
-            "menu": "https://1drv.ms/b/s!AopFOffxai5HrgN9eVT_5ia89xtW?e=uvGful",
+            "menu": "https://1drv.ms/b/s!AopFOffxai5HrgMw-g0PKWcnmBTh?embed=1&em=2", #"https://1drv.ms/b/s!AopFOffxai5HrgN9eVT_5ia89xtW?e=uvGful",
             "semaine": "https://1drv.ms/b/s!AopFOffxai5HrgEaPBX30UeUKVKP?e=ogB49z",
             "mois_annees": "https://1drv.ms/b/s!AopFOffxai5HrgCWSuiGVKY1KsZ0?e=Z3ICKf",
             "titres": "https://1drv.ms/b/s!AopFOffxai5HrgSMhB1yRT0NYRv8?e=JQrtZw",
