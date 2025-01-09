@@ -1,0 +1,5 @@
+streamlit
+Pillow
+huggingface-hub
+numpy
+scikit-learn
