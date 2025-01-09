@@ -401,11 +401,11 @@ def projects_page():
 
         # Configuration des PDF paths
         pdf_paths = {
-            "menu": "Données\Qlik Sense - Menu - 19 novembre 2024.pdf",
-            "semaine": "Données\Qlik Sense - Semaine - 19 novembre 2024.pdf",
-            "mois_annees": "Données\Qlik Sense - Mois_Années - 19 novembre 2024.pdf",
-            "titres": "Données\Qlik Sense - Analyse des titres - 19 novembre 2024.pdf",
-            "profil": "Données\Qlik Sense - Profil Horaire - 19 novembre 2024.pdf"
+            "menu": "Données/Qlik Sense - Menu - 19 novembre 2024.pdf",
+            "semaine": "Données/Qlik Sense - Semaine - 19 novembre 2024.pdf",
+            "mois_annees": "Données/Qlik Sense - Mois_Années - 19 novembre 2024.pdf",
+            "titres": "Données/Qlik Sense - Analyse des titres - 19 novembre 2024.pdf",
+            "profil": "Données/Qlik Sense - Profil Horaire - 19 novembre 2024.pdf"
         }
         
         # Création d'onglets pour organiser le contenu
