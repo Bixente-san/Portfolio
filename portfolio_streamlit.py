@@ -400,11 +400,11 @@ def projects_page():
         
         # Configuration des chemins des images
         image_paths = {
-            "menu": "Données/Images_qlik/menu_page_1.png",
-            "profil": "Données/Images_qlik/profil_page_1.png",
-            "semaine": "Données/Images_qlik/semaine_page_1.png",
-            "mois_annees": "Données/Images_qlik/mois_annees_page_1.png",
-            "titres": "Données/Images_qlik/titres_page_1.png"
+            "menu": "Données/Images_qlik/menu_page_1.jpeg",
+            "profil": "Données/Images_qlik/profil_page_1.jpeg",
+            "semaine": "Données/Images_qlik/semaine_page_1.jpeg",
+            "mois_annees": "Données/Images_qlik/mois_annees_page_1.jpeg",
+            "titres": "Données/Images_qlik/titres_page_1.jpeg"
         }
         
         # Création des onglets
