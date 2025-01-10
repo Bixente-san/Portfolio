@@ -399,13 +399,21 @@ def projects_page():
 
         
         # Configuration des PDF paths
-        pdf_paths = {
-            "menu": "static/pdfs/Qlik Sense - Menu - 19 novembre 2024.pdf",
-            "semaine": "static/pdfs/Qlik Sense - Semaine - 19 novembre 2024.pdf",
-            "mois_annees": "static/pdfs/Qlik Sense - Mois_Années - 19 novembre 2024.pdf",
-            "titres": "static/pdfs/Qlik Sense - Analyse des titres - 19 novembre 2024.pdf",
-            "profil": "static/pdfs/Qlik Sense - Profil Horaire - 19 novembre 2024.pdf"
-        }
+        # pdf_paths = {
+        #     "menu": "static/pdfs/Qlik Sense - Menu - 19 novembre 2024.pdf",
+        #     "semaine": "static/pdfs/Qlik Sense - Semaine - 19 novembre 2024.pdf",
+        #     "mois_annees": "static/pdfs/Qlik Sense - Mois_Années - 19 novembre 2024.pdf",
+        #     "titres": "static/pdfs/Qlik Sense - Analyse des titres - 19 novembre 2024.pdf",
+        #     "profil": "static/pdfs/Qlik Sense - Profil Horaire - 19 novembre 2024.pdf"
+        # }
+        # Configuration des PDF paths
+            pdf_paths = {
+                "menu": "static/pdfs/menu.pdf",
+                "semaine": "static/pdfs/semaine.pdf",
+                "mois_annees": "static/pdfs/mois_annees.pdf",
+                "titres": "static/pdfs/titres.pdf",
+                "profil": "static/pdfs/profil.pdf"
+            }
         
         # Création d'onglets pour organiser le contenu
         tabs = st.tabs([
