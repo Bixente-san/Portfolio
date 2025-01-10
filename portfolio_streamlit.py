@@ -408,7 +408,7 @@ def projects_page():
         }
         
         # Style CSS pour centrer les images avec une largeur réduite
-        st.html("""
+        st.markdown ("""
             <style>
             .stImage > img {
                 max-width: 90% !important;
