@@ -407,17 +407,6 @@ def projects_page():
             "titres": "Données/Images_qlik/titres_page_1.png"
         }
         
-        # Style CSS pour centrer les images avec une largeur réduite
-        st.markdown ("""
-            <style>
-            .stImage > img {
-                max-width: 70% !important;
-                margin: auto;
-                display: block;
-            }
-            </style>
-        """, unsafe_allow_html=True)
-        
         # Création des onglets
         tabs = st.tabs([
             "Menu Principal",
@@ -431,7 +420,7 @@ def projects_page():
         with tabs[0]:
             st.markdown("### 📱 Menu Principal")
             try:
-                st.image(image_paths["menu"], use_container_width =False)
+                st.image(image_paths["menu"], width=800, use_container_width =False)
             except Exception as e:
                 st.error("Erreur lors du chargement de l'image.")
             st.markdown("""
