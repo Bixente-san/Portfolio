@@ -1077,18 +1077,18 @@ def contact_page():
     with st.container():
         col1, col2, col3, col4, col5 = st.columns([1.5, 0.1, 1.5, 0.1, 1.5])
         with col1:
-            st.markdown("##### ✉️ Email: vi.plateau@gmail.com")
+            st.markdown("#### ✉️ Email: vi.plateau@gmail.com")
         with col2:
             st.markdown(f'<div style="width: 24px; height: 24px;">{linkedin_icon}</div>', unsafe_allow_html=True)
         with col3:
-            st.markdown("##### LinkedIn: [https://linkedin.com/in/vincent-plateau/](https://linkedin.com/in/vincent-plateau/)")
+            st.markdown("####  LinkedIn: [https://linkedin.com/in/vincent-plateau/](https://linkedin.com/in/vincent-plateau/)")
         with col4:
             st.markdown(f'<div style="width: 24px; height: 24px;">{github_icon}</div>', unsafe_allow_html=True)
         with col5:
-            st.markdown("##### GitHub: [https://github.com/Bixente-san](https://github.com/Bixente-san)")
+            st.markdown("####  GitHub: [https://github.com/Bixente-san](https://github.com/Bixente-san)")
 
     
-    
+    st.html("<br>")
     st.caption("Vous pouvez également m'envoyer un message directement depuis cette page si vous le souhaitez.")
     with st.form("contact_form"):
         name = st.text_input("Nom")
