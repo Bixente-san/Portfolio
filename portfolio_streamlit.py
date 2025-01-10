@@ -398,24 +398,16 @@ def projects_page():
         st.subheader("Contenu de l'application", divider='grey')
 
         
-        # Configuration des PDF paths
-        # pdf_paths = {
-        #     "menu": "static/pdfs/Qlik Sense - Menu - 19 novembre 2024.pdf",
-        #     "semaine": "static/pdfs/Qlik Sense - Semaine - 19 novembre 2024.pdf",
-        #     "mois_annees": "static/pdfs/Qlik Sense - Mois_Années - 19 novembre 2024.pdf",
-        #     "titres": "static/pdfs/Qlik Sense - Analyse des titres - 19 novembre 2024.pdf",
-        #     "profil": "static/pdfs/Qlik Sense - Profil Horaire - 19 novembre 2024.pdf"
-        # }
-        # Configuration des PDF paths
-        pdf_paths = {
-                "menu": "static/pdfs/menu.pdf",
-                "semaine": "static/pdfs/semaine.pdf",
-                "mois_annees": "static/pdfs/mois_annees.pdf",
-                "titres": "static/pdfs/titres.pdf",
-                "profil": "static/pdfs/profil.pdf"
+        # Configuration des chemins des images
+        image_paths = {
+            "menu": "Données/Images_qlik/menu_page_1.png",
+            "profil": "Données/Images_qlik/profil_page_1.png",
+            "semaine": "Données/Images_qlik/semaine_page_1.png",
+            "mois_annees": "Données/Images_qlik/mois_annees_page_1.png",
+            "titres": "Données/Images_qlik/titres_page_1.png"
         }
         
-        # Création d'onglets pour organiser le contenu
+        # Création des onglets
         tabs = st.tabs([
             "Menu Principal",
             "Profil Horaire",
@@ -423,87 +415,72 @@ def projects_page():
             "Vue Mensuelle & Annuelle", 
             "Analyse des Titres"
         ])
-
-                # Fonction pour afficher les PDFs
-        def show_pdf(pdf_path):
-            pdf_display = f"""
-                <div style="display: flex; justify-content: center; width: 100%; margin: 20px 0;">
-                    <iframe 
-                        src="{pdf_path}"
-                        width="100%"
-                        height="600px"
-                        style="max-width: 1000px; margin: auto;"
-                        type="application/pdf">
-                    </iframe>
-                </div>
-            """
-            st.components.v1.html(pdf_display, height=650)
-            
-        # Contenu de chaque onglet
+        
+        # Contenu des onglets
         with tabs[0]:
             st.markdown("### 📱 Menu Principal")
             try:
-                show_pdf(pdf_paths["menu"])
+                st.image(image_paths["menu"], use_column_width=True)
             except Exception as e:
-                st.error(f"Erreur lors du chargement du PDF: {str(e)}")
+                st.error("Erreur lors du chargement de l'image.")
             st.markdown("""
-            <br>**Caractéristiques de l'interface :**
+            **Caractéristiques de l'interface :**
             - Navigation intuitive
             - Accès rapide aux différentes analyses
             - Filtres dynamiques intégrés
-            """, unsafe_allow_html=True)
+            """)
 
         with tabs[1]:
             st.markdown("### ⏰ Profil Horaire")
             try:
-                show_pdf(pdf_paths["profil"])
+                st.image(image_paths["profil"], use_column_width=True)
             except Exception as e:
-                st.error(f"Erreur lors du chargement du PDF: {str(e)}")
+                st.error("Erreur lors du chargement de l'image.")
             st.markdown("""
-            <br>**Fonctionnalités :**
+            **Fonctionnalités :**
             - Visualisation des pics horaires
             - Analyse des comportements par tranche horaire
             - Identification des périodes critiques
-            """, unsafe_allow_html=True)
+            """)
 
         with tabs[2]:
             st.markdown("### 📊 Vue Hebdomadaire")
             try:
-                show_pdf(pdf_paths["semaine"])
+                st.image(image_paths["semaine"], use_column_width=True)
             except Exception as e:
-                st.error(f"Erreur lors du chargement du PDF: {str(e)}")
+                st.error("Erreur lors du chargement de l'image.")
             st.markdown("""
-            <br>**Fonctionnalités clés :**
+            **Fonctionnalités clés :**
             - Analyse des tendances hebdomadaires de fréquentation
             - Comparaison entre différentes périodes
             - Identification des pics d'affluence
-            """, unsafe_allow_html=True)
+            """)
             
         with tabs[3]:
             st.markdown("### 📅 Vue Mensuelle et Annuelle")
             try:
-                show_pdf(pdf_paths["mois_annees"])
+                st.image(image_paths["mois_annees"], use_column_width=True)
             except Exception as e:
-                st.error(f"Erreur lors du chargement du PDF: {str(e)}")
+                st.error("Erreur lors du chargement de l'image.")
             st.markdown("""
-            <br>**Points clés :**
+            **Points clés :**
             - Évolution des tendances sur le long terme
             - Identification des saisonnalités
             - Comparaison inter-annuelle
-            """, unsafe_allow_html=True)
+            """)
             
         with tabs[4]:
             st.markdown("### 🎫 Analyse des Titres de Transport")
             try:
-                show_pdf(pdf_paths["titres"])
+                st.image(image_paths["titres"], use_column_width=True)
             except Exception as e:
-                st.error(f"Erreur lors du chargement du PDF: {str(e)}")
+                st.error("Erreur lors du chargement de l'image.")
             st.markdown("""
-            <br>**Caractéristiques :**
+            **Caractéristiques :**
             - Distribution des types de titres
             - Analyse des préférences usagers
             - Suivi des tendances par catégorie de titre
-            """, unsafe_allow_html=True)
+            """)
             
         
         
