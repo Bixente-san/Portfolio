@@ -395,14 +395,14 @@ def projects_page():
         # st.write("### Contenu de l'application")
         st.subheader("Contenu de l'application", divider='grey')
 
-            
+        
         # Configuration des PDF paths
         pdf_paths = {
-            "menu": "Données/Qlik Sense - Menu - 19 novembre 2024.pdf",
-            "semaine": "Données/Qlik Sense - Semaine - 19 novembre 2024.pdf",
-            "mois_annees": "Données/Qlik Sense - Mois_Années - 19 novembre 2024.pdf",
-            "titres": "Données/Qlik Sense - Analyse des titres - 19 novembre 2024.pdf",
-            "profil": "Données/Qlik Sense - Profil Horaire - 19 novembre 2024.pdf"
+            "menu": "static/pdfs/Qlik Sense - Menu - 19 novembre 2024.pdf",
+            "semaine": "static/pdfs/Qlik Sense - Semaine - 19 novembre 2024.pdf",
+            "mois_annees": "static/pdfs/Qlik Sense - Mois_Années - 19 novembre 2024.pdf",
+            "titres": "static/pdfs/Qlik Sense - Analyse des titres - 19 novembre 2024.pdf",
+            "profil": "static/pdfs/Qlik Sense - Profil Horaire - 19 novembre 2024.pdf"
         }
         
         # Création d'onglets pour organiser le contenu
