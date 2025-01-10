@@ -407,6 +407,17 @@ def projects_page():
             "titres": "Données/Images_qlik/titres_page_1.png"
         }
         
+        # Style CSS pour centrer les images avec une largeur réduite
+        st.html("""
+            <style>
+            .stImage > img {
+                max-width: 90% !important;
+                margin: auto;
+                display: block;
+            }
+            </style>
+        """, unsafe_allow_html=True)
+        
         # Création des onglets
         tabs = st.tabs([
             "Menu Principal",
@@ -420,7 +431,7 @@ def projects_page():
         with tabs[0]:
             st.markdown("### 📱 Menu Principal")
             try:
-                st.image(image_paths["menu"], use_column_width=True)
+                st.image(image_paths["menu"], use_container_width =False)
             except Exception as e:
                 st.error("Erreur lors du chargement de l'image.")
             st.markdown("""
@@ -433,7 +444,7 @@ def projects_page():
         with tabs[1]:
             st.markdown("### ⏰ Profil Horaire")
             try:
-                st.image(image_paths["profil"], use_column_width=True)
+                st.image(image_paths["profil"], use_container_width =False)
             except Exception as e:
                 st.error("Erreur lors du chargement de l'image.")
             st.markdown("""
@@ -446,7 +457,7 @@ def projects_page():
         with tabs[2]:
             st.markdown("### 📊 Vue Hebdomadaire")
             try:
-                st.image(image_paths["semaine"], use_column_width=True)
+                st.image(image_paths["semaine"], use_container_width =False)
             except Exception as e:
                 st.error("Erreur lors du chargement de l'image.")
             st.markdown("""
@@ -459,7 +470,7 @@ def projects_page():
         with tabs[3]:
             st.markdown("### 📅 Vue Mensuelle et Annuelle")
             try:
-                st.image(image_paths["mois_annees"], use_column_width=True)
+                st.image(image_paths["mois_annees"], use_container_width =False)
             except Exception as e:
                 st.error("Erreur lors du chargement de l'image.")
             st.markdown("""
@@ -472,7 +483,7 @@ def projects_page():
         with tabs[4]:
             st.markdown("### 🎫 Analyse des Titres de Transport")
             try:
-                st.image(image_paths["titres"], use_column_width=True)
+                st.image(image_paths["titres"], use_container_width =False)
             except Exception as e:
                 st.error("Erreur lors du chargement de l'image.")
             st.markdown("""
