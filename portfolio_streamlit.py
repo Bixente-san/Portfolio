@@ -1056,11 +1056,23 @@ def send_email(name, email, message):
         st.error(f"Erreur lors de l'envoi de l'e-mail: {e}")
         return False
 
+
+
+
 def contact_page():
     st.title("📫 Contact")
-    st.write("Email: vi.plateau@gmail.com")
+    st.markdown("##### ✉️ Email: vi.plateau@gmail.com")
     st.markdown(f"#####  Linkedin: [Vincent PLATEAU](https://linkedin.com/in/vincent-plateau/)")
     st.write("LinkedIn: [Vincent PLATEAU](https://linkedin.com/in/vincent-plateau/)")
+    st.markdown("[:octopus: GitHub Repository](your_github_link_here)")
+    st.link_button("GitHub Repository", "your_github_link_here")
+    with st.container():
+        col1, col2 = st.columns([0.1, 3])
+        with col1:
+            st.write(data-testid="stToolbarActionButtonIcon", unsafe_allow_html=True)
+        with col2:
+            st.markdown(f"#####  Github : link ")
+    
     
     st.caption("Vous pouvez également m'envoyer un message directement depuis cette page si vous le souhaitez.")
     with st.form("contact_form"):
