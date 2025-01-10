@@ -1060,7 +1060,7 @@ def send_email(name, email, message):
 
 
 def contact_page():
-    st.title("📫 Contact")
+    st.title("📫 Contacts")
     st.html("<br>")
     
     github_icon = """
@@ -1139,7 +1139,7 @@ def main():
             st.session_state.page = "Projets"
         if st.sidebar.button("VincentGPT    :blue-background[Beta]"):
             st.session_state.page = "VincentGPT"
-        if st.sidebar.button("Contact"):
+        if st.sidebar.button("Contacts"):
             st.session_state.page = "Contact"
         
         # Ajout d'un peu d'espace après les boutons
@@ -1156,7 +1156,7 @@ def main():
         elif st.session_state.page == "VincentGPT":
             vincent_ai_page()
             additional_sidebar_functions()
-        elif st.session_state.page == "Contact":
+        elif st.session_state.page == "Contacts":
             contact_page()
 
 if __name__ == "__main__":
