@@ -314,23 +314,25 @@ def experience_page():
     
     
 #============ Quelques fonctions utiles pour lire les pdfs et images ===============================
-def show_pdf(file_path):
-    """Fonction pour afficher un PDF depuis un chemin local"""
-    with open(file_path, "rb") as f:
-        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+# def show_pdf(file_path):
+#     """Fonction pour afficher un PDF depuis un chemin local"""
+#     with open(file_path, "rb") as f:
+#         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
     
-        pdf_display = f"""
-            <iframe
-                src="data:application/pdf;base64,{base64_pdf}#zoom=100&scrollbar=0&toolbar=0&navpanes=0&view=FitH"
-                width="100%"
-                height="800px"
-                style="display: block; margin: auto; max-width: 1000px;"
-                type="application/pdf">
-            </iframe>
-        """
+#         pdf_display = f"""
+#             <iframe
+#                 src="data:application/pdf;base64,{base64_pdf}#zoom=100&scrollbar=0&toolbar=0&navpanes=0&view=FitH"
+#                 width="100%"
+#                 height="800px"
+#                 style="display: block; margin: auto; max-width: 1000px;"
+#                 type="application/pdf">
+#             </iframe>
+#         """
     
-    # Afficher le PDF dans Streamlit
-    st.markdown(pdf_display, unsafe_allow_html=True)
+#     # Afficher le PDF dans Streamlit
+#     st.markdown(pdf_display, unsafe_allow_html=True)
+
+
 
 def get_image_as_base64(image_path):
     import base64
@@ -413,7 +415,22 @@ def projects_page():
             "Vue Mensuelle & Annuelle", 
             "Analyse des Titres"
         ])
-        
+
+                # Fonction pour afficher les PDFs
+        def show_pdf(pdf_path):
+            pdf_display = f"""
+                <div style="display: flex; justify-content: center; width: 100%; margin: 20px 0;">
+                    <iframe 
+                        src="{pdf_path}"
+                        width="100%"
+                        height="600px"
+                        style="max-width: 1000px; margin: auto;"
+                        type="application/pdf">
+                    </iframe>
+                </div>
+            """
+            st.components.v1.html(pdf_display, height=650)
+            
         # Contenu de chaque onglet
         with tabs[0]:
             st.markdown("### 📱 Menu Principale")
