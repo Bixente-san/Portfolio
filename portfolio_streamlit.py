@@ -407,13 +407,13 @@ def projects_page():
         #     "profil": "static/pdfs/Qlik Sense - Profil Horaire - 19 novembre 2024.pdf"
         # }
         # Configuration des PDF paths
-            pdf_paths = {
+        pdf_paths = {
                 "menu": "static/pdfs/menu.pdf",
                 "semaine": "static/pdfs/semaine.pdf",
                 "mois_annees": "static/pdfs/mois_annees.pdf",
                 "titres": "static/pdfs/titres.pdf",
                 "profil": "static/pdfs/profil.pdf"
-            }
+        }
         
         # Création d'onglets pour organiser le contenu
         tabs = st.tabs([
