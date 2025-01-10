@@ -411,7 +411,7 @@ def projects_page():
         st.markdown ("""
             <style>
             .stImage > img {
-                max-width: 90% !important;
+                max-width: 70% !important;
                 margin: auto;
                 display: block;
             }
