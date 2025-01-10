@@ -433,7 +433,7 @@ def projects_page():
             
         # Contenu de chaque onglet
         with tabs[0]:
-            st.markdown("### 📱 Menu Principale")
+            st.markdown("### 📱 Menu Principal")
             try:
                 show_pdf(pdf_paths["menu"])
             except Exception as e:
