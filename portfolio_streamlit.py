@@ -1074,18 +1074,32 @@ def contact_page():
     </svg>
     """
     
+    email_icon = """
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2-1h16a1 1 0 0 1 1 1v.586l-8.293 8.293a1 1 0 0 1-1.414 0L3 6.586V6a1 1 0 0 1 1-1zm16 2.414V18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7.414l7.293 7.293a3 3 0 0 0 4.414 0L20 7.414z"/>
+    </svg>
+    """
+
     with st.container():
-        col1, col2, col3, col4, col5 = st.columns([1.5, 0.1, 1.5, 0.1, 1.5])
+        col1, col2, col3, col4, col5, col6 = st.columns([0.1, 1.5, 0.1, 1.5, 0.1, 1.5])
+        
+        # Email
         with col1:
-            st.markdown("### ✉️ Email: vi.plateau@gmail.com")
+            st.markdown(f'<div style="width: 24px; height: 24px;">{email_icon}</div>', unsafe_allow_html=True)
         with col2:
-            st.markdown(f'<div style="width: 24px; height: 24px;">{linkedin_icon}</div>', unsafe_allow_html=True)
+            st.markdown("Email: [vi.plateau@gmail.com](mailto:vi.plateau@gmail.com)")
+        
+        # LinkedIn
         with col3:
-            st.markdown("### LinkedIn: [https://linkedin.com/in/vincent-plateau/](https://linkedin.com/in/vincent-plateau/)")
+            st.markdown(f'<div style="width: 24px; height: 24px;">{linkedin_icon}</div>', unsafe_allow_html=True)
         with col4:
-            st.markdown(f'<div style="width: 24px; height: 24px;">{github_icon}</div>', unsafe_allow_html=True)
+            st.markdown("LinkedIn: [https://linkedin.com/in/vincent-plateau/](https://linkedin.com/in/vincent-plateau/)")
+        
+        # GitHub
         with col5:
-            st.markdown("### GitHub: [https://github.com/Bixente-san](https://github.com/Bixente-san)")
+            st.markdown(f'<div style="width: 24px; height: 24px;">{github_icon}</div>', unsafe_allow_html=True)
+        with col6:
+            st.markdown("GitHub: [https://github.com/Bixente-san](https://github.com/Bixente-san)")
 
     
     st.html("<br>")
