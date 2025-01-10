@@ -1140,7 +1140,7 @@ def main():
         if st.sidebar.button("VincentGPT    :blue-background[Beta]"):
             st.session_state.page = "VincentGPT"
         if st.sidebar.button("Contacts"):
-            st.session_state.page = "Contact"
+            st.session_state.page = "Contacts"
         
         # Ajout d'un peu d'espace après les boutons
         st.sidebar.markdown("---")
