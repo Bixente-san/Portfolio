@@ -61,12 +61,13 @@ Je pratique la course à pied très régulièrement.
 
 Projets personnel :
 - Portfolio interactif sous la forme d'une application Streamlit développée en Python :
-Ce portfolio développé en python  me permet d'exposer mes accomplissements professionnels et personnels au grand public(lien vers la page "projets" : http://localhost:8501/#projets). J'y détaille mes expériences et mes compétences. J'ai également créer un agent conversationnel alimenté par un petit modèle de langage pour que les visiteurs puissent lui poser des questions sur moi (C'est VincentGPT).
+Ce portfolio développé en python  me permet d'exposer mes accomplissements professionnels et personnels au grand public(lien vers la page "projets" : https://portfolio-vincent-plateau.streamlit.app/#projets). J'y détaille mes expériences et mes compétences. J'ai également créer un agent conversationnel alimenté par un petit modèle de langage pour que les visiteurs puissent lui poser des questions sur moi (C'est toi, VincentGPT). Par ailleurs, d'autres projets sont en cours de développement et devraient être bientôt ajoutés au portfolio.
 - Carte des réseaux de transports en commun : 
 J'ai développé une petite carte de la région parisienne représentant les différents transporteurs exploitant des lignes de bus et de tramway en Île-de-France, basée sur les données des validations télébillettiques en 2024. On y voit toutes les communes et le transporteurs faisant le plus grand nombre de validations dans la communes.
 Lien pour accéder à  la carte : https://bixente-san.github.io/Cartes-transporteurs-bus-IDF-2024/
 - Création d'un chatbot comme POC (Proof of concept) en utilisant le modèle de langage qwen2 1.5b instruct.
 Lien pour accéder au chatbot : https://bixente-san-vincentgpt-poc.hf.space
+
 
 
 
