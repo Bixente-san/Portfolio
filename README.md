@@ -1,4 +1,4 @@
-# Portfolio Interactif d'un Analyste de Données
+# Mon portfolio 
 
 ## À propos du projet
 
@@ -22,30 +22,6 @@ Le portfolio comprend plusieurs sections clés pour une présentation complète 
 - **Gestion des documents**: PyPDF2, docx
 - **Traitement des données**: Pandas, NumPy
 - **RAG System**: TF-IDF, Cosine Similarity
-
-## Installation
-
-```bash
-# Cloner le repository
-git clone https://github.com/votre-username/portfolio-data-analyst.git
-
-# Se déplacer dans le dossier
-cd portfolio-data-analyst
-
-# Installer les dépendances
-pip install -r requirements.txt
-
-# Lancer l'application
-streamlit run app.py
-```
-
-## Configuration requise
-
-Pour exécuter l'application, vous aurez besoin de :
-
-- Python 3.8 ou version supérieure
-- Les packages listés dans requirements.txt
-- Une clé API Hugging Face pour le chatbot (à configurer dans config.py)
 
 ## Structure du projet
 
