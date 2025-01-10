@@ -16,57 +16,52 @@ Le portfolio comprend plusieurs sections clés pour une présentation complète 
 
 ## Technologies utilisées
 
-- **Framework principal**: Python/Streamlit
-- **Visualisation de données**: Plotly, Folium
-- **IA et NLP**: Hugging Face (Phi-3.5-mini-instruct)
-- **Gestion des documents**: PyPDF2, docx
-- **Traitement des données**: Pandas, NumPy
-- **RAG System**: TF-IDF, Cosine Similarity
+- Framework et Interface Utilisateur
+
+Streamlit : Framework principal pour le développement de l'application web
+PIL (Python Imaging Library) : Gestion et manipulation des images
+
+- Modèle de langage / IA
+
+Hugging Face Hub : Intégration du modèle de langage pour le chatbot
+Scikit-learn : Implémentation du système RAG avec TF-IDF et calculs de similarité cosinus
+NumPy : Support pour les opérations mathématiques et le traitement des données
+
+- Gestion des Données et Fichiers
+
+JSON : Stockage et manipulation des données structurées
+Pathlib : Gestion des chemins de fichiers cross-platform
+Base64 : Encodage des fichiers multimédias pour l'affichage web
+
+- Communication
+
+SMTP : Gestion de l'envoi d'emails via le formulaire de contact
+MIME : Formatage des emails avec pièces jointes et contenus enrichis
 
 ## Structure du projet
 
+La structure du projet est restée volontairement simple. Pour aller plus vite, tous le programme est dans un seul fichier python (c'est moins pro mais c'est volontaire !).
 ```
 portfolio/
 │
-├── app.py                # Point d'entrée de l'application
-├── requirements.txt      # Dépendances du projet
-├── config.py            # Configuration et variables d'environnement
+├── portfolio_streamlit.py     # Point d'entrée de l'application
+├── requirements.txt           # Dépendances du projet
+├── config.py                  # Configuration et variables d'environnement
+├── Vincent ALL.txt            # Texte contenant des infos sur moi pour RAG
 │
-├── data/                # Données et ressources
-│   ├── images/         
-│   ├── documents/      
-│   └── corpus/         
-│
-├── src/                 # Code source
-│   ├── pages/          # Pages du portfolio
-│   ├── components/     # Composants réutilisables
-│   └── utils/          # Fonctions utilitaires
-│
-└── tests/              # Tests unitaires et d'intégration
+└──Données/                # Données et ressources
+    └── images                
 ```
 
 ## Contribution
 
-Les suggestions et contributions sont les bienvenues. Pour contribuer :
+Les suggestions et contributions sont les bienvenues. 
 
-1. Forkez le projet
-2. Créez une branche pour votre fonctionnalité
-3. Committez vos changements
-4. Poussez vers la branche
-5. Ouvrez une Pull Request
-
-## Déploiement
-
-L'application peut être déployée sur Streamlit Cloud ou sur votre propre serveur. Pour le déploiement sur Streamlit Cloud, suivez la [documentation officielle](https://docs.streamlit.io/streamlit-cloud).
-
-## Licence
-
-Ce projet est sous licence MIT - voir le fichier LICENSE pour plus de détails.
 
 ## Contact
 
 Vincent PLATEAU - vi.plateau@gmail.com  
-Lien du projet: [https://github.com/votre-username/portfolio-data-analyst](https://github.com/votre-username/portfolio-data-analyst)
+Lien du projet: [https://portfolio-vincent-plateau.streamlit.app/](https://portfolio-vincent-plateau.streamlit.app/)
 
 ---
-Développé avec ❤️ par Vincent PLATEAU
+Développé avec ❤️ par Vincent PLATEAU (avec l'aide bienveillante de quelques IA)
