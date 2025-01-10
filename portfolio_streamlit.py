@@ -1061,6 +1061,7 @@ def send_email(name, email, message):
 
 def contact_page():
     st.title("📫 Contact")
+    st.html("<br>")
     
     github_icon = """
     <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -1087,19 +1088,19 @@ def contact_page():
         with col1:
             st.markdown(f'<div style="width: 24px; height: 24px;">{email_icon}</div>', unsafe_allow_html=True)
         with col2:
-            st.markdown("Email: [vi.plateau@gmail.com](mailto:vi.plateau@gmail.com)")
+            st.markdown(" Email: [vi.plateau@gmail.com](mailto:vi.plateau@gmail.com)")
         
         # LinkedIn
         with col3:
             st.markdown(f'<div style="width: 24px; height: 24px;">{linkedin_icon}</div>', unsafe_allow_html=True)
         with col4:
-            st.markdown("LinkedIn: [https://linkedin.com/in/vincent-plateau/](https://linkedin.com/in/vincent-plateau/)")
+            st.markdown(" LinkedIn: [https://linkedin.com/in/vincent-plateau/](https://linkedin.com/in/vincent-plateau/)")
         
         # GitHub
         with col5:
             st.markdown(f'<div style="width: 24px; height: 24px;">{github_icon}</div>', unsafe_allow_html=True)
         with col6:
-            st.markdown("GitHub: [https://github.com/Bixente-san](https://github.com/Bixente-san)")
+            st.markdown(" GitHub: [https://github.com/Bixente-san](https://github.com/Bixente-san)")
 
     
     st.html("<br>")
