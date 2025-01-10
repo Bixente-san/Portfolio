@@ -1059,7 +1059,7 @@ def send_email(name, email, message):
 def contact_page():
     st.title("📫 Contact")
     st.write("Email: vi.plateau@gmail.com")
-    st.markdown(f"#####  Linkedin: [Vincent PLATEAU](https://linkedin.com/in/vincent-plateau/)"
+    st.markdown(f"#####  Linkedin: [Vincent PLATEAU](https://linkedin.com/in/vincent-plateau/)")
     st.write("LinkedIn: [Vincent PLATEAU](https://linkedin.com/in/vincent-plateau/)")
     
     st.caption("Vous pouvez également m'envoyer un message directement depuis cette page si vous le souhaitez.")
