@@ -420,7 +420,7 @@ def projects_page():
         with tabs[0]:
             st.markdown("### 📱 Menu Principal")
             try:
-                st.image(image_paths["menu"], width=800, use_container_width =False)
+                st.image(image_paths["menu"], use_container_width =True)
             except Exception as e:
                 st.error("Erreur lors du chargement de l'image.")
             st.markdown("""
@@ -433,7 +433,7 @@ def projects_page():
         with tabs[1]:
             st.markdown("### ⏰ Profil Horaire")
             try:
-                st.image(image_paths["profil"], use_container_width =False)
+                st.image(image_paths["profil"], use_container_width =True)
             except Exception as e:
                 st.error("Erreur lors du chargement de l'image.")
             st.markdown("""
@@ -446,7 +446,7 @@ def projects_page():
         with tabs[2]:
             st.markdown("### 📊 Vue Hebdomadaire")
             try:
-                st.image(image_paths["semaine"], use_container_width =False)
+                st.image(image_paths["semaine"], use_container_width =True)
             except Exception as e:
                 st.error("Erreur lors du chargement de l'image.")
             st.markdown("""
@@ -459,7 +459,7 @@ def projects_page():
         with tabs[3]:
             st.markdown("### 📅 Vue Mensuelle et Annuelle")
             try:
-                st.image(image_paths["mois_annees"], use_container_width =False)
+                st.image(image_paths["mois_annees"], use_container_width =True)
             except Exception as e:
                 st.error("Erreur lors du chargement de l'image.")
             st.markdown("""
@@ -472,7 +472,7 @@ def projects_page():
         with tabs[4]:
             st.markdown("### 🎫 Analyse des Titres de Transport")
             try:
-                st.image(image_paths["titres"], use_container_width =False)
+                st.image(image_paths["titres"], use_container_width =True)
             except Exception as e:
                 st.error("Erreur lors du chargement de l'image.")
             st.markdown("""
