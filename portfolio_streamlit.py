@@ -235,16 +235,16 @@ def home_page():
     ]
 
     # Style CSS pour l'animation au survol du block de colonne de la partie compétences uniquement
-    st.markdown("""
-        <style>
-        div[data-testid="stHorizontalBlock"] {
-            transition: transform 0.3s ease;
-        }
-        div[data-testid="stHorizontalBlock"]:hover {
-            transform: translateY(-5px);
-        }
-        </style>
-    """, unsafe_allow_html=True)
+    # st.markdown("""
+    #     <style>
+    #     div[data-testid="stHorizontalBlock"] {
+    #         transition: transform 0.3s ease;
+    #     }
+    #     div[data-testid="stHorizontalBlock"]:hover {
+    #         transform: translateY(-5px);
+    #     }
+    #     </style>
+    # """, unsafe_allow_html=True)
     
     # Affichage
     st.markdown("<br><br>", unsafe_allow_html=True)
@@ -765,61 +765,61 @@ def vincent_ai_page():
             step=0.1,
             help="Plus la température est élevée, plus les réponses seront créatives (et moins prévisibles)."
         )
-############################################code HTML pour design de la barre d'input#####################################################################
-    st.html("""
-<style>
-    /* Conteneur principal de l'input */
-    [data-testid="stChatInput"] {
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 244px !important;
-        right: 0 !important;
-        z-index: 1000000 !important;
-        background-color: transparent !important;
-        padding: 1rem !important;
-        margin: 0 !important;
-        width: calc(100% - 244px) !important;
-        transition: all 0.3s ease !important;
-    }
+############################################code HTML / CSS pour design de la barre d'input#####################################################################
+#     st.html("""
+# <style>
+#     /* Conteneur principal de l'input */
+#     [data-testid="stChatInput"] {
+#         position: fixed !important;
+#         bottom: 0 !important;
+#         left: 244px !important;
+#         right: 0 !important;
+#         z-index: 1000000 !important;
+#         background-color: transparent !important;
+#         padding: 1rem !important;
+#         margin: 0 !important;
+#         width: calc(100% - 244px) !important;
+#         transition: all 0.3s ease !important;
+#     }
 
-    /* Ajustement spécifique quand la sidebar est repliée */
-    .stApp .withScreencast [data-testid="stSidebar"][aria-expanded="false"] ~ .stAppViewContainer [data-testid="stChatInput"] {
-        left: 0 !important;
-        right: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 1rem 15% !important;
-    }
+#     /* Ajustement spécifique quand la sidebar est repliée */
+#     .stApp .withScreencast [data-testid="stSidebar"][aria-expanded="false"] ~ .stAppViewContainer [data-testid="stChatInput"] {
+#         left: 0 !important;
+#         right: 0 !important;
+#         width: 100% !important;
+#         max-width: 100% !important;
+#         padding: 1rem 15% !important;
+#     }
 
-    /* Style du conteneur de la zone de texte */
-    .st-emotion-cache-s1k4sy {
-        background-color: rgba(17, 27, 39, 0.95) !important;
-        padding: 10px 20px !important;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2) !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
-        border-radius: 10px !important;
-        width: 100% !important;
-    }
+#     /* Style du conteneur de la zone de texte */
+#     .st-emotion-cache-s1k4sy {
+#         background-color: rgba(17, 27, 39, 0.95) !important;
+#         padding: 10px 20px !important;
+#         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2) !important;
+#         border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+#         border-radius: 10px !important;
+#         width: 100% !important;
+#     }
 
-    /* Style des éléments textarea */
-    [data-baseweb="textarea"] {
-        width: 100% !important;
-        background-color: transparent !important;
-        border: none !important;
-    }
+#     /* Style des éléments textarea */
+#     [data-baseweb="textarea"] {
+#         width: 100% !important;
+#         background-color: transparent !important;
+#         border: none !important;
+#     }
 
-    /* Style du textarea lui-même */
-    [data-testid="stChatInputTextArea"] {
-        color: white !important;
-        background-color: transparent !important;
-    }
+#     /* Style du textarea lui-même */
+#     [data-testid="stChatInputTextArea"] {
+#         color: white !important;
+#         background-color: transparent !important;
+#     }
 
-    /* Espace en bas pour le contenu */
-    .block-container {
-        padding-bottom: 100px !important;
-    }
-</style>
-""")
+#     /* Espace en bas pour le contenu */
+#     .block-container {
+#         padding-bottom: 100px !important;
+#     }
+# </style>
+# """)
 #################################################################################################################
     # Conteneur principal
     main_container = st.container()
