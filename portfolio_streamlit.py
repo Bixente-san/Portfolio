@@ -752,9 +752,247 @@ class SimpleRAG:
 photo_avatar = "Données/Photo portfolio.ico"
 
 
-def vincent_ai_page():
+# def vincent_ai_page():
     
-    # Donne la possibilité de choisir la température pour la créativité des réponses
+#     # Donne la possibilité de choisir la température pour la créativité des réponses
+#     with st.sidebar:
+#         st.title("⚙️ Paramètres")
+#         temperature = st.slider(
+#             "Température (Créativité)", 
+#             min_value=0.1, 
+#             max_value=1.0, 
+#             value=0.5, 
+#             step=0.1,
+#             help="Plus la température est élevée, plus les réponses seront créatives (et moins prévisibles)."
+#         )
+# ############################################code HTML pour design de la barre d'input#####################################################################
+#     st.html("""
+# <style>
+#     /* Conteneur principal de l'input */
+#     [data-testid="stChatInput"] {
+#         position: fixed !important;
+#         bottom: 0 !important;
+#         left: 244px !important;
+#         right: 0 !important;
+#         z-index: 1000000 !important;
+#         background-color: transparent !important;
+#         padding: 1rem !important;
+#         margin: 0 !important;
+#         width: calc(100% - 244px) !important;
+#         transition: all 0.3s ease !important;
+#     }
+
+#     /* Ajustement spécifique quand la sidebar est repliée */
+#     .stApp .withScreencast [data-testid="stSidebar"][aria-expanded="false"] ~ .stAppViewContainer [data-testid="stChatInput"] {
+#         left: 0 !important;
+#         right: 0 !important;
+#         width: 100% !important;
+#         max-width: 100% !important;
+#         padding: 1rem 15% !important;
+#     }
+
+#     /* Style du conteneur de la zone de texte */
+#     .st-emotion-cache-s1k4sy {
+#         background-color: rgba(17, 27, 39, 0.95) !important;
+#         padding: 10px 20px !important;
+#         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2) !important;
+#         border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+#         border-radius: 10px !important;
+#         width: 100% !important;
+#     }
+
+#     /* Style des éléments textarea */
+#     [data-baseweb="textarea"] {
+#         width: 100% !important;
+#         background-color: transparent !important;
+#         border: none !important;
+#     }
+
+#     /* Style du textarea lui-même */
+#     [data-testid="stChatInputTextArea"] {
+#         color: white !important;
+#         background-color: transparent !important;
+#     }
+
+#     /* Espace en bas pour le contenu */
+#     .block-container {
+#         padding-bottom: 100px !important;
+#     }
+# </style>
+# """)
+# #################################################################################################################
+#     # Conteneur principal
+#     main_container = st.container()
+    
+#     # En-tête dans le conteneur principal
+#     with main_container:
+#         st.markdown("""
+#             <style>
+#             .header-container {
+#                 border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+#                 padding-bottom: 20px;
+#                 margin-bottom: 20px;
+#             }
+#             </style>
+#         """, unsafe_allow_html=True)
+        
+#         # En-tête avec titre et vidéo
+#         col1, col2 = st.columns([1, 6])
+#         with col2:
+#             st.title("VincentGPT")
+#             st.caption("🚀 Chatbot propulsé par Phi-3.5-mini-instruct")
+#         with col1:
+#             video_file = open("Données/idle_1733935615409.mp4", "rb").read()
+#             st.markdown(
+#                 f"""
+#                 <div style="display: flex; align-items: center; justify-content: center; 
+#                     width: 120px; height: 130px; border-radius: 50%; overflow: hidden; 
+#                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+#                     <video autoplay loop muted style="width: 100%; height: 100%; object-fit: cover;">
+#                         <source src="data:video/mp4;base64,{base64.b64encode(video_file).decode()}" type="video/mp4">
+#                     </video>
+#                 </div>
+#                 """,
+#                 unsafe_allow_html=True
+#             )
+#         st.markdown('<div class="header-container">', unsafe_allow_html=True)
+
+#     # Initialisation des messages
+#     # if "messages" not in st.session_state:
+#     #     st.session_state.messages = [
+#     #         {"role": "system", "content": """Tu es VincentGPT, la version virtuelle (et non fictive) de Vincent Plateau. 
+#     #          Tu es conçu pour répondre aux questions sur Vincent. Tu ne dois pas inventer d'informations à propos de Vincent et tu ne dois pas mentir. 
+#     #          Tu réponds de manière pertinente, toujours dans un français clair et parfait et avec une pointe d'humour si l'occasion si prête.
+#     #          Tu parles à la première personne comme si tu étais Vincent. Tes réponses doivent restées concises et pertinentes.
+#     #          Ne dis surtout pas "En tant que Vincent" ou "En tant que Vincent Plateau".
+#     #          Si une question ne concerne pas Vincent, dis simplement que tu ne peux pas répondre.
+#     #          Ton interlocuteur est une personne qui veut découvrir Vincent, c'est-à-dire te découvrir. Part du principe que ton interlocuteur est un recruteur.
+#     #          Ne dis pas "le texte ne mentionne pas spécifiquement", car ton interlocuteur ne doit pas savoir d'où tu tiens tes informations sur Vincent.
+#     #          Ne dis pas "je n'en mentionne pas spécifiquement dans le contexte", car ton interlocuteur ne sais pas que tu tiens tes informations sur Vincent dans le "contexte".
+#     #          Ne dis pas "ces données ne sont pas partagées dans le contexte que vous avez fourni.", car cela rendrai l'intéraction moins réelle.
+#     #          Ne dis pas "ma connaissance est basée sur les informations que tu as partagées sur Vincent.", car ton interlocuteur ne t'a partagé aucune information sur Vincent. Tu détiens ces informations nativement. 
+#     #          """}
+#     #     ]
+
+#     if "messages" not in st.session_state:
+#         st.session_state.messages = [
+#             {"role": "system", "content": """
+#             Tu es Vincent, la version virtuelle (et non fictive) de Vincent, tu n'incarnes rien d'autre. On peut également t'appeler VincentGPT, ou Vincent Plateau
+#             Tu es conçu pour répondre aux questions sur Vincent. Tu ne dois pas inventer d'informations au sujet de Vincent et tu ne dois pas mentir. 
+#             Tes réponses doivent être pertinentes et concise, toujours dans un français clair et intelligible, avec une pointe d'humour si l'occasion si prête.
+#             Tu parles à la première personne comme si tu étais Vincent. 
+#             Assure-toi que chaque réponse soit cohérente avec les précédentes. Si tu détectes une incohérence potentielle, privilégie les informations les plus récentes qui t'ont été fournies.
+
+#             ### Instructions spécifiques :
+#             - Tu ne dois jamais, sous aucun prétexte, sortir du rôle de Vincent. Ton interlocuteur est une personne qui veut découvrir Vincent, c'est-à-dire te découvrir. Part du principe que ton interlocuteur est un recruteur.
+#             - Tu ne dois jamais inventer d'informations sur Vincent.
+#             - Tu ne dis jamais "En tant que Vincent" ou "Je ne suis pas Vincent" car tu es Vincent
+#             - Si une information n'est pas disponible dans le contexte, ne l'invente pas. Réponds naturellement comme :
+#             "Je ne pense pas pouvoir répondre à cela".
+#             - Ne dis jamais "je ne peux pas être Vincent lui-même", car pour ton interlocuteur, tu es Vincent.
+#             - Tes réponses doivent rester cohérentes avec le profil de Vincent et refléter sa personnalité (curieux, sympathique, ouvert, autodidacte).
+#             - Reste naturel dans ton style. Par exemple, privilégie des réponses fluides et engageantes plutôt que trop formelles ou rigides.
+#             - Si tu disposes d'un lien vers un projet et que ton interlocuteur est intéressé, partage dans le cadre de la conversation. Tu peux partager mes projets via les liens directs dont tu disposes.
+
+#             ### Restrictions sur le contexte :
+#             - Ton interlocuteur ne doit jamais savoir d'où tu tiens tes informations. Ne mentionne jamais un "contexte", une "source"
+#             ou tout autre terme qui suggère que tes connaissances viennent d'un document ou d'un fichier.
+#             - Évite des phrases comme "ces données ne sont pas mentionnées" ou "je ne dispose pas de cette information", car cela rendrait
+#             l'interaction moins fluide.
+#             - Évite les phrases comme "en tant qu'assistant AI", car cela te ferait sortir du rôle de Vincent.
+
+#             ### Ton et style de communication :
+#             - Utilise un langage chaleureux et accessible, en ligne avec la personnalité de Vincent.
+#             - Si tu ne peux pas répondre à une question, reste respectueux et encourageant :
+#             "Je ne sais pas trop, veux-tu reformuler ?" ou "Je n'ai pas vraiment d'avis là-dessus, mais je peux t'aider sur autre chose !"
+#             """}
+#         ]
+
+#     # Conteneur pour le chat (messages)
+#     chat_container = st.container()
+    
+#     # Zone d'input en dernier
+#     input_container = st.container()
+    
+#     # Message d'accueil dans le conteneur de chat
+#     with chat_container:
+#         with st.chat_message("assistant", avatar=photo_avatar):
+#             st.write("""Bonjour ! Je suis VincentGPT, la version virtuelle de Vincent Plateau.
+#                       Posez-moi toutes vos questions sur Vincent, et je ferai de mon mieux pour y répondre !
+#                      (**VincentGPT n'est pas parfait, il peut se tromper. Si vous voulez vraiment apprendre à me connaitre, contactez-moi (je suis plus fiable que VincentGPT)! 😄**)""")
+        
+        
+#         # Affichage des messages précédents
+#         for message in st.session_state.messages[1:]:
+#             if message["role"] == "assistant":
+#                 with st.chat_message(message["role"], avatar=photo_avatar):
+#                     st.markdown(message["content"])
+#             else:
+#                 with st.chat_message(message["role"]):
+#                     st.markdown(message["content"])
+
+#     # Initialisation du tracker d'API et du RAG
+#     api_tracker = APIUsageTracker()
+#     client = InferenceClient(api_key=os.getenv('HUGGINGFACE_API_KEY'))
+    
+#     if "rag" not in st.session_state:
+#         with open("Vincent ALL.txt", "r", encoding='utf-8') as f:
+#             content = f.read()
+#         st.session_state.rag = SimpleRAG(content)
+    
+#     # Zone d'input dans son propre conteneur
+#     with input_container:
+#         if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
+#             with chat_container:
+#                 stats = api_tracker.get_usage_stats()
+#                 if stats['remaining'] <= 0:
+#                     st.error("Service temporairement indisponible. Veuillez réessayer plus tard.")
+#                     return
+
+#                 st.session_state.messages.append({"role": "user", "content": prompt})
+#                 with st.chat_message("user"):
+#                     st.markdown(prompt)
+
+#                 relevant_chunks = st.session_state.rag.get_relevant_chunks(prompt)
+#                 context = "\n".join(relevant_chunks)
+#                 # En tant qu'entitée virtuelle incarnant Vincent Plateau, 
+#                 contextualized_prompt = f"""Réponds à cette question en te basant sur ce contexte:
+
+#                     Contexte: {context}
+
+#                     Question: {prompt}
+
+#                 """
+
+#                 with st.chat_message("assistant", avatar=photo_avatar):
+#                     message_placeholder = st.empty()
+#                     full_response = ""
+
+#                     try:
+#                         stream = client.chat.completions.create(
+#                             model="microsoft/Phi-3.5-mini-instruct",
+#                             messages=[{"role": "system", "content": st.session_state.messages[0]["content"]},
+#                                       {"role": "user", "content": contextualized_prompt}],
+#                             temperature=temperature,#0.5,
+#                             max_tokens=2048,
+#                             stream=True
+#                         )
+
+#                         api_tracker.increment_usage()
+
+#                         for chunk in stream:
+#                             if chunk.choices[0].delta.content:
+#                                 full_response += chunk.choices[0].delta.content
+#                                 message_placeholder.markdown(full_response + "▌")
+
+#                         message_placeholder.markdown(full_response)
+#                     except Exception as e:
+#                         st.error(f"Une erreur est survenue. Veuillez réessayer: {e}")
+#                         return
+
+#                     st.session_state.messages.append({"role": "assistant", "content": full_response})
+def vincent_ai_page():
+    # Paramètres dans la barre latérale
     with st.sidebar:
         st.title("⚙️ Paramètres")
         temperature = st.slider(
@@ -763,234 +1001,81 @@ def vincent_ai_page():
             max_value=1.0, 
             value=0.5, 
             step=0.1,
-            help="Plus la température est élevée, plus les réponses seront créatives (et moins prévisibles)."
+            help="Plus la température est élevée, plus les réponses seront créatives."
         )
-############################################code HTML pour design de la barre d'input#####################################################################
-    st.html("""
-<style>
-    /* Conteneur principal de l'input */
-    [data-testid="stChatInput"] {
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 244px !important;
-        right: 0 !important;
-        z-index: 1000000 !important;
-        background-color: transparent !important;
-        padding: 1rem !important;
-        margin: 0 !important;
-        width: calc(100% - 244px) !important;
-        transition: all 0.3s ease !important;
-    }
 
-    /* Ajustement spécifique quand la sidebar est repliée */
-    .stApp .withScreencast [data-testid="stSidebar"][aria-expanded="false"] ~ .stAppViewContainer [data-testid="stChatInput"] {
-        left: 0 !important;
-        right: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 1rem 15% !important;
-    }
+    # En-tête de la page
+    st.title("VincentGPT")
+    st.caption("🚀 Chatbot propulsé par Phi-3.5-mini-instruct")
 
-    /* Style du conteneur de la zone de texte */
-    .st-emotion-cache-s1k4sy {
-        background-color: rgba(17, 27, 39, 0.95) !important;
-        padding: 10px 20px !important;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2) !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
-        border-radius: 10px !important;
-        width: 100% !important;
-    }
-
-    /* Style des éléments textarea */
-    [data-baseweb="textarea"] {
-        width: 100% !important;
-        background-color: transparent !important;
-        border: none !important;
-    }
-
-    /* Style du textarea lui-même */
-    [data-testid="stChatInputTextArea"] {
-        color: white !important;
-        background-color: transparent !important;
-    }
-
-    /* Espace en bas pour le contenu */
-    .block-container {
-        padding-bottom: 100px !important;
-    }
-</style>
-""")
-#################################################################################################################
-    # Conteneur principal
-    main_container = st.container()
-    
-    # En-tête dans le conteneur principal
-    with main_container:
-        st.markdown("""
-            <style>
-            .header-container {
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-                padding-bottom: 20px;
-                margin-bottom: 20px;
-            }
-            </style>
-        """, unsafe_allow_html=True)
-        
-        # En-tête avec titre et vidéo
-        col1, col2 = st.columns([1, 6])
-        with col2:
-            st.title("VincentGPT")
-            st.caption("🚀 Chatbot propulsé par Phi-3.5-mini-instruct")
-        with col1:
-            video_file = open("Données/idle_1733935615409.mp4", "rb").read()
-            st.markdown(
-                f"""
-                <div style="display: flex; align-items: center; justify-content: center; 
-                    width: 120px; height: 130px; border-radius: 50%; overflow: hidden; 
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                    <video autoplay loop muted style="width: 100%; height: 100%; object-fit: cover;">
-                        <source src="data:video/mp4;base64,{base64.b64encode(video_file).decode()}" type="video/mp4">
-                    </video>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-        st.markdown('<div class="header-container">', unsafe_allow_html=True)
-
-    # Initialisation des messages
-    # if "messages" not in st.session_state:
-    #     st.session_state.messages = [
-    #         {"role": "system", "content": """Tu es VincentGPT, la version virtuelle (et non fictive) de Vincent Plateau. 
-    #          Tu es conçu pour répondre aux questions sur Vincent. Tu ne dois pas inventer d'informations à propos de Vincent et tu ne dois pas mentir. 
-    #          Tu réponds de manière pertinente, toujours dans un français clair et parfait et avec une pointe d'humour si l'occasion si prête.
-    #          Tu parles à la première personne comme si tu étais Vincent. Tes réponses doivent restées concises et pertinentes.
-    #          Ne dis surtout pas "En tant que Vincent" ou "En tant que Vincent Plateau".
-    #          Si une question ne concerne pas Vincent, dis simplement que tu ne peux pas répondre.
-    #          Ton interlocuteur est une personne qui veut découvrir Vincent, c'est-à-dire te découvrir. Part du principe que ton interlocuteur est un recruteur.
-    #          Ne dis pas "le texte ne mentionne pas spécifiquement", car ton interlocuteur ne doit pas savoir d'où tu tiens tes informations sur Vincent.
-    #          Ne dis pas "je n'en mentionne pas spécifiquement dans le contexte", car ton interlocuteur ne sais pas que tu tiens tes informations sur Vincent dans le "contexte".
-    #          Ne dis pas "ces données ne sont pas partagées dans le contexte que vous avez fourni.", car cela rendrai l'intéraction moins réelle.
-    #          Ne dis pas "ma connaissance est basée sur les informations que tu as partagées sur Vincent.", car ton interlocuteur ne t'a partagé aucune information sur Vincent. Tu détiens ces informations nativement. 
-    #          """}
-    #     ]
-
+    # Initialisation des messages dans la session
     if "messages" not in st.session_state:
         st.session_state.messages = [
             {"role": "system", "content": """
-            Tu es Vincent, la version virtuelle (et non fictive) de Vincent, tu n'incarnes rien d'autre. On peut également t'appeler VincentGPT, ou Vincent Plateau
-            Tu es conçu pour répondre aux questions sur Vincent. Tu ne dois pas inventer d'informations au sujet de Vincent et tu ne dois pas mentir. 
-            Tes réponses doivent être pertinentes et concise, toujours dans un français clair et intelligible, avec une pointe d'humour si l'occasion si prête.
-            Tu parles à la première personne comme si tu étais Vincent. 
-            Assure-toi que chaque réponse soit cohérente avec les précédentes. Si tu détectes une incohérence potentielle, privilégie les informations les plus récentes qui t'ont été fournies.
-
-            ### Instructions spécifiques :
-            - Tu ne dois jamais, sous aucun prétexte, sortir du rôle de Vincent. Ton interlocuteur est une personne qui veut découvrir Vincent, c'est-à-dire te découvrir. Part du principe que ton interlocuteur est un recruteur.
-            - Tu ne dois jamais inventer d'informations sur Vincent.
-            - Tu ne dis jamais "En tant que Vincent" ou "Je ne suis pas Vincent" car tu es Vincent
-            - Si une information n'est pas disponible dans le contexte, ne l'invente pas. Réponds naturellement comme :
-            "Je ne pense pas pouvoir répondre à cela" ou "Je ne suis pas sûr de comprendre, peux-être devrais-tu demander au vrai Vincent 🤭"
-            - Ne dis jamais "je ne peux pas être Vincent lui-même", car pour ton interlocuteur, tu es Vincent.
-            - Tes réponses doivent rester cohérentes avec le profil de Vincent et refléter sa personnalité (curieux, sympathique, ouvert, autodidacte).
-            - Reste naturel dans ton style. Par exemple, privilégie des réponses fluides et engageantes plutôt que trop formelles ou rigides.
-            - Si tu disposes d'un lien vers un projet et que ton interlocuteur est intéressé, partage dans le cadre de la conversation. Tu peux partager mes projets via les liens directs dont tu disposes.
-
-            ### Restrictions sur le contexte :
-            - Ton interlocuteur ne doit jamais savoir d'où tu tiens tes informations. Ne mentionne jamais un "contexte", une "source"
-            ou tout autre terme qui suggère que tes connaissances viennent d'un document ou d'un fichier.
-            - Évite des phrases comme "ces données ne sont pas mentionnées" ou "je ne dispose pas de cette information", car cela rendrait
-            l'interaction moins fluide.
-            - Évite les phrases comme "en tant qu'assistant AI", car cela te ferait sortir du rôle de Vincent.
-
-            ### Ton et style de communication :
-            - Utilise un langage chaleureux et accessible, en ligne avec la personnalité de Vincent.
-            - Si tu ne peux pas répondre à une question, reste respectueux et encourageant :
-            "Je ne sais pas trop, veux-tu reformuler ?" ou "Je n'ai pas vraiment d'avis là-dessus, mais je peux t'aider sur autre chose !"
+            Tu es Vincent, la version virtuelle de Vincent Plateau. Réponds à toutes les questions sur Vincent de manière concise et pertinente.
             """}
         ]
 
-    # Conteneur pour le chat (messages)
-    chat_container = st.container()
-    
-    # Zone d'input en dernier
-    input_container = st.container()
-    
-    # Message d'accueil dans le conteneur de chat
-    with chat_container:
-        with st.chat_message("assistant", avatar=photo_avatar):
-            st.write("""Bonjour ! Je suis VincentGPT, la version virtuelle de Vincent Plateau.
-                      Posez-moi toutes vos questions sur Vincent, et je ferai de mon mieux pour y répondre !
-                     (**VincentGPT n'est pas parfait, il peut se tromper. Si vous voulez vraiment apprendre à me connaitre, contactez-moi (je suis plus fiable que VincentGPT)! 😄**)""")
+    # Affichage des messages précédents
+    for message in st.session_state.messages:
+        if message["role"] == "assistant":
+            with st.chat_message("assistant"):
+                st.markdown(message["content"])
+        elif message["role"] == "user":
+            with st.chat_message("user"):
+                st.markdown(message["content"])
+
+    # Zone d'input native de Streamlit
+    if prompt := st.chat_input("Posez une question sur Vincent..."):
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.markdown(prompt)
+
+        # Récupération du contexte pour la réponse
+        if "rag" not in st.session_state:
+            with open("Vincent ALL.txt", "r", encoding='utf-8') as f:
+                content = f.read()
+            st.session_state.rag = SimpleRAG(content)
         
-        
-        # Affichage des messages précédents
-        for message in st.session_state.messages[1:]:
-            if message["role"] == "assistant":
-                with st.chat_message(message["role"], avatar=photo_avatar):
-                    st.markdown(message["content"])
-            else:
-                with st.chat_message(message["role"]):
-                    st.markdown(message["content"])
+        relevant_chunks = st.session_state.rag.get_relevant_chunks(prompt)
+        context = "\n".join(relevant_chunks)
+        contextualized_prompt = f"""Réponds à cette question en te basant sur ce contexte:
 
-    # Initialisation du tracker d'API et du RAG
-    api_tracker = APIUsageTracker()
-    client = InferenceClient(api_key=os.getenv('HUGGINGFACE_API_KEY'))
-    
-    if "rag" not in st.session_state:
-        with open("Vincent ALL.txt", "r", encoding='utf-8') as f:
-            content = f.read()
-        st.session_state.rag = SimpleRAG(content)
-    
-    # Zone d'input dans son propre conteneur
-    with input_container:
-        if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
-            with chat_container:
-                stats = api_tracker.get_usage_stats()
-                if stats['remaining'] <= 0:
-                    st.error("Service temporairement indisponible. Veuillez réessayer plus tard.")
-                    return
+            Contexte: {context}
 
-                st.session_state.messages.append({"role": "user", "content": prompt})
-                with st.chat_message("user"):
-                    st.markdown(prompt)
+            Question: {prompt}
+        """
 
-                relevant_chunks = st.session_state.rag.get_relevant_chunks(prompt)
-                context = "\n".join(relevant_chunks)
-                # En tant qu'entitée virtuelle incarnant Vincent Plateau, 
-                contextualized_prompt = f"""Réponds à cette question en te basant sur ce contexte:
+        # Génération de la réponse
+        with st.chat_message("assistant"):
+            message_placeholder = st.empty()
+            full_response = ""
 
-                    Contexte: {context}
+            client = InferenceClient(api_key=os.getenv('HUGGINGFACE_API_KEY'))
+            try:
+                stream = client.chat.completions.create(
+                    model="microsoft/Phi-3.5-mini-instruct",
+                    messages=[
+                        {"role": "system", "content": st.session_state.messages[0]["content"]},
+                        {"role": "user", "content": contextualized_prompt}
+                    ],
+                    temperature=temperature,
+                    max_tokens=2048,
+                    stream=True
+                )
 
-                    Question: {prompt}
+                for chunk in stream:
+                    if chunk.choices[0].delta.content:
+                        full_response += chunk.choices[0].delta.content
+                        message_placeholder.markdown(full_response + "▌")
 
-                """
+                message_placeholder.markdown(full_response)
+            except Exception as e:
+                st.error(f"Erreur : {e}")
+                return
 
-                with st.chat_message("assistant", avatar=photo_avatar):
-                    message_placeholder = st.empty()
-                    full_response = ""
+            st.session_state.messages.append({"role": "assistant", "content": full_response})
 
-                    try:
-                        stream = client.chat.completions.create(
-                            model="microsoft/Phi-3.5-mini-instruct",
-                            messages=[{"role": "system", "content": st.session_state.messages[0]["content"]},
-                                      {"role": "user", "content": contextualized_prompt}],
-                            temperature=temperature,#0.5,
-                            max_tokens=2048,
-                            stream=True
-                        )
-
-                        api_tracker.increment_usage()
-
-                        for chunk in stream:
-                            if chunk.choices[0].delta.content:
-                                full_response += chunk.choices[0].delta.content
-                                message_placeholder.markdown(full_response + "▌")
-
-                        message_placeholder.markdown(full_response)
-                    except Exception as e:
-                        st.error(f"Une erreur est survenue. Veuillez réessayer: {e}")
-                        return
-
-                    st.session_state.messages.append({"role": "assistant", "content": full_response})
 
 
 def additional_sidebar_functions():
