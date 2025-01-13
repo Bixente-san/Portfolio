@@ -64,4 +64,4 @@ Vincent PLATEAU - vi.plateau@gmail.com
 Lien du projet: [https://portfolio-vincent-plateau.streamlit.app/](https://portfolio-vincent-plateau.streamlit.app/)
 
 ---
-Développé avec ❤️ par Vincent PLATEAU (avec l'aide bienveillante de quelques IA)
+Développé par Vincent PLATEAU (avec l'aide bienveillante de quelques IA)
