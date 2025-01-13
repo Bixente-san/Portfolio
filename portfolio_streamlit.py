@@ -908,90 +908,150 @@ def vincent_ai_page():
             """}
         ]
 
-    # Conteneur pour le chat (messages)
-    chat_container = st.container()
+    # # Conteneur pour le chat (messages)
+    # chat_container = st.container()
     
-    # Zone d'input en dernier
-    input_container = st.container()
+    # # Zone d'input en dernier
+    # input_container = st.container()
     
-    # Message d'accueil dans le conteneur de chat
-    with chat_container:
-        with st.chat_message("assistant", avatar=photo_avatar):
-            st.write("""Bonjour ! Je suis VincentGPT, la version virtuelle de Vincent Plateau.
-                      Posez-moi toutes vos questions sur Vincent, et je ferai de mon mieux pour y répondre !
-                     (**VincentGPT n'est pas parfait, il peut se tromper. Si vous voulez vraiment apprendre à me connaitre, contactez-moi (je suis plus fiable que VincentGPT)! 😄**)""")
+    # # Message d'accueil dans le conteneur de chat
+    # with chat_container:
+    #     with st.chat_message("assistant", avatar=photo_avatar):
+    #         st.write("""Bonjour ! Je suis VincentGPT, la version virtuelle de Vincent Plateau.
+    #                   Posez-moi toutes vos questions sur Vincent, et je ferai de mon mieux pour y répondre !
+    #                  (**VincentGPT n'est pas parfait, il peut se tromper. Si vous voulez vraiment apprendre à me connaitre, contactez-moi (je suis plus fiable que VincentGPT)! 😄**)""")
         
         
-        # Affichage des messages précédents
-        for message in st.session_state.messages[1:]:
-            if message["role"] == "assistant":
-                with st.chat_message(message["role"], avatar=photo_avatar):
-                    st.markdown(message["content"])
-            else:
-                with st.chat_message(message["role"]):
-                    st.markdown(message["content"])
+    #     # Affichage des messages précédents
+    #     for message in st.session_state.messages[1:]:
+    #         if message["role"] == "assistant":
+    #             with st.chat_message(message["role"], avatar=photo_avatar):
+    #                 st.markdown(message["content"])
+    #         else:
+    #             with st.chat_message(message["role"]):
+    #                 st.markdown(message["content"])
 
-    # Initialisation du tracker d'API et du RAG
-    api_tracker = APIUsageTracker()
-    client = InferenceClient(api_key=os.getenv('HUGGINGFACE_API_KEY'))
+    # # Initialisation du tracker d'API et du RAG
+    # api_tracker = APIUsageTracker()
+    # client = InferenceClient(api_key=os.getenv('HUGGINGFACE_API_KEY'))
     
-    if "rag" not in st.session_state:
-        with open("Vincent ALL.txt", "r", encoding='utf-8') as f:
-            content = f.read()
-        st.session_state.rag = SimpleRAG(content)
+    # if "rag" not in st.session_state:
+    #     with open("Vincent ALL.txt", "r", encoding='utf-8') as f:
+    #         content = f.read()
+    #     st.session_state.rag = SimpleRAG(content)
     
-    # Zone d'input dans son propre conteneur
-    with input_container:
-        if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
-            with chat_container:
-                stats = api_tracker.get_usage_stats()
-                if stats['remaining'] <= 0:
-                    st.error("Service temporairement indisponible. Veuillez réessayer plus tard.")
-                    return
+    # # Zone d'input dans son propre conteneur
+    # with input_container:
+    #     if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
+    #         with chat_container:
+    #             stats = api_tracker.get_usage_stats()
+    #             if stats['remaining'] <= 0:
+    #                 st.error("Service temporairement indisponible. Veuillez réessayer plus tard.")
+    #                 return
 
-                st.session_state.messages.append({"role": "user", "content": prompt})
-                with st.chat_message("user"):
-                    st.markdown(prompt)
+    #             st.session_state.messages.append({"role": "user", "content": prompt})
+    #             with st.chat_message("user"):
+    #                 st.markdown(prompt)
 
-                relevant_chunks = st.session_state.rag.get_relevant_chunks(prompt)
-                context = "\n".join(relevant_chunks)
-                # En tant qu'entitée virtuelle incarnant Vincent Plateau, 
-                contextualized_prompt = f"""Réponds à cette question en te basant sur ce contexte:
+    #             relevant_chunks = st.session_state.rag.get_relevant_chunks(prompt)
+    #             context = "\n".join(relevant_chunks)
+    #             # En tant qu'entitée virtuelle incarnant Vincent Plateau, 
+    #             contextualized_prompt = f"""Réponds à cette question en te basant sur ce contexte:
 
-                    Contexte: {context}
+    #                 Contexte: {context}
 
-                    Question: {prompt}
+    #                 Question: {prompt}
 
-                """
+    #             """
 
-                with st.chat_message("assistant", avatar=photo_avatar):
-                    message_placeholder = st.empty()
-                    full_response = ""
+    #             with st.chat_message("assistant", avatar=photo_avatar):
+    #                 message_placeholder = st.empty()
+    #                 full_response = ""
 
-                    try:
-                        stream = client.chat.completions.create(
-                            model="microsoft/Phi-3.5-mini-instruct",
-                            messages=[{"role": "system", "content": st.session_state.messages[0]["content"]},
-                                      {"role": "user", "content": contextualized_prompt}],
-                            temperature=temperature,#0.5,
-                            max_tokens=2048,
-                            stream=True
-                        )
+    #                 try:
+    #                     stream = client.chat.completions.create(
+    #                         model="microsoft/Phi-3.5-mini-instruct",
+    #                         messages=[{"role": "system", "content": st.session_state.messages[0]["content"]},
+    #                                   {"role": "user", "content": contextualized_prompt}],
+    #                         temperature=temperature,#0.5,
+    #                         max_tokens=2048,
+    #                         stream=True
+    #                     )
 
-                        api_tracker.increment_usage()
+    #                     api_tracker.increment_usage()
 
-                        for chunk in stream:
-                            if chunk.choices[0].delta.content:
-                                full_response += chunk.choices[0].delta.content
-                                message_placeholder.markdown(full_response + "▌")
+    #                     for chunk in stream:
+    #                         if chunk.choices[0].delta.content:
+    #                             full_response += chunk.choices[0].delta.content
+    #                             message_placeholder.markdown(full_response + "▌")
 
-                        message_placeholder.markdown(full_response)
-                    except Exception as e:
-                        st.error(f"Une erreur est survenue. Veuillez réessayer: {e}")
-                        return
+    #                     message_placeholder.markdown(full_response)
+    #                 except Exception as e:
+    #                     st.error(f"Une erreur est survenue. Veuillez réessayer: {e}")
+    #                     return
 
-                    st.session_state.messages.append({"role": "assistant", "content": full_response})
+    #                 st.session_state.messages.append({"role": "assistant", "content": full_response})
 
+
+    # Affichage des messages précédents
+    for message in st.session_state.messages:
+        if message["role"] == "assistant":
+            with st.chat_message("assistant"):
+                st.markdown(message["content"])
+        elif message["role"] == "user":
+            with st.chat_message("user"):
+                st.markdown(message["content"])
+
+    # Zone d'input native de Streamlit
+    if prompt := st.chat_input("Posez une question sur Vincent..."):
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.markdown(prompt)
+
+        # Récupération du contexte pour la réponse
+        if "rag" not in st.session_state:
+            with open("Vincent ALL.txt", "r", encoding='utf-8') as f:
+                content = f.read()
+            st.session_state.rag = SimpleRAG(content)
+        
+        relevant_chunks = st.session_state.rag.get_relevant_chunks(prompt)
+        context = "\n".join(relevant_chunks)
+        contextualized_prompt = f"""Réponds à cette question en te basant sur ce contexte:
+
+            Contexte: {context}
+
+            Question: {prompt}
+        """
+
+        # Génération de la réponse
+        with st.chat_message("assistant"):
+            message_placeholder = st.empty()
+            full_response = ""
+
+            client = InferenceClient(api_key=os.getenv('HUGGINGFACE_API_KEY'))
+            try:
+                stream = client.chat.completions.create(
+                    model="microsoft/Phi-3.5-mini-instruct",
+                    messages=[
+                        {"role": "system", "content": st.session_state.messages[0]["content"]},
+                        {"role": "user", "content": contextualized_prompt}
+                    ],
+                    temperature=temperature,
+                    max_tokens=2048,
+                    stream=True
+                )
+
+                for chunk in stream:
+                    if chunk.choices[0].delta.content:
+                        full_response += chunk.choices[0].delta.content
+                        message_placeholder.markdown(full_response + "▌")
+
+                message_placeholder.markdown(full_response)
+            except Exception as e:
+                st.error(f"Erreur : {e}")
+                return
+
+            st.session_state.messages.append({"role": "assistant", "content": full_response})
 
 
 def additional_sidebar_functions():
@@ -1031,7 +1091,7 @@ def send_email(name, email, message):
     smtp_server = "smtp.gmail.com"
     smtp_port = 587
     smtp_username = "vi.plateau@gmail.com"
-    smtp_password = st.secrets["SMTP_PASSWORD"]#os.getenv('SMTP_PASSWORD')
+    smtp_password = st.secrets["SMTP_PASSWORD"]#ou os.getenv('SMTP_PASSWORD') ?
     if not smtp_password:
         raise ValueError("Le mot de passe SMTP n'a pas été trouvé dans les variables d'environnement.")
 
