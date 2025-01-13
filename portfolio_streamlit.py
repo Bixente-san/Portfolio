@@ -826,15 +826,15 @@ def vincent_ai_page():
     
     # En-tête dans le conteneur principal
     with main_container:
-        st.markdown("""
-            <style>
-            .header-container {
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-                padding-bottom: 20px;
-                margin-bottom: 20px;
-            }
-            </style>
-        """, unsafe_allow_html=True)
+        # st.markdown("""
+        #     <style>
+        #     .header-container {
+        #         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        #         padding-bottom: 20px;
+        #         margin-bottom: 20px;
+        #     }
+        #     </style>
+        # """, unsafe_allow_html=True)
         
         # En-tête avec titre et vidéo
         col1, col2 = st.columns([1, 6])
