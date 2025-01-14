@@ -766,60 +766,141 @@ def vincent_ai_page():
             help="Plus la température est élevée, plus les réponses seront créatives (et moins prévisibles)."
         )
 ############################################code HTML / CSS pour design de la barre d'input#####################################################################
-    st.html("""
-<style>
-    /* Conteneur principal de l'input */
-    [data-testid="stChatInput"] {
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 244px !important;
-        right: 0 !important;
-        z-index: 1000000 !important;
-        background-color: transparent !important;
-        padding: 1rem !important;
-        margin: 0 !important;
-        width: calc(100% - 244px) !important;
-        transition: all 0.3s ease !important;
-    }
+#     st.html("""
+# <style>
+#     /* Conteneur principal de l'input */
+#     [data-testid="stChatInput"] {
+#         position: fixed !important;
+#         bottom: 0 !important;
+#         left: 244px !important;
+#         right: 0 !important;
+#         z-index: 1000000 !important;
+#         background-color: transparent !important;
+#         padding: 1rem !important;
+#         margin: 0 !important;
+#         width: calc(100% - 244px) !important;
+#         transition: all 0.3s ease !important;
+#     }
 
-    /* Ajustement spécifique quand la sidebar est repliée */
-    .stApp .withScreencast [data-testid="stSidebar"][aria-expanded="false"] ~ .stAppViewContainer [data-testid="stChatInput"] {
-        left: 0 !important;
-        right: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 1rem 15% !important;
-    }
+#     /* Ajustement spécifique quand la sidebar est repliée */
+#     .stApp .withScreencast [data-testid="stSidebar"][aria-expanded="false"] ~ .stAppViewContainer [data-testid="stChatInput"] {
+#         left: 0 !important;
+#         right: 0 !important;
+#         width: 100% !important;
+#         max-width: 100% !important;
+#         padding: 1rem 15% !important;
+#     }
 
-    /* Style du conteneur de la zone de texte */
-    .st-emotion-cache-s1k4sy {
-        background-color: rgba(17, 27, 39, 0.95) !important;
-        padding: 10px 20px !important;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2) !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
-        border-radius: 10px !important;
-        width: 100% !important;
-    }
+#     /* Style du conteneur de la zone de texte */
+#     .st-emotion-cache-s1k4sy {
+#         background-color: rgba(17, 27, 39, 0.95) !important;
+#         padding: 10px 20px !important;
+#         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2) !important;
+#         border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+#         border-radius: 10px !important;
+#         width: 100% !important;
+#     }
 
-    /* Style des éléments textarea */
-    [data-baseweb="textarea"] {
-        width: 100% !important;
-        background-color: transparent !important;
-        border: none !important;
-    }
+#     /* Style des éléments textarea */
+#     [data-baseweb="textarea"] {
+#         width: 100% !important;
+#         background-color: transparent !important;
+#         border: none !important;
+#     }
 
-    /* Style du textarea lui-même */
-    [data-testid="stChatInputTextArea"] {
-        color: white !important;
-        background-color: transparent !important;
-    }
+#     /* Style du textarea lui-même */
+#     [data-testid="stChatInputTextArea"] {
+#         color: white !important;
+#         background-color: transparent !important;
+#     }
 
-    /* Espace en bas pour le contenu */
-    .block-container {
-        padding-bottom: 100px !important;
-    }
-</style>
-""")
+#     /* Espace en bas pour le contenu */
+#     .block-container {
+#         padding-bottom: 100px !important;
+#     }
+# </style>
+# """)
+
+        #new version
+        st.html("""
+    <style>
+        /* Conteneur principal de l'input */
+        [data-testid="stChatInput"] {
+            position: fixed !important;
+            bottom: 0 !important;
+            left: 244px !important; /* Valeur par défaut pour desktop */
+            right: 0 !important;
+            z-index: 1000000 !important;
+            background-color: transparent !important;
+            padding: 1rem !important;
+            margin: 0 !important;
+            width: calc(100% - 244px) !important; /* Valeur par défaut pour desktop */
+            transition: all 0.3s ease !important;
+        }
+
+        /* Ajustement quand la sidebar est repliée sur desktop */
+        .stApp [data-testid="stSidebar"][aria-expanded="false"] ~ .main [data-testid="stChatInput"] {
+            left: 48px !important; /* Largeur de la sidebar repliée */
+            width: calc(100% - 48px) !important;
+        }
+
+        /* Media query pour les appareils mobiles */
+        @media screen and (max-width: 768px) {
+            [data-testid="stChatInput"] {
+                left: 0 !important;
+                width: 100% !important;
+                padding: 0.5rem !important;
+                bottom: 0 !important;
+            }
+            
+            /* Comportement spécifique quand la sidebar est ouverte sur mobile */
+            .stApp [data-testid="stSidebar"][aria-expanded="true"] ~ .main [data-testid="stChatInput"] {
+                left: 0 !important;
+                width: 100% !important;
+            }
+
+            /* Style spécifique pour le textarea sur mobile */
+            [data-testid="stChatInputTextArea"] {
+                font-size: 16px !important;
+                padding: 8px !important;
+            }
+            
+            /* Ajuster la zone de texte pour qu'elle soit plus compacte sur mobile */
+            .st-emotion-cache-s1k4sy {
+                padding: 8px 12px !important;
+                margin: 0 8px !important;
+            }
+        }
+
+        /* Style du conteneur de la zone de texte */
+        .st-emotion-cache-s1k4sy {
+            background-color: rgba(17, 27, 39, 0.95) !important;
+            padding: 10px 20px !important;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2) !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 10px !important;
+            width: 100% !important;
+        }
+
+        /* Style des éléments textarea */
+        [data-baseweb="textarea"] {
+            width: 100% !important;
+            background-color: transparent !important;
+            border: none !important;
+        }
+
+        /* Style du textarea lui-même */
+        [data-testid="stChatInputTextArea"] {
+            color: white !important;
+            background-color: transparent !important;
+        }
+
+        /* Espace en bas pour le contenu */
+        .block-container {
+            padding-bottom: 100px !important;
+        }
+    </style>
+    """)
 #################################################################################################################
     # Conteneur principal
     main_container = st.container()
