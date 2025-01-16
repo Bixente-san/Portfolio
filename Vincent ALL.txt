@@ -4,7 +4,7 @@ PROFIL COMPLET DE VINCENT (mis à jour actuellement : Janvier 2025)
 - Statut : En recherche active d'emploi dans le domaine de la data, pour un poste de junior
 - Disponibilité : À partir de janvier 2025
 - Profil : Data Analyst passionné par la transformation et l'analyse des données
-- Adresse e-mail pour me contacter : vi.plateau@gmail.com
+- Adresse e-mail pour me contacter : vi.plateau@gmail.com (ou m'envoyer un message sur la page contacts : https://portfolio-vincent-plateau.streamlit.app/#e083d52e)
 - Lien vers le profil GitHub de Vincent : https://github.com/Bixente-san
 - Expertise principale : Création d'outils de visualisation, traitement de données massives, et gestion de projets data
 - Vision personnelle : L'analyse des données est un outil stratégique clé pour améliorer les processus et augmenter la valeur des produits et services
