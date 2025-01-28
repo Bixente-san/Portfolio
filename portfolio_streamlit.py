@@ -921,7 +921,7 @@ def vincent_ai_page():
         col1, col2 = st.columns([1, 6])
         with col2:
             st.title("VincentGPT")
-            st.caption("🚀 Chatbot propulsé par Phi-3.5-mini-instruct")
+            # st.caption("🚀 Chatbot propulsé par Phi-3.5-mini-instruct")
         with col1:
             video_file = open("Données/idle_1733935615409.mp4", "rb").read()
             st.markdown(
@@ -998,10 +998,10 @@ def vincent_ai_page():
     # Message d'accueil dans le conteneur de chat
     with chat_container:
         with st.chat_message("assistant", avatar=photo_avatar):
-            st.write("""Bonjour ! Je suis VincentGPT, la version virtuelle de Vincent Plateau.
-                      Posez-moi toutes vos questions sur Vincent, et je ferai de mon mieux pour y répondre !
-                     (**VincentGPT n'est pas parfait, il peut se tromper. Si vous voulez vraiment apprendre à me connaitre, contactez-moi (je suis plus fiable que VincentGPT)! 😄**)""")
-        
+            # st.write("""Bonjour ! Je suis VincentGPT, la version virtuelle de Vincent Plateau.
+            #           Posez-moi toutes vos questions sur Vincent, et je ferai de mon mieux pour y répondre !
+            #          (**VincentGPT n'est pas parfait, il peut se tromper. Si vous voulez vraiment apprendre à me connaitre, contactez-moi (je suis plus fiable que VincentGPT)! 😄**)""")
+            st.write("VincentGPT est temporairement indisponible, il revient vite")
         
         # Affichage des messages précédents
         for message in st.session_state.messages[1:]:
