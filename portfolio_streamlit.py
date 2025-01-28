@@ -1001,7 +1001,7 @@ def vincent_ai_page():
             # st.write("""Bonjour ! Je suis VincentGPT, la version virtuelle de Vincent Plateau.
             #           Posez-moi toutes vos questions sur Vincent, et je ferai de mon mieux pour y répondre !
             #          (**VincentGPT n'est pas parfait, il peut se tromper. Si vous voulez vraiment apprendre à me connaitre, contactez-moi (je suis plus fiable que VincentGPT)! 😄**)""")
-            st.write("VincentGPT est temporairement indisponible, il revient vite")
+            st.write("VincentGPT est actuellement indisponible, il revient vite 🙂...")
         
         # Affichage des messages précédents
         for message in st.session_state.messages[1:]:
