@@ -641,7 +641,7 @@ def projects_page():
         
             iframe_html = """
             <div style="display: flex; justify-content: center; width: 100%; margin: 20px 0;">
-                <iframe src="https://1drv.ms/w/c/472e6af1f739458a/IQSKRTn38WouIIBHyRQAAAAAASMP_Wef4DfbVWUv--ljH80" width="476" height="288" frameborder="0" scrolling="no"></iframe>
+                <iframe src="https://1drv.ms/w/c/472e6af1f739458a/IQSKRTn38WouIIBHyRQAAAAAASMP_Wef4DfbVWUv--ljH80" width="800" height="600" frameborder="0" scrolling="no"></iframe>
             </div>
             """
             time.sleep(4)
