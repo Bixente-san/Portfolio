@@ -169,7 +169,7 @@ def home_page():
         """)
 
         # À placer où vous voulez le lien
-        if st.button("*Parle avec mon alter ego digital, c’est plus fun !*", type="secondary", use_container_width=False):
+        if st.button("*Poursuis ta lecture ou entame une conversation avec mon double virtuel dès maintenant !*", type="secondary", use_container_width=False):
             st.session_state.page = "VincentGPT"
             st.rerun()
 
