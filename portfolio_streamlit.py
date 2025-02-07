@@ -860,8 +860,10 @@ def vincent_ai_page():
         [data-baseweb="textarea"] {
             width: 100% !important;
             background-color: transparent !important;
-            border: none !important;
+            border: 1px solid rgba(255, 255, 255, 0.5) !important; /* Ajoute une bordure */
+            border-radius: 5px !important; /* Optionnel : arrondit les coins */
         }
+
 
         /* Style du textarea lui-même */
         [data-testid="stChatInputTextArea"] {
