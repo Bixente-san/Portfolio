@@ -215,6 +215,7 @@ def home_page():
     # Définition des compétences sous forme de liste
     data_skills = [
         "Python/SQL/R",
+        "Git",
         "ETL & Data Processing",
         "Excel & VBA",
         "Statistical Analysis"
