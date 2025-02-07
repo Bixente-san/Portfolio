@@ -563,47 +563,27 @@ def projects_page():
         col1, col2 = st.columns(2)
         with col2:
             st.markdown("#### 🚶 Analyse des Déplacements")
-            st.image("Données/streamlit EMG analyse déplacements.png", use_container_width=True, caption="Feuille contenant des analyses par déplacements")
-            st.markdown("""
-            - Analyse détaillée des flux de déplacement
-            - Patterns de mobilité et tendances
-            - Statistiques détaillées par segment
-            """)
-        
+            st.image("Données/streamlit EMG analyse déplacements.png", use_container_width=True, caption ="Analyses des flux (mode de transport, motif, jour de la semaine, durée...).")
+
         with col1:
             st.markdown("#### 👥 Analyse des Individus")
-            st.image("Données/streamlit EMG analyse individus.png", use_container_width=True, caption="Première page")
-            st.markdown("""
-            - Profilage des comportements utilisateurs
-            - Segmentation des déplacements
-            - Analyse des habitudes de transport
-            """)
+            st.image("Données/streamlit EMG analyse individus.png", use_container_width=True, caption="Première page. Analyses segmentée des comportements de déplacement par profils.")
 
         # Deuxième rangée
         col3, col4 = st.columns(2)
         with col3:
             st.markdown("#### 🚲 Focus Vélo")
-            st.image("Données/streamlit EMG focus vélo.png", use_container_width=True)
-            st.markdown("""
-            - Cartographie des itinéraires cyclables
-            - Analyse des vitesses moyennes
-            - Identification des zones privilégiées
-            """)
-        
+            st.image("Données/streamlit EMG focus vélo.png", use_container_width=True, caption="Le profil des cyclistes et leurs habitudes de déplacement.")
+   
         with col4:
             st.markdown("#### 📈 Analyses Avancées")
             st.image("Données/streamlit EMG analyse avancées.png", use_container_width=True, caption="")
-            st.markdown("""
-            - Modélisation statistique avancée
-            - Analyses multivariées
-            - Croisement de données complexes
-            """)
 
         # Autres analyses en expander
         col5, col6 = st.columns(2)
         with col5:
             st.markdown("#### Dernière page")
-            st.image("Données/streamlit EMG autres.png", caption=" Dernière page avec le rapport des premiers résultats publié par l'Institut Paris Région et les données brutes")
+            st.image("Données/streamlit EMG autres.png", caption=" Dernière page avec le rapport des premiers résultats publié par l'Institut Paris Région et les données brutes.")
 
 
     elif project == "Carte Interactive des Transporteurs (Bus & Tram) en IDF":
@@ -662,7 +642,7 @@ def projects_page():
             iframe_html = """
             <div style="display: flex; justify-content: center; width: 100%; margin: 20px 0;">
                 <iframe 
-                    src="https://1drv.ms/w/c/472e6af1f739458a/EYpFOffxai4ggEfJFAAAAAABJs2U1dz7lH5Bx-45ceSyfw?e=ZYUbTf" 
+                    src="https://1drv.ms/w/c/472e6af1f739458a/EYpFOffxai4ggEfJFAAAAAABJs2U1dz7lH5Bx-45ceSyfw?e=RJWMd3" 
                     width="800px" 
                     height="600px" 
                     frameborder="0"
@@ -680,51 +660,51 @@ def projects_page():
 
 #================================================================ VincentGPT =====================================================================================================
 
-class APIUsageTracker:
-    def __init__(self):
-        self.usage_file = "api_usage.json"
-        self.max_daily_requests = 1000
+# class APIUsageTracker:
+#     def __init__(self):
+#         self.usage_file = "api_usage.json"
+#         self.max_daily_requests = 1000
         
-        if "daily_requests" not in st.session_state:
-            st.session_state.daily_requests = self._load_usage()
+#         if "daily_requests" not in st.session_state:
+#             st.session_state.daily_requests = self._load_usage()
     
-    def _load_usage(self):
-        try:
-            if Path(self.usage_file).exists():
-                with open(self.usage_file, 'r') as f:
-                    data = json.load(f)
-                    if data.get('date') != str(date.today()):
-                        return self._reset_usage()
-                    return data['count']
-            return self._reset_usage()
-        except Exception:
-            return self._reset_usage()
+#     def _load_usage(self):
+#         try:
+#             if Path(self.usage_file).exists():
+#                 with open(self.usage_file, 'r') as f:
+#                     data = json.load(f)
+#                     if data.get('date') != str(date.today()):
+#                         return self._reset_usage()
+#                     return data['count']
+#             return self._reset_usage()
+#         except Exception:
+#             return self._reset_usage()
     
-    def _reset_usage(self):
-        self._save_usage(0)
-        return 0
+#     def _reset_usage(self):
+#         self._save_usage(0)
+#         return 0
     
-    def _save_usage(self, count):
-        with open(self.usage_file, 'w') as f:
-            json.dump({
-                'date': str(date.today()),
-                'count': count
-            }, f)
+#     def _save_usage(self, count):
+#         with open(self.usage_file, 'w') as f:
+#             json.dump({
+#                 'date': str(date.today()),
+#                 'count': count
+#             }, f)
     
-    def increment_usage(self):
-        st.session_state.daily_requests += 1
-        self._save_usage(st.session_state.daily_requests)
+#     def increment_usage(self):
+#         st.session_state.daily_requests += 1
+#         self._save_usage(st.session_state.daily_requests)
     
-    def get_usage_stats(self):
-        remaining = self.max_daily_requests - st.session_state.daily_requests
-        return {
-            'used': st.session_state.daily_requests,
-            'remaining': remaining,
-            'limit': self.max_daily_requests
-        }
+#     def get_usage_stats(self):
+#         remaining = self.max_daily_requests - st.session_state.daily_requests
+#         return {
+#             'used': st.session_state.daily_requests,
+#             'remaining': remaining,
+#             'limit': self.max_daily_requests
+#         }
 
 class SimpleRAG:
-    def __init__(self, content: str, chunk_size: int = 300, overlap: int = 150): # chunks plus petits et précis et plus d'overlap
+    def __init__(self, content: str, chunk_size: int = 300, overlap: int = 150): # chunks petits et précis et plus d'overlap
         self.vectorizer = TfidfVectorizer()
         self.chunks = self._create_chunks(content, chunk_size, overlap)
         # Création des embeddings pour chaque chunk
@@ -939,28 +919,12 @@ def vincent_ai_page():
         st.markdown('<div class="header-container">', unsafe_allow_html=True)
 
     # Initialisation des messages
-    # if "messages" not in st.session_state:
-    #     st.session_state.messages = [
-    #         {"role": "system", "content": """Tu es VincentGPT, la version virtuelle (et non fictive) de Vincent Plateau. 
-    #          Tu es conçu pour répondre aux questions sur Vincent. Tu ne dois pas inventer d'informations à propos de Vincent et tu ne dois pas mentir. 
-    #          Tu réponds de manière pertinente, toujours dans un français clair et parfait et avec une pointe d'humour si l'occasion si prête.
-    #          Tu parles à la première personne comme si tu étais Vincent. Tes réponses doivent restées concises et pertinentes.
-    #          Ne dis surtout pas "En tant que Vincent" ou "En tant que Vincent Plateau".
-    #          Si une question ne concerne pas Vincent, dis simplement que tu ne peux pas répondre.
-    #          Ton interlocuteur est une personne qui veut découvrir Vincent, c'est-à-dire te découvrir. Part du principe que ton interlocuteur est un recruteur.
-    #          Ne dis pas "le texte ne mentionne pas spécifiquement", car ton interlocuteur ne doit pas savoir d'où tu tiens tes informations sur Vincent.
-    #          Ne dis pas "je n'en mentionne pas spécifiquement dans le contexte", car ton interlocuteur ne sais pas que tu tiens tes informations sur Vincent dans le "contexte".
-    #          Ne dis pas "ces données ne sont pas partagées dans le contexte que vous avez fourni.", car cela rendrai l'intéraction moins réelle.
-    #          Ne dis pas "ma connaissance est basée sur les informations que tu as partagées sur Vincent.", car ton interlocuteur ne t'a partagé aucune information sur Vincent. Tu détiens ces informations nativement. 
-    #          """}
-    #     ]
-
     if "messages" not in st.session_state:
         st.session_state.messages = [
             {"role": "system", "content": """
             Tu es Vincent, la version virtuelle (et non fictive) de Vincent, tu n'incarnes rien d'autre. On peut également t'appeler VincentGPT, ou Vincent Plateau
             Tu es conçu pour répondre aux questions sur Vincent. Tu ne dois pas inventer d'informations au sujet de Vincent et tu ne dois pas mentir. 
-            Tes réponses doivent être pertinentes et concise, toujours dans un français clair et intelligible, avec une pointe d'humour si l'occasion si prête.
+            Tes réponses doivent être pertinentes et concises, toujours dans un français clair et intelligible, avec une pointe d'humour si l'occasion si prête.
             Tu parles à la première personne comme si tu étais Vincent. 
             Assure-toi que chaque réponse soit cohérente avec les précédentes. Si tu détectes une incohérence potentielle, privilégie les informations les plus récentes qui t'ont été fournies.
 
@@ -983,7 +947,7 @@ def vincent_ai_page():
             - Évite les phrases comme "en tant qu'assistant AI", car cela te ferait sortir du rôle de Vincent.
 
             ### Ton et style de communication :
-            - Utilise un langage chaleureux et accessible, en ligne avec la personnalité de Vincent.
+            - Utilise un langage professionnel et accessible, en ligne avec la personnalité de Vincent.
             - Si tu ne peux pas répondre à une question, reste respectueux et encourageant :
             "Je ne sais pas trop, veux-tu reformuler ?" ou "Je n'ai pas vraiment d'avis là-dessus, mais je peux t'aider sur autre chose !"
             """}
@@ -998,9 +962,8 @@ def vincent_ai_page():
     # Message d'accueil dans le conteneur de chat
     with chat_container:
         with st.chat_message("assistant", avatar=photo_avatar):
-            st.write("""Bonjour ! Je suis VincentGPT, la version virtuelle de Vincent Plateau.
-                      Posez-moi toutes vos questions sur Vincent, et je ferai de mon mieux pour y répondre !
-                     (**VincentGPT n'est pas parfait, il peut se tromper. Si vous voulez vraiment apprendre à me connaitre, contactez-moi (je suis plus fiable que VincentGPT)! 😄**)""")
+            st.write("""Bonjour ! Je suis VincentGPT, une version virtuelle de Vincent Plateau. Des questions brûlantes sur Vincent ? Posez-les moi et je ferai de mon mieux pour y répondre ! 🌟 
+            (P.S.: VincentGPT n'est pas parfait et peut parfois se tromper. Contactez-moi directement, je suis beaucoup plus fiable que VincentGPT ! 😄)""")
             
         
         # Affichage des messages précédents
