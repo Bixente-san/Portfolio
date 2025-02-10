@@ -914,6 +914,8 @@ def vincent_ai_page():
             )
         st.markdown('<div class="header-container">', unsafe_allow_html=True)
 
+    MAX_HISTORY = 4  # Nombre de messages à conserver dans l'historique
+    
     # Initialisation des messages
     if "messages" not in st.session_state:
         st.session_state.messages = [
@@ -982,55 +984,122 @@ def vincent_ai_page():
     
     # Zone d'input dans son propre conteneur
     with input_container:
-        if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
-            with chat_container:
-                stats = api_tracker.get_usage_stats()
-                if stats['remaining'] <= 0:
-                    st.error("Service temporairement indisponible. Veuillez réessayer plus tard.")
-                    return
+         if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
+        with chat_container:
+            # Vérification de l'API
+            stats = api_tracker.get_usage_stats()
+            if stats['remaining'] <= 0:
+                st.error("Service temporairement indisponible. Veuillez réessayer plus tard.")
+                return
 
-                st.session_state.messages.append({"role": "user", "content": prompt})
-                with st.chat_message("user"):
-                    st.markdown(prompt)
+            # Ajout du message utilisateur
+            st.session_state.messages.append({"role": "user", "content": prompt})
+            
+            # Création du contexte des derniers messages
+            recent_messages = st.session_state.messages[-MAX_HISTORY:] if len(st.session_state.messages) > MAX_HISTORY else st.session_state.messages[1:]
+            conversation_history = "\n".join([f"{msg['role']}: {msg['content']}" for msg in recent_messages])
+            
+            # Récupération du contexte RAG
+            relevant_chunks = st.session_state.rag.get_relevant_chunks(prompt)
+            rag_context = "\n".join(relevant_chunks)
+            
+            # Combinaison du contexte RAG et de l'historique de conversation
+            contextualized_prompt = f"""
+            Historique récent de la conversation:
+            {conversation_history}
+            
+            Contexte additionnel:
+            {rag_context}
+            
+            Question actuelle: {prompt}
+            
+            Réponds en tenant compte à la fois de l'historique de la conversation et du contexte fourni.
+            """
 
-                relevant_chunks = st.session_state.rag.get_relevant_chunks(prompt)
-                context = "\n".join(relevant_chunks)
-                # En tant qu'entitée virtuelle incarnant Vincent Plateau, 
-                contextualized_prompt = f"""Réponds à cette question en te basant sur ce contexte:
+            with st.chat_message("assistant", avatar=photo_avatar):
+                message_placeholder = st.empty()
+                full_response = ""
 
-                    Contexte: {context}
+                try:
+                    stream = client.chat.completions.create(
+                        model="microsoft/Phi-3.5-mini-instruct",
+                        messages=[
+                            {"role": "system", "content": st.session_state.messages[0]["content"]},
+                            {"role": "user", "content": contextualized_prompt}
+                        ],
+                        temperature=temperature,
+                        max_tokens=2048,
+                        stream=True
+                    )
 
-                    Question: {prompt}
+                    api_tracker.increment_usage()
 
-                """
+                    for chunk in stream:
+                        if chunk.choices[0].delta.content:
+                            full_response += chunk.choices[0].delta.content
+                            message_placeholder.markdown(full_response + "▌")
 
-                with st.chat_message("assistant", avatar=photo_avatar):
-                    message_placeholder = st.empty()
-                    full_response = ""
-
-                    try:
-                        stream = client.chat.completions.create(
-                            model="microsoft/Phi-3.5-mini-instruct",
-                            messages=[{"role": "system", "content": st.session_state.messages[0]["content"]},
-                                      {"role": "user", "content": contextualized_prompt}],
-                            temperature=temperature,#0.5,
-                            max_tokens=2048,
-                            stream=True
-                        )
-
-                        api_tracker.increment_usage()
-
-                        for chunk in stream:
-                            if chunk.choices[0].delta.content:
-                                full_response += chunk.choices[0].delta.content
-                                message_placeholder.markdown(full_response + "▌")
-
-                        message_placeholder.markdown(full_response)
-                    except Exception as e:
-                        st.error(f"Une erreur est survenue. Veuillez réessayer: {e}")
-                        return
-
+                    message_placeholder.markdown(full_response)
+                    
+                    # Ajout de la réponse à l'historique
                     st.session_state.messages.append({"role": "assistant", "content": full_response})
+                    
+                    # Maintien de la taille maximale de l'historique
+                    if len(st.session_state.messages) > MAX_HISTORY + 1:  # +1 pour le message système
+                        st.session_state.messages = [st.session_state.messages[0]] + st.session_state.messages[-(MAX_HISTORY):]
+                        
+                except Exception as e:
+                    st.error(f"Une erreur est survenue. Veuillez réessayer: {e}")
+                    return
+        # if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
+        #     with chat_container:
+        #         stats = api_tracker.get_usage_stats()
+        #         if stats['remaining'] <= 0:
+        #             st.error("Service temporairement indisponible. Veuillez réessayer plus tard.")
+        #             return
+
+        #         st.session_state.messages.append({"role": "user", "content": prompt})
+        #         with st.chat_message("user"):
+        #             st.markdown(prompt)
+
+        #         relevant_chunks = st.session_state.rag.get_relevant_chunks(prompt)
+        #         context = "\n".join(relevant_chunks)
+        #         # En tant qu'entitée virtuelle incarnant Vincent Plateau, 
+        #         contextualized_prompt = f"""Réponds à cette question en te basant sur ce contexte:
+
+        #             Contexte: {context}
+
+        #             Question: {prompt}
+
+        #         """
+
+        #         with st.chat_message("assistant", avatar=photo_avatar):
+        #             message_placeholder = st.empty()
+        #             full_response = ""
+
+        #             try:
+        #                 stream = client.chat.completions.create(
+        #                     model="microsoft/Phi-3.5-mini-instruct",
+        #                     messages=[{"role": "system", "content": st.session_state.messages[0]["content"]},
+        #                               {"role": "user", "content": contextualized_prompt}],
+        #                     temperature=temperature,#0.5,
+        #                     max_tokens=2048,
+        #                     stream=True
+        #                 )
+
+        #                 api_tracker.increment_usage()
+
+        #                 for chunk in stream:
+        #                     if chunk.choices[0].delta.content:
+        #                         full_response += chunk.choices[0].delta.content
+        #                         message_placeholder.markdown(full_response + "▌")
+
+        #                 message_placeholder.markdown(full_response)
+        #             except Exception as e:
+        #                 st.error(f"Une erreur est survenue. Veuillez réessayer: {e}")
+        #                 return
+
+        #             st.session_state.messages.append({"role": "assistant", "content": full_response})
 
 
 
