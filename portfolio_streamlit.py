@@ -993,7 +993,7 @@ def vincent_ai_page():
                 
                 # Message de maintenance
                 with st.chat_message("assistant", avatar=photo_avatar):
-                    maintenance_message = "Désolé, je suis en réparation, je reviens dans pas longtemps ! 🔧🙂"
+                    maintenance_message = "Désolé, je suis en réparation, je reviens bientôt ! 🔧🙂"
                     st.markdown(maintenance_message)
                     st.session_state.messages.append({"role": "assistant", "content": maintenance_message})
 # VERSION AVEC PRISE EN COMPTE DERNIERS MSG ===================================================================================
