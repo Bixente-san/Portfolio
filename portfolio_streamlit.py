@@ -982,80 +982,95 @@ def vincent_ai_page():
             content = f.read()
         st.session_state.rag = SimpleRAG(content)
     
-
-
-# Zone d'input dans son propre conteneur
+    # Zone d'input dans son propre conteneur
     with input_container:
         if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
             with chat_container:
-                # Vérification de l'API
-                stats = api_tracker.get_usage_stats()
-                if stats['remaining'] <= 0:
-                    st.error("Service temporairement indisponible. Veuillez réessayer plus tard.")
-                    return
-
-                # Ajout du message utilisateur
+                # Affichage du message utilisateur
                 st.session_state.messages.append({"role": "user", "content": prompt})
                 with st.chat_message("user"):
                     st.markdown(prompt)
                 
-                # Création du contexte des derniers messages
-                recent_messages = st.session_state.messages[-MAX_HISTORY:] if len(st.session_state.messages) > MAX_HISTORY else st.session_state.messages[1:]
-                conversation_history = "\n".join([f"{msg['role']}: {msg['content']}" for msg in recent_messages])
-                
-                # Récupération du contexte RAG
-                relevant_chunks = st.session_state.rag.get_relevant_chunks(prompt)
-                rag_context = "\n".join(relevant_chunks)
-                
-                # Combinaison du contexte RAG et de l'historique de conversation
-                contextualized_prompt = f"""
-                Historique récent de la conversation:
-                {conversation_history}
-                
-                Contexte additionnel:
-                {rag_context}
-                
-                Question actuelle: {prompt}
-                
-                Réponds en tenant compte à la fois de l'historique de la conversation et du contexte fourni.
-                """
-
+                # Message de maintenance
                 with st.chat_message("assistant", avatar=photo_avatar):
-                    message_placeholder = st.empty()
-                    full_response = ""
+                    maintenance_message = "Désolé, je suis en maintenance, je reviens dans pas longtemps ! 🔧"
+                    st.markdown(maintenance_message)
+                    st.session_state.messages.append({"role": "assistant", "content": maintenance_message})
+# VERSION AVEC PRISE EN COMPTE DERNIERS MSG ===================================================================================
+# # Zone d'input dans son propre conteneur
+#     with input_container:
+#         if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
+#             with chat_container:
+#                 # Vérification de l'API
+#                 stats = api_tracker.get_usage_stats()
+#                 if stats['remaining'] <= 0:
+#                     st.error("Service temporairement indisponible. Veuillez réessayer plus tard.")
+#                     return
 
-                    try:
-                        stream = client.chat.completions.create(
-                            model="microsoft/Phi-3.5-mini-instruct",
-                            messages=[
-                                {"role": "system", "content": st.session_state.messages[0]["content"]},
-                                {"role": "user", "content": contextualized_prompt}
-                            ],
-                            temperature=temperature,
-                            max_tokens=2048,
-                            stream=True
-                        )
+#                 # Ajout du message utilisateur
+#                 st.session_state.messages.append({"role": "user", "content": prompt})
+#                 with st.chat_message("user"):
+#                     st.markdown(prompt)
+                
+#                 # Création du contexte des derniers messages
+#                 recent_messages = st.session_state.messages[-MAX_HISTORY:] if len(st.session_state.messages) > MAX_HISTORY else st.session_state.messages[1:]
+#                 conversation_history = "\n".join([f"{msg['role']}: {msg['content']}" for msg in recent_messages])
+                
+#                 # Récupération du contexte RAG
+#                 relevant_chunks = st.session_state.rag.get_relevant_chunks(prompt)
+#                 rag_context = "\n".join(relevant_chunks)
+                
+#                 # Combinaison du contexte RAG et de l'historique de conversation
+#                 contextualized_prompt = f"""
+#                 Historique récent de la conversation:
+#                 {conversation_history}
+                
+#                 Contexte additionnel:
+#                 {rag_context}
+                
+#                 Question actuelle: {prompt}
+                
+#                 Réponds en tenant compte à la fois de l'historique de la conversation et du contexte fourni.
+#                 """
 
-                        api_tracker.increment_usage()
+#                 with st.chat_message("assistant", avatar=photo_avatar):
+#                     message_placeholder = st.empty()
+#                     full_response = ""
 
-                        for chunk in stream:
-                            if chunk.choices[0].delta.content:
-                                full_response += chunk.choices[0].delta.content
-                                message_placeholder.markdown(full_response + "▌")
+#                     try:
+#                         stream = client.chat.completions.create(
+#                             model="microsoft/Phi-3.5-mini-instruct",
+#                             messages=[
+#                                 {"role": "system", "content": st.session_state.messages[0]["content"]},
+#                                 {"role": "user", "content": contextualized_prompt}
+#                             ],
+#                             temperature=temperature,
+#                             max_tokens=2048,
+#                             stream=True
+#                         )
 
-                        message_placeholder.markdown(full_response)
+#                         api_tracker.increment_usage()
+
+#                         for chunk in stream:
+#                             if chunk.choices[0].delta.content:
+#                                 full_response += chunk.choices[0].delta.content
+#                                 message_placeholder.markdown(full_response + "▌")
+
+#                         message_placeholder.markdown(full_response)
                         
-                        # Ajout de la réponse à l'historique et gestion de la taille
-                        st.session_state.messages.append({"role": "assistant", "content": full_response})
+#                         # Ajout de la réponse à l'historique et gestion de la taille
+#                         st.session_state.messages.append({"role": "assistant", "content": full_response})
                         
-                        # Maintien de la taille maximale de l'historique
-                        if len(st.session_state.messages) > MAX_HISTORY + 1:  # +1 pour le message système
-                            st.session_state.messages = [st.session_state.messages[0]] + st.session_state.messages[-(MAX_HISTORY):]
+#                         # Maintien de la taille maximale de l'historique
+#                         if len(st.session_state.messages) > MAX_HISTORY + 1:  # +1 pour le message système
+#                             st.session_state.messages = [st.session_state.messages[0]] + st.session_state.messages[-(MAX_HISTORY):]
                             
-                    except Exception as e:
-                        st.error(f"Une erreur est survenue. Veuillez réessayer: {e}")
-                        return
+#                     except Exception as e:
+#                         st.error(f"Une erreur est survenue. Veuillez réessayer: {e}")
+#                         return
 
+
+# VERSION SANS PRISE EN COMPTE DE L'HISTORIQUE ======================================================================
         # if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
         #     with chat_container:
         #         stats = api_tracker.get_usage_stats()
