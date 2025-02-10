@@ -982,9 +982,10 @@ def vincent_ai_page():
             content = f.read()
         st.session_state.rag = SimpleRAG(content)
     
-    # Zone d'input dans son propre conteneur
-    with input_container:
-         if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
+
+# Zone d'input dans son propre conteneur
+with input_container:
+    if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
         with chat_container:
             # Vérification de l'API
             stats = api_tracker.get_usage_stats()
@@ -994,6 +995,8 @@ def vincent_ai_page():
 
             # Ajout du message utilisateur
             st.session_state.messages.append({"role": "user", "content": prompt})
+            with st.chat_message("user"):
+                st.markdown(prompt)
             
             # Création du contexte des derniers messages
             recent_messages = st.session_state.messages[-MAX_HISTORY:] if len(st.session_state.messages) > MAX_HISTORY else st.session_state.messages[1:]
@@ -1041,7 +1044,7 @@ def vincent_ai_page():
 
                     message_placeholder.markdown(full_response)
                     
-                    # Ajout de la réponse à l'historique
+                    # Ajout de la réponse à l'historique et gestion de la taille
                     st.session_state.messages.append({"role": "assistant", "content": full_response})
                     
                     # Maintien de la taille maximale de l'historique
