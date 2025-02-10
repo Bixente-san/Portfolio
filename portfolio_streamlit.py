@@ -1054,6 +1054,8 @@ with input_container:
                 except Exception as e:
                     st.error(f"Une erreur est survenue. Veuillez réessayer: {e}")
                     return
+                st.session_state.messages.append({"role": "assistant", "content": full_response})
+
         # if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
         #     with chat_container:
         #         stats = api_tracker.get_usage_stats()
