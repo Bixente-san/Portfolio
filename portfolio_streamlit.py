@@ -1253,7 +1253,7 @@ def main():
             st.session_state.page = "Expériences"
         if st.sidebar.button("Projets"):
             st.session_state.page = "Projets"
-        if st.sidebar.button("VincentGPT    :blue-background[Beta]"):
+        if st.sidebar.button("VincentGPT   :red-background[Maintenance]"): #:blue-background[Beta]"):
             st.session_state.page = "VincentGPT"
         if st.sidebar.button("Contacts"):
             st.session_state.page = "Contacts"
