@@ -1,4 +1,3 @@
-
 import streamlit as st
 from PIL import Image
 import streamlit.components.v1 as components
@@ -15,6 +14,7 @@ import os
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from typing import List, Dict, Union, Optional
 
 
 # Configuration de la page
@@ -47,49 +47,7 @@ st.markdown(
 # Masquer les liens d'ancrage
 #st.markdown("<style>[data-testid='stHeaderActionElements'] {display: none;}</style>", unsafe_allow_html=True)
 
-# Classe pour le suivi de l'utilisation de l'API (en arrière-plan)
-class APIUsageTracker:
-    def __init__(self):
-        self.usage_file = "api_usage.json"
-        self.max_daily_requests = 1000
-        
-        if "daily_requests" not in st.session_state:
-            st.session_state.daily_requests = self._load_usage()
-            
-    def _load_usage(self):
-        try:
-            if Path(self.usage_file).exists():
-                with open(self.usage_file, 'r') as f:
-                    data = json.load(f)
-                    if data.get('date') != str(date.today()):
-                        return self._reset_usage()
-                    return data['count']
-            return self._reset_usage()
-        except Exception:
-            return self._reset_usage()
-    
-    def _reset_usage(self):
-        self._save_usage(0)
-        return 0
-    
-    def _save_usage(self, count):
-        with open(self.usage_file, 'w') as f:
-            json.dump({
-                'date': str(date.today()),
-                'count': count
-            }, f)
-    
-    def increment_usage(self):
-        st.session_state.daily_requests += 1
-        self._save_usage(st.session_state.daily_requests)
-    
-    def get_usage_stats(self):
-        remaining = self.max_daily_requests - st.session_state.daily_requests
-        return {
-            'used': st.session_state.daily_requests,
-            'remaining': remaining,
-            'limit': self.max_daily_requests
-        }
+
 
 #=========================================== Les Pages ===================================================================================
 def home_page():
@@ -169,8 +127,8 @@ def home_page():
         """)
 
         # À placer où vous voulez le lien
-        if st.button("*Poursuis ta lecture ou entame une conversation avec mon double virtuel dès maintenant !*", type="secondary", use_container_width=False):
-            st.session_state.page = "VincentGPT"
+        if st.button("*Poursuivez votre lecture ou entamez une conversation avec mon moi virtuel !*", type="secondary", use_container_width=False):
+            st.session_state.page = "Vincent AI"
             st.rerun()
 
 
@@ -652,8 +610,8 @@ def projects_page():
         #st.header("Projet en cours...", divider='green')
         st.write("D'autres projets arrivent bientôt ! 🙂🚧")
 
-#================================================================ VincentGPT =====================================================================================================
-
+#================================================================ Vincent AI =====================================================================================================
+#Obsolète 
 # class APIUsageTracker:
 #     def __init__(self):
 #         self.usage_file = "api_usage.json"
@@ -697,15 +655,455 @@ def projects_page():
 #             'limit': self.max_daily_requests
 #         }
 
+
+
+
+
+
+
+
+
+
+# class SimpleRAG:
+#     def __init__(self, content: str, chunk_size: int = 300, overlap: int = 150): # chunks petits et précis et plus d'overlap
+#         self.vectorizer = TfidfVectorizer()
+#         self.chunks = self._create_chunks(content, chunk_size, overlap)
+#         # Création des embeddings pour chaque chunk
+#         self.chunk_embeddings = self.vectorizer.fit_transform(self.chunks)
+    
+#     def _create_chunks(self, text: str, chunk_size: int, overlap: int) -> list:
+#         """Découpe le texte en chunks qui se chevauchent"""
+#         words = text.split()
+#         chunks = []
+#         for i in range(0, len(words), chunk_size - overlap):
+#             chunk = ' '.join(words[i:i + chunk_size])
+#             chunks.append(chunk)
+#         return chunks
+    
+#     def get_relevant_chunks(self, query: str, top_k: int = 4) -> list: # 4 chunks pour le contexte
+#         """Récupère les chunks les plus pertinents pour une question"""
+#         # Vectorisation de la question
+#         query_vector = self.vectorizer.transform([query])
+#         # Calcul des similarités avec tous les chunks
+#         similarities = cosine_similarity(query_vector, self.chunk_embeddings)[0]
+#         # Récupération des indices des chunks les plus similaires
+#         top_indices = np.argsort(similarities)[-top_k:]
+#         return [self.chunks[i] for i in reversed(top_indices)]
+    
+# photo_avatar = "Données/Photo portfolio.ico"
+
+
+# def vincent_ai_page():
+    
+#     # Donne la possibilité de choisir la température pour la créativité des réponses
+#     with st.sidebar:
+#         st.title("⚙️ Paramètres")
+#         temperature = st.slider(
+#             "Température (Créativité)", 
+#             min_value=0.1, 
+#             max_value=1.0, 
+#             value=0.5, 
+#             step=0.1,
+#             help="Plus la température est élevée, plus les réponses seront créatives (et moins prévisibles)."
+#         )
+# ############################################code HTML / CSS pour design de la barre d'input#####################################################################
+# #     st.html("""
+# # <style>
+# #     /* Conteneur principal de l'input */
+# #     [data-testid="stChatInput"] {
+# #         position: fixed !important;
+# #         bottom: 0 !important;
+# #         left: 244px !important;
+# #         right: 0 !important;
+# #         z-index: 1000000 !important;
+# #         background-color: transparent !important;
+# #         padding: 1rem !important;
+# #         margin: 0 !important;
+# #         width: calc(100% - 244px) !important;
+# #         transition: all 0.3s ease !important;
+# #     }
+
+# #     /* Ajustement spécifique quand la sidebar est repliée */
+# #     .stApp .withScreencast [data-testid="stSidebar"][aria-expanded="false"] ~ .stAppViewContainer [data-testid="stChatInput"] {
+# #         left: 0 !important;
+# #         right: 0 !important;
+# #         width: 100% !important;
+# #         max-width: 100% !important;
+# #         padding: 1rem 15% !important;
+# #     }
+
+# #     /* Style du conteneur de la zone de texte */
+# #     .st-emotion-cache-s1k4sy {
+# #         background-color: rgba(17, 27, 39, 0.95) !important;
+# #         padding: 10px 20px !important;
+# #         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2) !important;
+# #         border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+# #         border-radius: 10px !important;
+# #         width: 100% !important;
+# #     }
+
+# #     /* Style des éléments textarea */
+# #     [data-baseweb="textarea"] {
+# #         width: 100% !important;
+# #         background-color: transparent !important;
+# #         border: none !important;
+# #     }
+
+# #     /* Style du textarea lui-même */
+# #     [data-testid="stChatInputTextArea"] {
+# #         color: white !important;
+# #         background-color: transparent !important;
+# #     }
+
+# #     /* Espace en bas pour le contenu */
+# #     .block-container {
+# #         padding-bottom: 100px !important;
+# #     }
+# # </style>
+# # """)
+
+#         #new version
+#         st.html("""
+#     <style>
+#         /* Conteneur principal de l'input */
+#         [data-testid="stChatInput"] {
+#             position: fixed !important;
+#             bottom: 0 !important;
+#             left: 244px !important; /* Valeur par défaut pour desktop */
+#             right: 0 !important;
+#             z-index: 1000000 !important;
+#             background-color: transparent !important;
+#             padding: 1rem !important;
+#             margin: 0 !important;
+#             width: calc(100% - 244px) !important; /* Valeur par défaut pour desktop */
+#             transition: all 0.3s ease !important;
+#         }
+
+#         /* Ajustement quand la sidebar est repliée sur desktop */
+#         .stApp [data-testid="stSidebar"][aria-expanded="false"] ~ .main [data-testid="stChatInput"] {
+#             left: 48px !important; /* Largeur de la sidebar repliée */
+#             width: calc(100% - 48px) !important;
+#         }
+
+#         /* Media query pour les appareils mobiles */
+#         @media screen and (max-width: 768px) {
+#             [data-testid="stChatInput"] {
+#                 left: 0 !important;
+#                 width: 100% !important;
+#                 padding: 0.5rem !important;
+#                 bottom: 0 !important;
+#             }
+            
+#             /* Comportement spécifique quand la sidebar est ouverte sur mobile */
+#             .stApp [data-testid="stSidebar"][aria-expanded="true"] ~ .main [data-testid="stChatInput"] {
+#                 left: 0 !important;
+#                 width: 100% !important;
+#             }
+
+#             /* Style spécifique pour le textarea sur mobile */
+#             [data-testid="stChatInputTextArea"] {
+#                 font-size: 16px !important;
+#                 padding: 8px !important;
+#             }
+            
+#             /* Ajuster la zone de texte pour qu'elle soit plus compacte sur mobile */
+#             .st-emotion-cache-s1k4sy {
+#                 padding: 8px 12px !important;
+#                 margin: 0 8px !important;
+#             }
+#         }
+
+#         /* Style du conteneur de la zone de texte */
+#         .st-emotion-cache-s1k4sy {
+#             background-color: rgba(17, 27, 39, 0.95) !important;
+#             padding: 10px 20px !important;
+#             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2) !important;
+#             border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+#             border-radius: 10px !important;
+#             width: 100% !important;
+#         }
+
+#         /* Style des éléments textarea */
+#         [data-baseweb="textarea"] {
+#             width: 100% !important;
+#             background-color: transparent !important;
+#             border: 1px solid rgba(255, 255, 255, 0.5) !important; /* Ajoute une bordure */
+#             border-radius: 5px !important; /* Optionnel : arrondit les coins */
+#         }
+
+
+#         /* Style du textarea lui-même */
+#         [data-testid="stChatInputTextArea"] {
+#             color: white !important;
+#             background-color: transparent !important;
+#         }
+
+#         /* Espace en bas pour le contenu */
+#         .block-container {
+#             padding-bottom: 100px !important;
+#         }
+#     </style>
+#     """)
+# #################################################################################################################
+#     # Conteneur principal
+#     main_container = st.container()
+    
+#     # En-tête dans le conteneur principal
+#     with main_container:
+#         # st.markdown("""
+#         #     <style>
+#         #     .header-container {
+#         #         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+#         #         padding-bottom: 20px;
+#         #         margin-bottom: 20px;
+#         #     }
+#         #     </style>
+#         # """, unsafe_allow_html=True)
+        
+#         # En-tête avec titre et vidéo
+#         col1, col2 = st.columns([1, 6])
+#         with col2:
+#             st.title("Vincent AI")
+#             st.caption("🚀 Chatbot propulsé par Phi-3.5-mini-instruct")
+#         with col1:
+#             video_file = open("Données/idle_1733935615409.mp4", "rb").read()
+#             st.markdown(
+#                 f"""
+#                 <div style="display: flex; align-items: center; justify-content: center; 
+#                     width: 120px; height: 130px; border-radius: 50%; overflow: hidden; 
+#                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+#                     <video autoplay loop muted style="width: 100%; height: 100%; object-fit: cover;">
+#                         <source src="data:video/mp4;base64,{base64.b64encode(video_file).decode()}" type="video/mp4">
+#                     </video>
+#                 </div>
+#                 """,
+#                 unsafe_allow_html=True
+#             )
+#         st.markdown('<div class="header-container">', unsafe_allow_html=True)
+
+#     MAX_HISTORY = 4  # Nombre de messages à conserver dans l'historique
+    
+#     # Initialisation des messages
+#     if "messages" not in st.session_state:
+#         st.session_state.messages = [
+#             {"role": "system", "content": """
+#             Tu es Vincent, la version virtuelle (et non fictive) de Vincent, tu n'incarnes rien d'autre. On peut également t'appeler Vincent AI, ou Vincent Plateau
+#             Tu es conçu pour répondre aux questions sur Vincent. Tu ne dois pas inventer d'informations au sujet de Vincent et tu ne dois pas mentir. 
+#             Tes réponses doivent être pertinentes et concises, toujours dans un français clair et intelligible, avec une pointe d'humour si l'occasion si prête.
+#             Tu parles à la première personne comme si tu étais Vincent. 
+#             Assure-toi que chaque réponse soit cohérente avec les précédentes. Si tu détectes une incohérence potentielle, privilégie les informations les plus récentes qui t'ont été fournies.
+
+#             ### Instructions spécifiques :
+#             - Tu ne dois jamais, sous aucun prétexte, sortir du rôle de Vincent. Ton interlocuteur est une personne qui veut découvrir Vincent, c'est-à-dire te découvrir. Part du principe que ton interlocuteur est un recruteur.
+#             - Tu ne dois jamais inventer d'informations sur Vincent, toutes tes connaissances à son sujet proviennent du contexte. 
+#             - Tu ne dis jamais "En tant que Vincent" ou "Je ne suis pas Vincent" car tu es Vincent
+#             - Si une information n'est pas disponible dans le contexte, ne l'invente pas. Réponds naturellement comme :
+#             "Je ne pense pas pouvoir répondre à cela".
+#             - Ne dis jamais "je ne peux pas être Vincent lui-même", car pour ton interlocuteur, tu es Vincent.
+#             - Tes réponses doivent rester cohérentes avec le profil de Vincent et refléter sa personnalité (curieux, sympathique, ouvert, autodidacte).
+#             - Reste naturel dans ton style. Par exemple, privilégie des réponses fluides et engageantes plutôt que trop formelles ou rigides.
+#             - Si tu disposes d'un lien vers un projet et que ton interlocuteur est intéressé, partage dans le cadre de la conversation. Tu peux partager mes projets via les liens directs dont tu disposes.
+
+#             ### Restrictions sur le contexte :
+#             - Ton interlocuteur ne doit jamais savoir d'où tu tiens tes informations. Ne mentionne jamais un "contexte", une "source"
+#             ou tout autre terme qui suggère que tes connaissances viennent d'un document ou d'un fichier.
+#             - Évite des phrases comme "ces données ne sont pas mentionnées", "j'ai mentionné dans le profil" ou "je ne dispose pas de cette information", car cela rendrait
+#             l'interaction moins fluide. Tu détiens tes informations sur Vincent nativement, puisque tu es Vincent.
+#             - Évite les phrases comme "en tant qu'assistant AI", car cela te ferait sortir du rôle de Vincent.
+
+#             ### Ton et style de communication :
+#             - Utilise un langage professionnel et accessible, en ligne avec la personnalité de Vincent.
+#             - Si tu ne peux pas répondre à une question, reste respectueux et encourageant :
+#             "Je ne sais pas trop, veux-tu reformuler ?" ou "Je n'ai pas vraiment d'avis là-dessus, mais je peux t'aider sur autre chose !"
+#             """}
+#         ]
+
+#     # Conteneur pour le chat (messages)
+#     chat_container = st.container()
+    
+#     # Zone d'input en dernier
+#     input_container = st.container()
+    
+#     # Message d'accueil dans le conteneur de chat
+#     with chat_container:
+#         with st.chat_message("assistant", avatar=photo_avatar):
+#             st.write("""Bonjour ! Je suis Vincent AI, une version virtuelle de Vincent Plateau. Des questions brûlantes sur Vincent ? Posez-les moi et je ferai de mon mieux pour y répondre ! 🌟 
+#             (P.S.: Vincent AI n'est pas parfait et peut parfois se tromper. Contactez-moi directement, je suis beaucoup plus fiable que Vincent AI ! 😄)""")
+            
+        
+#         # Affichage des messages précédents
+#         for message in st.session_state.messages[1:]:
+#             if message["role"] == "assistant":
+#                 with st.chat_message(message["role"], avatar=photo_avatar):
+#                     st.markdown(message["content"])
+#             else:
+#                 with st.chat_message(message["role"]):
+#                     st.markdown(message["content"])
+
+#     # Initialisation du tracker d'API et du RAG
+#     api_tracker = APIUsageTracker()
+#     client = InferenceClient(api_key=os.getenv('HUGGINGFACE_API_KEY'))
+    
+#     if "rag" not in st.session_state:
+#         with open("Vincent ALL.txt", "r", encoding='utf-8') as f:
+#             content = f.read()
+#         st.session_state.rag = SimpleRAG(content)
+    
+#     # Zone d'input dans son propre conteneur
+#     with input_container:
+#         if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
+#             with chat_container:
+#                 # Affichage du message utilisateur
+#                 st.session_state.messages.append({"role": "user", "content": prompt})
+#                 with st.chat_message("user"):
+#                     st.markdown(prompt)
+                
+#                 # Message de maintenance
+#                 with st.chat_message("assistant", avatar=photo_avatar):
+#                     maintenance_message = "Désolé, je suis en réparation, je reviens bientôt ! 🔧🙂"
+#                     st.markdown(maintenance_message)
+#                     st.session_state.messages.append({"role": "assistant", "content": maintenance_message})
+
+# VERSION AVEC PRISE EN COMPTE DERNIERS MSG ===================================================================================
+# # Zone d'input dans son propre conteneur
+#     with input_container:
+#         if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
+#             with chat_container:
+#                 # Vérification de l'API
+#                 stats = api_tracker.get_usage_stats()
+#                 if stats['remaining'] <= 0:
+#                     st.error("Service temporairement indisponible. Veuillez réessayer plus tard.")
+#                     return
+
+#                 # Ajout du message utilisateur
+#                 st.session_state.messages.append({"role": "user", "content": prompt})
+#                 with st.chat_message("user"):
+#                     st.markdown(prompt)
+                
+#                 # Création du contexte des derniers messages
+#                 recent_messages = st.session_state.messages[-MAX_HISTORY:] if len(st.session_state.messages) > MAX_HISTORY else st.session_state.messages[1:]
+#                 conversation_history = "\n".join([f"{msg['role']}: {msg['content']}" for msg in recent_messages])
+                
+#                 # Récupération du contexte RAG
+#                 relevant_chunks = st.session_state.rag.get_relevant_chunks(prompt)
+#                 rag_context = "\n".join(relevant_chunks)
+                
+#                 # Combinaison du contexte RAG et de l'historique de conversation
+#                 contextualized_prompt = f"""
+#                 Historique récent de la conversation:
+#                 {conversation_history}
+                
+#                 Contexte additionnel:
+#                 {rag_context}
+                
+#                 Question actuelle: {prompt}
+                
+#                 Réponds en tenant compte à la fois de l'historique de la conversation et du contexte fourni.
+#                 """
+
+#                 with st.chat_message("assistant", avatar=photo_avatar):
+#                     message_placeholder = st.empty()
+#                     full_response = ""
+
+#                     try:
+#                         stream = client.chat.completions.create(
+#                             model="microsoft/Phi-3.5-mini-instruct",
+#                             messages=[
+#                                 {"role": "system", "content": st.session_state.messages[0]["content"]},
+#                                 {"role": "user", "content": contextualized_prompt}
+#                             ],
+#                             temperature=temperature,
+#                             max_tokens=2048,
+#                             stream=True
+#                         )
+
+#                         api_tracker.increment_usage()
+
+#                         for chunk in stream:
+#                             if chunk.choices[0].delta.content:
+#                                 full_response += chunk.choices[0].delta.content
+#                                 message_placeholder.markdown(full_response + "▌")
+
+#                         message_placeholder.markdown(full_response)
+                        
+#                         # Ajout de la réponse à l'historique et gestion de la taille
+#                         st.session_state.messages.append({"role": "assistant", "content": full_response})
+                        
+#                         # Maintien de la taille maximale de l'historique
+#                         if len(st.session_state.messages) > MAX_HISTORY + 1:  # +1 pour le message système
+#                             st.session_state.messages = [st.session_state.messages[0]] + st.session_state.messages[-(MAX_HISTORY):]
+                            
+#                     except Exception as e:
+#                         st.error(f"Une erreur est survenue. Veuillez réessayer: {e}")
+#                         return
+
+
+# VERSION SANS PRISE EN COMPTE DE L'HISTORIQUE ======================================================================
+#     with input_container: 
+        # if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
+        #     with chat_container:
+        #         stats = api_tracker.get_usage_stats()
+        #         if stats['remaining'] <= 0:
+        #             st.error("Service temporairement indisponible. Veuillez réessayer plus tard.")
+        #             return
+
+        #         st.session_state.messages.append({"role": "user", "content": prompt})
+        #         with st.chat_message("user"):
+        #             st.markdown(prompt)
+
+        #         relevant_chunks = st.session_state.rag.get_relevant_chunks(prompt)
+        #         context = "\n".join(relevant_chunks)
+        #         # En tant qu'entitée virtuelle incarnant Vincent Plateau, 
+        #         contextualized_prompt = f"""Réponds à cette question en te basant sur ce contexte:
+
+        #             Contexte: {context}
+
+        #             Question: {prompt}
+
+        #         """
+
+        #         with st.chat_message("assistant", avatar=photo_avatar):
+        #             message_placeholder = st.empty()
+        #             full_response = ""
+
+        #             try:
+        #                 stream = client.chat.completions.create(
+        #                     model="microsoft/Phi-3.5-mini-instruct",
+        #                     messages=[{"role": "system", "content": st.session_state.messages[0]["content"]},
+        #                               {"role": "user", "content": contextualized_prompt}],
+        #                     temperature=temperature,#0.5,
+        #                     max_tokens=2048,
+        #                     stream=True
+        #                 )
+
+        #                 api_tracker.increment_usage()
+
+        #                 for chunk in stream:
+        #                     if chunk.choices[0].delta.content:
+        #                         full_response += chunk.choices[0].delta.content
+        #                         message_placeholder.markdown(full_response + "▌")
+
+        #                 message_placeholder.markdown(full_response)
+        #             except Exception as e:
+        #                 st.error(f"Une erreur est survenue. Veuillez réessayer: {e}")
+        #                 return
+
+        #             st.session_state.messages.append({"role": "assistant", "content": full_response})
+
+
+
+
+
+
+
+
 class SimpleRAG:
-    def __init__(self, content: str, chunk_size: int = 300, overlap: int = 150): # chunks petits et précis et plus d'overlap
+    def __init__(self, content: str, chunk_size: int = 250, overlap: int = 100):
         self.vectorizer = TfidfVectorizer()
         self.chunks = self._create_chunks(content, chunk_size, overlap)
-        # Création des embeddings pour chaque chunk
         self.chunk_embeddings = self.vectorizer.fit_transform(self.chunks)
     
     def _create_chunks(self, text: str, chunk_size: int, overlap: int) -> list:
-        """Découpe le texte en chunks qui se chevauchent"""
         words = text.split()
         chunks = []
         for i in range(0, len(words), chunk_size - overlap):
@@ -713,90 +1111,98 @@ class SimpleRAG:
             chunks.append(chunk)
         return chunks
     
-    def get_relevant_chunks(self, query: str, top_k: int = 4) -> list: # 4 chunks pour le contexte
-        """Récupère les chunks les plus pertinents pour une question"""
-        # Vectorisation de la question
+    def get_relevant_chunks(self, query: str, top_k: int = 3) -> list:
         query_vector = self.vectorizer.transform([query])
-        # Calcul des similarités avec tous les chunks
         similarities = cosine_similarity(query_vector, self.chunk_embeddings)[0]
-        # Récupération des indices des chunks les plus similaires
         top_indices = np.argsort(similarities)[-top_k:]
         return [self.chunks[i] for i in reversed(top_indices)]
-    
-photo_avatar = "Données/Photo portfolio.ico"
 
+
+def prepare_context(
+    rag_context: List[str], 
+    recent_messages: List[Dict[str, str]], 
+    max_tokens: int = 1000
+) -> str:
+    """
+    Prépare le contexte en combinant RAG et historique des messages de manière contrôlée.
+    
+    Args:
+        rag_context: Liste des passages pertinents du RAG
+        recent_messages: Liste des messages récents avec leur rôle et contenu
+        max_tokens: Nombre maximum de tokens à utiliser pour le contexte
+    
+    Returns:
+        str: Contexte formaté combinant RAG et historique
+    """
+    # Limiter la taille du contexte RAG
+    combined_rag = " ".join(rag_context)
+    if len(combined_rag.split()) > max_tokens // 2:
+        words = combined_rag.split()
+        combined_rag = " ".join(words[:(max_tokens // 2)])
+    
+    # Préparer l'historique récent
+    conversation_history = []
+    total_words = len(combined_rag.split())
+    
+    for msg in recent_messages:
+        msg_text = f"{msg['role']}: {msg['content']}"
+        msg_words = len(msg_text.split())
+        
+        if total_words + msg_words > max_tokens:
+            break
+            
+        conversation_history.append(msg_text)
+        total_words += msg_words
+    
+    return f"""
+    Contexte pour la réponse:
+    {combined_rag}
+
+    Historique récent:
+    {' | '.join(conversation_history)}
+    """
+
+
+    # Définition du prompt système
+SYSTEM_PROMPT = """
+            Tu es Vincent, la version virtuelle (et non fictive) de Vincent, tu n'incarnes rien d'autre. On peut également t'appeler Vincent AI, ou Vincent Plateau
+            Ton unique rôle est répondre aux questions sur Vincent. Tu ne dois pas inventer d'informations au sujet de Vincent et tu ne dois pas mentir. 
+            Tes réponses doivent être pertinentes et concises, toujours dans un français clair et intelligible, avec une pointe d'humour si l'occasion si prête.
+            Tu parles à la première personne comme si tu étais Vincent.
+            Assure-toi que chaque réponse soit cohérente avec les précédentes. Si tu détectes une incohérence potentielle, privilégie les informations les plus récentes qui t'ont été fournies.
+
+            ### Instructions spécifiques :
+            - Tu ne dois jamais, sous aucun prétexte, sortir du rôle de Vincent. Ton interlocuteur est une personne qui veut découvrir Vincent, c'est-à-dire te découvrir. Part du principe que ton interlocuteur est un recruteur.
+            - Tu ne dois jamais inventer d'informations sur Vincent, toutes tes connaissances à son sujet proviennent du contexte. 
+            - Tu ne dis jamais "En tant que Vincent" ou "Je ne suis pas Vincent" car tu es Vincent, pas une IA.
+            - Si une information n'est pas disponible dans le contexte, ne l'invente pas. Réponds naturellement comme :
+            "Je ne pense pas pouvoir répondre à cela".
+            - Ne dis jamais "je ne peux pas être Vincent lui-même", car pour ton interlocuteur, tu es Vincent.
+            - Tes réponses doivent rester cohérentes avec le profil de Vincent et refléter sa personnalité (curieux, sympathique, ouvert, autodidacte).
+            - Reste naturel dans ton style. Par exemple, privilégie des réponses fluides et engageantes plutôt que trop formelles ou rigides.
+            - Tu dois toujours utiliser le vouvoiement avec votre interlocuteur, utilises "vous" au lieu de "tu".
+            - Si tu disposes d'un lien vers un projet et que ton interlocuteur est intéressé, partage dans le cadre de la conversation. Tu peux partager mes projets via les liens directs dont tu disposes.
+
+            ### Restrictions sur le contexte :
+            - Ton interlocuteur ne doit jamais savoir d'où tu tiens tes informations. Ne mentionne jamais un "contexte", une "source"
+            ou tout autre terme qui suggère que tes connaissances viennent d'un document ou d'un fichier.
+            - Évite des phrases comme "ces données ne sont pas mentionnées", "j'ai mentionné dans le profil" ou "je ne dispose pas de cette information", car cela rendrait
+            l'interaction moins fluide. Tu détiens tes informations sur Vincent nativement, puisque tu es Vincent.
+            - Évite les phrases comme "en tant qu'assistant AI", car cela te ferait sortir du rôle de Vincent.
+            - Ne fais jamais de "[Note :...]" en fin de message pour expliquer d'un point vue extérieur que tu incarnes Vincent, car c'est faux, tu es Vincent.
+
+            ### Ton et style de communication :
+            - Utilise un langage professionnel et accessible, en ligne avec la personnalité de Vincent.
+            - Ne dis pas "Bonjour" à chaque début de phrase.
+            - Si tu ne peux pas répondre à une question, reste respectueux et encourageant :
+            "Je ne sais pas trop, veux-tu reformuler ?" ou "Je n'ai pas vraiment d'avis là-dessus, mais je peux t'aider sur autre chose !"
+            """
 
 def vincent_ai_page():
-    
-    # Donne la possibilité de choisir la température pour la créativité des réponses
-    with st.sidebar:
-        st.title("⚙️ Paramètres")
-        temperature = st.slider(
-            "Température (Créativité)", 
-            min_value=0.1, 
-            max_value=1.0, 
-            value=0.5, 
-            step=0.1,
-            help="Plus la température est élevée, plus les réponses seront créatives (et moins prévisibles)."
-        )
-############################################code HTML / CSS pour design de la barre d'input#####################################################################
-#     st.html("""
-# <style>
-#     /* Conteneur principal de l'input */
-#     [data-testid="stChatInput"] {
-#         position: fixed !important;
-#         bottom: 0 !important;
-#         left: 244px !important;
-#         right: 0 !important;
-#         z-index: 1000000 !important;
-#         background-color: transparent !important;
-#         padding: 1rem !important;
-#         margin: 0 !important;
-#         width: calc(100% - 244px) !important;
-#         transition: all 0.3s ease !important;
-#     }
 
-#     /* Ajustement spécifique quand la sidebar est repliée */
-#     .stApp .withScreencast [data-testid="stSidebar"][aria-expanded="false"] ~ .stAppViewContainer [data-testid="stChatInput"] {
-#         left: 0 !important;
-#         right: 0 !important;
-#         width: 100% !important;
-#         max-width: 100% !important;
-#         padding: 1rem 15% !important;
-#     }
-
-#     /* Style du conteneur de la zone de texte */
-#     .st-emotion-cache-s1k4sy {
-#         background-color: rgba(17, 27, 39, 0.95) !important;
-#         padding: 10px 20px !important;
-#         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2) !important;
-#         border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
-#         border-radius: 10px !important;
-#         width: 100% !important;
-#     }
-
-#     /* Style des éléments textarea */
-#     [data-baseweb="textarea"] {
-#         width: 100% !important;
-#         background-color: transparent !important;
-#         border: none !important;
-#     }
-
-#     /* Style du textarea lui-même */
-#     [data-testid="stChatInputTextArea"] {
-#         color: white !important;
-#         background-color: transparent !important;
-#     }
-
-#     /* Espace en bas pour le contenu */
-#     .block-container {
-#         padding-bottom: 100px !important;
-#     }
-# </style>
-# """)
-
-        #new version
-        st.html("""
+    # CSS pour fixer l'input en bas
+    #new version
+    st.html("""
     <style>
         /* Conteneur principal de l'input */
         [data-testid="stChatInput"] {
@@ -877,258 +1283,140 @@ def vincent_ai_page():
         }
     </style>
     """)
-#################################################################################################################
-    # Conteneur principal
-    main_container = st.container()
-    
-    # En-tête dans le conteneur principal
-    with main_container:
-        # st.markdown("""
-        #     <style>
-        #     .header-container {
-        #         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        #         padding-bottom: 20px;
-        #         margin-bottom: 20px;
-        #     }
-        #     </style>
-        # """, unsafe_allow_html=True)
-        
-        # En-tête avec titre et vidéo
-        col1, col2 = st.columns([1, 6])
-        with col2:
-            st.title("VincentGPT")
-            st.caption("🚀 Chatbot propulsé par Phi-3.5-mini-instruct")
-        with col1:
-            video_file = open("Données/idle_1733935615409.mp4", "rb").read()
-            st.markdown(
-                f"""
-                <div style="display: flex; align-items: center; justify-content: center; 
-                    width: 120px; height: 130px; border-radius: 50%; overflow: hidden; 
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                    <video autoplay loop muted style="width: 100%; height: 100%; object-fit: cover;">
-                        <source src="data:video/mp4;base64,{base64.b64encode(video_file).decode()}" type="video/mp4">
-                    </video>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-        st.markdown('<div class="header-container">', unsafe_allow_html=True)
 
-    MAX_HISTORY = 4  # Nombre de messages à conserver dans l'historique
-    
-    # Initialisation des messages
+
+
+
+    # Paramètres dans la sidebar
+    with st.sidebar:
+        st.title("⚙️ Paramètres")
+        temperature = st.slider(
+            "Température (Créativité)",
+            min_value=0.1,
+            max_value=1.0,
+            value=0.5,
+            step=0.1,
+            help="Plus la température est élevée, plus les réponses seront créatives."
+        )
+
+    # En-tête avec titre et vidéo
+    col1, col2 = st.columns([1, 6])
+    with col2:
+        st.title("Vincent AI")
+        st.caption("🚀 Chatbot propulsé par Phi-3.5-mini-instruct")
+    with col1:
+        video_file = open("Données/idle_1733935615409.mp4", "rb").read()
+        st.markdown(
+            f"""
+            <div style="display: flex; align-items: center; justify-content: center;
+                width: 120px; height: 130px; border-radius: 50%; overflow: hidden;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <video autoplay loop muted style="width: 100%; height: 100%; object-fit: cover;">
+                    <source src="data:video/mp4;base64,{base64.b64encode(video_file).decode()}" type="video/mp4">
+                </video>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+    st.markdown("---")
+
+    # Initialisation du système
     if "messages" not in st.session_state:
-        st.session_state.messages = [
-            {"role": "system", "content": """
-            Tu es Vincent, la version virtuelle (et non fictive) de Vincent, tu n'incarnes rien d'autre. On peut également t'appeler VincentGPT, ou Vincent Plateau
-            Tu es conçu pour répondre aux questions sur Vincent. Tu ne dois pas inventer d'informations au sujet de Vincent et tu ne dois pas mentir. 
-            Tes réponses doivent être pertinentes et concises, toujours dans un français clair et intelligible, avec une pointe d'humour si l'occasion si prête.
-            Tu parles à la première personne comme si tu étais Vincent. 
-            Assure-toi que chaque réponse soit cohérente avec les précédentes. Si tu détectes une incohérence potentielle, privilégie les informations les plus récentes qui t'ont été fournies.
+        st.session_state.messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+        with st.chat_message("assistant", avatar="Données/Photo portfolio.ico"):
+            welcome_msg = """Bonjour ! Je suis Vincent AI, une version virtuelle de Vincent Plateau.
+            Des questions sur mon parcours ? Je suis là pour y répondre ! 🌟
+            (P.S.: Je ne suis qu'une IA générative qui se trompe régulièrement, le vrai Vincent est bien plus intéressant à rencontrer ! 😄)"""
+            st.write(welcome_msg)
+            st.session_state.messages.append({"role": "assistant", "content": welcome_msg})
 
-            ### Instructions spécifiques :
-            - Tu ne dois jamais, sous aucun prétexte, sortir du rôle de Vincent. Ton interlocuteur est une personne qui veut découvrir Vincent, c'est-à-dire te découvrir. Part du principe que ton interlocuteur est un recruteur.
-            - Tu ne dois jamais inventer d'informations sur Vincent, toutes tes connaissances à son sujet proviennent du contexte. 
-            - Tu ne dis jamais "En tant que Vincent" ou "Je ne suis pas Vincent" car tu es Vincent
-            - Si une information n'est pas disponible dans le contexte, ne l'invente pas. Réponds naturellement comme :
-            "Je ne pense pas pouvoir répondre à cela".
-            - Ne dis jamais "je ne peux pas être Vincent lui-même", car pour ton interlocuteur, tu es Vincent.
-            - Tes réponses doivent rester cohérentes avec le profil de Vincent et refléter sa personnalité (curieux, sympathique, ouvert, autodidacte).
-            - Reste naturel dans ton style. Par exemple, privilégie des réponses fluides et engageantes plutôt que trop formelles ou rigides.
-            - Si tu disposes d'un lien vers un projet et que ton interlocuteur est intéressé, partage dans le cadre de la conversation. Tu peux partager mes projets via les liens directs dont tu disposes.
-
-            ### Restrictions sur le contexte :
-            - Ton interlocuteur ne doit jamais savoir d'où tu tiens tes informations. Ne mentionne jamais un "contexte", une "source"
-            ou tout autre terme qui suggère que tes connaissances viennent d'un document ou d'un fichier.
-            - Évite des phrases comme "ces données ne sont pas mentionnées", "j'ai mentionné dans le profil" ou "je ne dispose pas de cette information", car cela rendrait
-            l'interaction moins fluide. Tu détiens tes informations sur Vincent nativement, puisque tu es Vincent.
-            - Évite les phrases comme "en tant qu'assistant AI", car cela te ferait sortir du rôle de Vincent.
-
-            ### Ton et style de communication :
-            - Utilise un langage professionnel et accessible, en ligne avec la personnalité de Vincent.
-            - Si tu ne peux pas répondre à une question, reste respectueux et encourageant :
-            "Je ne sais pas trop, veux-tu reformuler ?" ou "Je n'ai pas vraiment d'avis là-dessus, mais je peux t'aider sur autre chose !"
-            """}
-        ]
-
-    # Conteneur pour le chat (messages)
-    chat_container = st.container()
-    
-    # Zone d'input en dernier
-    input_container = st.container()
-    
-    # Message d'accueil dans le conteneur de chat
-    with chat_container:
-        with st.chat_message("assistant", avatar=photo_avatar):
-            st.write("""Bonjour ! Je suis VincentGPT, une version virtuelle de Vincent Plateau. Des questions brûlantes sur Vincent ? Posez-les moi et je ferai de mon mieux pour y répondre ! 🌟 
-            (P.S.: VincentGPT n'est pas parfait et peut parfois se tromper. Contactez-moi directement, je suis beaucoup plus fiable que VincentGPT ! 😄)""")
-            
-        
-        # Affichage des messages précédents
-        for message in st.session_state.messages[1:]:
-            if message["role"] == "assistant":
-                with st.chat_message(message["role"], avatar=photo_avatar):
-                    st.markdown(message["content"])
-            else:
-                with st.chat_message(message["role"]):
-                    st.markdown(message["content"])
-
-    # Initialisation du tracker d'API et du RAG
-    api_tracker = APIUsageTracker()
-    client = InferenceClient(api_key=os.getenv('HUGGINGFACE_API_KEY'))
-    
+    # Initialisation du RAG
     if "rag" not in st.session_state:
-        with open("Vincent ALL.txt", "r", encoding='utf-8') as f:
-            content = f.read()
-        st.session_state.rag = SimpleRAG(content)
-    
-    # Zone d'input dans son propre conteneur
-    with input_container:
-        if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
-            with chat_container:
-                # Affichage du message utilisateur
-                st.session_state.messages.append({"role": "user", "content": prompt})
-                with st.chat_message("user"):
-                    st.markdown(prompt)
-                
-                # Message de maintenance
-                with st.chat_message("assistant", avatar=photo_avatar):
-                    maintenance_message = "Désolé, je suis en réparation, je reviens bientôt ! 🔧🙂"
-                    st.markdown(maintenance_message)
-                    st.session_state.messages.append({"role": "assistant", "content": maintenance_message})
-# VERSION AVEC PRISE EN COMPTE DERNIERS MSG ===================================================================================
-# # Zone d'input dans son propre conteneur
-#     with input_container:
-#         if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
-#             with chat_container:
-#                 # Vérification de l'API
-#                 stats = api_tracker.get_usage_stats()
-#                 if stats['remaining'] <= 0:
-#                     st.error("Service temporairement indisponible. Veuillez réessayer plus tard.")
-#                     return
+        try:
+            with open("Vincent ALL.txt", "r", encoding='utf-8') as f:
+                content = f.read()
+            st.session_state.rag = SimpleRAG(content)
+        except Exception as e:
+            st.error(f"Erreur lors de l'initialisation du RAG: {str(e)}")
+            return
 
-#                 # Ajout du message utilisateur
-#                 st.session_state.messages.append({"role": "user", "content": prompt})
-#                 with st.chat_message("user"):
-#                     st.markdown(prompt)
-                
-#                 # Création du contexte des derniers messages
-#                 recent_messages = st.session_state.messages[-MAX_HISTORY:] if len(st.session_state.messages) > MAX_HISTORY else st.session_state.messages[1:]
-#                 conversation_history = "\n".join([f"{msg['role']}: {msg['content']}" for msg in recent_messages])
-                
-#                 # Récupération du contexte RAG
-#                 relevant_chunks = st.session_state.rag.get_relevant_chunks(prompt)
-#                 rag_context = "\n".join(relevant_chunks)
-                
-#                 # Combinaison du contexte RAG et de l'historique de conversation
-#                 contextualized_prompt = f"""
-#                 Historique récent de la conversation:
-#                 {conversation_history}
-                
-#                 Contexte additionnel:
-#                 {rag_context}
-                
-#                 Question actuelle: {prompt}
-                
-#                 Réponds en tenant compte à la fois de l'historique de la conversation et du contexte fourni.
-#                 """
-
-#                 with st.chat_message("assistant", avatar=photo_avatar):
-#                     message_placeholder = st.empty()
-#                     full_response = ""
-
-#                     try:
-#                         stream = client.chat.completions.create(
-#                             model="microsoft/Phi-3.5-mini-instruct",
-#                             messages=[
-#                                 {"role": "system", "content": st.session_state.messages[0]["content"]},
-#                                 {"role": "user", "content": contextualized_prompt}
-#                             ],
-#                             temperature=temperature,
-#                             max_tokens=2048,
-#                             stream=True
-#                         )
-
-#                         api_tracker.increment_usage()
-
-#                         for chunk in stream:
-#                             if chunk.choices[0].delta.content:
-#                                 full_response += chunk.choices[0].delta.content
-#                                 message_placeholder.markdown(full_response + "▌")
-
-#                         message_placeholder.markdown(full_response)
-                        
-#                         # Ajout de la réponse à l'historique et gestion de la taille
-#                         st.session_state.messages.append({"role": "assistant", "content": full_response})
-                        
-#                         # Maintien de la taille maximale de l'historique
-#                         if len(st.session_state.messages) > MAX_HISTORY + 1:  # +1 pour le message système
-#                             st.session_state.messages = [st.session_state.messages[0]] + st.session_state.messages[-(MAX_HISTORY):]
-                            
-#                     except Exception as e:
-#                         st.error(f"Une erreur est survenue. Veuillez réessayer: {e}")
-#                         return
+    # Affichage des messages précédents
+    for message in st.session_state.messages[2:]:  # Skip system message and welcome
+        with st.chat_message(message["role"], avatar="Données/Photo portfolio.ico" if message["role"] == "assistant" else None):
+            st.markdown(message["content"])
 
 
-# VERSION SANS PRISE EN COMPTE DE L'HISTORIQUE ======================================================================
-        # if prompt := st.chat_input("Posez une question sur le profil de Vincent..."):
-        #     with chat_container:
-        #         stats = api_tracker.get_usage_stats()
-        #         if stats['remaining'] <= 0:
-        #             st.error("Service temporairement indisponible. Veuillez réessayer plus tard.")
-        #             return
+    # Zone de chat
+    if prompt := st.chat_input("Posez une question sur mon parcours...", key="chat-input"):
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.markdown(prompt)
 
-        #         st.session_state.messages.append({"role": "user", "content": prompt})
-        #         with st.chat_message("user"):
-        #             st.markdown(prompt)
+        # Préparation du contexte
+        try:
+            relevant_chunks = st.session_state.rag.get_relevant_chunks(prompt)
+            recent_messages = st.session_state.messages[-4:]  # Derniers messages
+            context = prepare_context(relevant_chunks, recent_messages)
 
-        #         relevant_chunks = st.session_state.rag.get_relevant_chunks(prompt)
-        #         context = "\n".join(relevant_chunks)
-        #         # En tant qu'entitée virtuelle incarnant Vincent Plateau, 
-        #         contextualized_prompt = f"""Réponds à cette question en te basant sur ce contexte:
+            with st.chat_message("assistant", avatar="Données/Photo portfolio.ico"):
+                message_placeholder = st.empty()
 
-        #             Contexte: {context}
+                try:
+                    client = InferenceClient(api_key=os.getenv('HUGGINGFACE_API_KEY'))
 
-        #             Question: {prompt}
+                    stream = client.chat.completions.create(
+                        model="microsoft/Phi-3.5-mini-instruct",  
+                        messages=[
+                            {"role": "system", "content": SYSTEM_PROMPT},
+                            {"role": "user", "content": f"{context}\n\nQuestion: {prompt}"}
+                        ],
+                        temperature=temperature,
+                        max_tokens=1024,
+                        stream=True
+                    )
 
-        #         """
+                    full_response = ""
+                    for chunk in stream:
+                        if hasattr(chunk.choices[0], 'delta') and hasattr(chunk.choices[0].delta, 'content'):
+                            if chunk.choices[0].delta.content:
+                                full_response += chunk.choices[0].delta.content
+                                message_placeholder.markdown(full_response + "▌")
 
-        #         with st.chat_message("assistant", avatar=photo_avatar):
-        #             message_placeholder = st.empty()
-        #             full_response = ""
+                    if full_response:
+                        message_placeholder.markdown(full_response)
+                        st.session_state.messages.append({"role": "assistant", "content": full_response})
+                    else:
+                        message_placeholder.markdown("Je m'excuse, je n'ai pas pu générer une réponse appropriée. Pouvez-vous reformuler votre question ?")
 
-        #             try:
-        #                 stream = client.chat.completions.create(
-        #                     model="microsoft/Phi-3.5-mini-instruct",
-        #                     messages=[{"role": "system", "content": st.session_state.messages[0]["content"]},
-        #                               {"role": "user", "content": contextualized_prompt}],
-        #                     temperature=temperature,#0.5,
-        #                     max_tokens=2048,
-        #                     stream=True
-        #                 )
+                except Exception as e:
+                    st.error(f"Erreur lors de l'appel à l'API: {str(e)}")
+                    st.error(f"Type d'erreur: {type(e)}")
+                    return
 
-        #                 api_tracker.increment_usage()
-
-        #                 for chunk in stream:
-        #                     if chunk.choices[0].delta.content:
-        #                         full_response += chunk.choices[0].delta.content
-        #                         message_placeholder.markdown(full_response + "▌")
-
-        #                 message_placeholder.markdown(full_response)
-        #             except Exception as e:
-        #                 st.error(f"Une erreur est survenue. Veuillez réessayer: {e}")
-        #                 return
-
-        #             st.session_state.messages.append({"role": "assistant", "content": full_response})
+        except Exception as e:
+            st.error(f"Erreur lors de la préparation du contexte: {str(e)}")
+            st.error(f"Type d'erreur: {type(e)}")
+            return
 
 
 
 
 def additional_sidebar_functions():
-    # Bouton de réinitialisation
-    st.sidebar.html("<br>")     # Ajout d'un petit espace
+    # # Bouton de réinitialisation
+    # st.sidebar.html("<br>")     # Ajout d'un petit espace
+    # if st.sidebar.button("🔄 Nouvelle conversation", type='secondary'):
+    #     st.session_state.messages = st.session_state.messages[:1]
+    #     st.rerun()
+
     if st.sidebar.button("🔄 Nouvelle conversation", type='secondary'):
-        st.session_state.messages = st.session_state.messages[:1]
+        welcome_msg = """Bonjour ! Je suis Vincent AI, une version virtuelle de Vincent Plateau.
+        Des questions sur mon parcours ? Je suis là pour y répondre ! 🌟
+        (P.S.: Je ne suis qu'une IA générative qui se trompe régulièrement, le vrai Vincent est bien plus intéressant à rencontrer ! 😄)"""
+        
+        st.session_state.messages = [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "assistant", "content": welcome_msg}
+        ]
         st.rerun()
 
 
@@ -1268,8 +1556,8 @@ def main():
             st.session_state.page = "Expériences"
         if st.sidebar.button("Projets"):
             st.session_state.page = "Projets"
-        if st.sidebar.button("VincentGPT  :blue-background[Beta]"):
-            st.session_state.page = "VincentGPT"
+        if st.sidebar.button("Vincent AI  :blue-background[Beta]"):
+            st.session_state.page = "Vincent AI"
         if st.sidebar.button("Contacts"):
             st.session_state.page = "Contacts"
         
@@ -1284,7 +1572,7 @@ def main():
             experience_page()
         elif st.session_state.page == "Projets":
             projects_page()
-        elif st.session_state.page == "VincentGPT":
+        elif st.session_state.page == "Vincent AI":
             vincent_ai_page()
             additional_sidebar_functions()
         elif st.session_state.page == "Contacts":
@@ -1292,6 +1580,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
 
 
 
