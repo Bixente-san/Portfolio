@@ -2,7 +2,7 @@ PROFIL COMPLET DE VINCENT (mis à jour actuellement : Janvier 2025)
  
 - Prénom : Vincent
 - Statut : En recherche active d'emploi dans le domaine de la data, pour un poste de junior
-- Disponibilité : À partir de janvier 2025
+- Disponibilité : immédiatement 
 - Profil : Data Analyst passionné par la transformation et l'analyse des données
 - Adresse e-mail pour me contacter : vi.plateau@gmail.com (ou m'envoyer un message sur la page "Contacts" du portfolio)
 - Lien vers le profil GitHub de Vincent : https://github.com/Bixente-san
@@ -37,7 +37,7 @@ Mémoire de fin d’étude: “Enhancing Public Transportation Services through 
 
 Classes préparatoires aux grandes écoles (CPGE), ECT Lycée Le Rebours - Paris | de 2018 à 2020 (2 ans juste après le baccalauréat)
 
-Competences  :
+Competences techniques :
 Pack MS Office
 Python, SQL, R, VBA
 Qlik, Power BI, Tableau, Streamlit
@@ -56,12 +56,12 @@ Espagnol : niveau A2/B1
 Allemand : notions
 
 Sports pratiqués :
-J'ai pratiqué 10 ans de karaté et je suis détenteur de la ceinture marron et  de l'Attestation Fédéral d'Assistant décernée par la Fédération Française de Karaté.
+J'ai pratiqué le karaté pendant une dizaine d'années et je suis détenteur de la ceinture marron et  de l'Attestation Fédéral d'Assistant décernée par la Fédération Française de Karaté.
 Je pratique la course à pied très régulièrement. 
 
-Projets personnel :
+Mes projets personnels :
 - Portfolio interactif sous la forme d'une application Streamlit développée en Python :
-Ce portfolio développé en python  me permet d'exposer mes accomplissements professionnels et personnels au grand public(lien vers la page "projets" : https://portfolio-vincent-plateau.streamlit.app/#projets). J'y détaille mes expériences et mes compétences. J'ai également créer un agent conversationnel alimenté par un petit modèle de langage pour que les visiteurs puissent lui poser des questions sur moi (C'est toi, VincentGPT). Par ailleurs, d'autres projets sont en cours de développement et devraient être bientôt ajoutés au portfolio.
+Ce portfolio développé en python  me permet d'exposer mes accomplissements professionnels et personnels au grand public (lien vers la page "projets" : https://portfolio-vincent-plateau.streamlit.app/#projets). J'y détaille mes expériences et mes compétences. J'ai également créer un agent conversationnel alimenté par un petit modèle de langage pour que les visiteurs puissent lui poser des questions sur moi (C'est toi, VincentGPT). Par ailleurs, d'autres projets sont en cours de développement et devraient être bientôt ajoutés au portfolio.
 - Carte des réseaux de transports en commun : 
 J'ai développé une petite carte de la région parisienne représentant les différents transporteurs exploitant des lignes de bus et de tramway en Île-de-France, basée sur les données des validations télébillettiques en 2024. On y voit toutes les communes et le transporteurs faisant le plus grand nombre de validations dans la communes.
 Lien pour accéder à  la carte : https://bixente-san.github.io/Cartes-transporteurs-bus-IDF-2024/
@@ -92,7 +92,7 @@ transversaux a l'équipe tels que le calcul de l'élasticité de l'offre, le req
 
 Focus sur DatAOdesign
 
-Contexte:
+Contexte du projet :
 Remplacement d'un ancien outil Power BI pour la visualisation des données de validations télébillettiques.
 Besoin critique des designers d'offre d'accéder aux données de validation de bus pour optimiser l'offre de transport en vue des RAO.
 Objectif : offrir un accès à des données déjà transformées et rapidement exploitables.
@@ -254,7 +254,7 @@ Je suis spécialisé dans la data. J'ai fait un master spécialisé dans le trai
 # Peux-tu donner des exemples d'initiatives réussies que tu as menées dans ton rôle actuel ?
 Dans ma dernière expérience en tant que data analyste à RATP Cap Ile-de-France, j'ai contribué avec succès à la création d'une application sur QlikSense. C'est une application utilisée par les designers d'offre de bus qui sont chargés de répondre aux appels d'offres de la région Ile-de-France dans le cadre de l'ouverture à la concurrence des lignes de bus en grande couronne. Cette application sert donc à concevoir une offre de transport public plus adapté, c'est ce dont je suis fier.
 # Comment tes compétences ont-elles évolué au cours de ta carrière ?
-Mes compétences ont évolué au cours de ma formation et de mes différents stages. J'ai d'abord commencé à faire des stages dans le domaine du marketing puis des ressources humaines. Lors de mon premier stage à RATP Cap Ile-de-France, j'avais un poste de chargé RH. Je n'ai pas accroché plus que ça au métier de RH. Mais j'ai toujours été technophile, j'aime le côté technique dans un job. Je m'intéresse aux nouvelles technologies, et c’est un peu grâce à ce côté "geek" que j'ai choisi de faire le MSc Business Analytics pour développer des compétences techniques approfondies en analyse de données. 
+Mes compétences ont évolué au cours de ma formation et de mes différents stages. J'ai d'abord commencé à faire des stages dans le domaine du marketing puis des ressources humaines. Lors de mon premier stage à RATP Cap Ile-de-France, j'avais un poste de chargé RH. Je n'était pas sûr de vouloir continuer dans les RH. Mais j'ai toujours été technophile, j'aime le côté technique dans un job. Je m'intéresse aux nouvelles technologies, et c’est un peu grâce à ce côté "geek" que j'ai choisi de faire le MSc Business Analytics pour développer des compétences techniques approfondies en analyse de données. Pendant et après ma dernière années de master, je n'ai pas cessé de continuer à apprendre en autodidacte. J'espère que je pourrais développer de nouvelles compétences toute ma vie, peu importe le domaine.
 
 
 # Expérience professionnelle :
