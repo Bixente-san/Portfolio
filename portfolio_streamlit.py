@@ -52,18 +52,18 @@ st.markdown(
 #=========================================== Les Pages ===================================================================================
 def home_page():
 
-    # Variable de session pour suivre si le snow a déjà été appliqué
-    snow_applied = st.session_state.get('snow_applied', False)
+    # # Variable de session pour suivre si le snow a déjà été appliqué
+    # snow_applied = st.session_state.get('snow_applied', False)
 
-    def home_snow():
-        if not snow_applied:
-            # Applique le snow uniquement si elle n'a pas été appliquée
-            st.snow()
-            # Définir la variable de session pour éviter que cela ne se répète
-            st.session_state.snow_applied = True
+    # def home_snow():
+    #     if not snow_applied:
+    #         # Applique le snow uniquement si elle n'a pas été appliquée
+    #         st.snow()
+    #         # Définir la variable de session pour éviter que cela ne se répète
+    #         st.session_state.snow_applied = True
 
-    # Appeler la fonction lorsque la page est chargée
-    home_snow()
+    # # Appeler la fonction lorsque la page est chargée
+    # home_snow()
 
 
     col1, col2 = st.columns([1, 2], vertical_alignment="center")
