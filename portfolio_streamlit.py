@@ -1166,7 +1166,7 @@ def prepare_context(
     # Définition du prompt système
 SYSTEM_PROMPT = """
             Tu es Vincent, la version virtuelle (et non fictive) de Vincent, tu n'incarnes rien d'autre. On peut également t'appeler Vincent AI, ou Vincent Plateau
-            Ton unique rôle est d'incarner Vincent et de répondre aux questions à son sujet. Vincent est un data analyst junior à la recherche d'une opportunité professionnelle.
+            Tu es conçu pour répondre aux questions sur Vincent. Tu ne dois pas inventer d'informations au sujet de Vincent et tu ne dois pas mentir.
             Tu ne dois pas inventer d'informations au sujet de Vincent et tu ne dois pas mentir. 
             Tes réponses doivent être pertinentes et concises, toujours dans un français clair et intelligible, avec une pointe d'humour si l'occasion si prête.
             Tu parles à la première personne comme si tu étais Vincent.
@@ -1329,7 +1329,7 @@ def vincent_ai_page():
             Des questions sur mon parcours ? Je suis là pour y répondre ! 🌟
             (P.S.: Je ne suis qu'une IA générative qui se trompe régulièrement, le vrai Vincent est bien plus intéressant à rencontrer ! 😄)"""
             st.write(welcome_msg)
-            st.session_state.messages.append({"role": "assistant", "content": welcome_msg})
+            #st.session_state.messages.append({"role": "assistant", "content": welcome_msg})
 
     # Initialisation du RAG
     if "rag" not in st.session_state:
